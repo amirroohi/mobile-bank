@@ -30,7 +30,7 @@ class _TransferTypeScreenState extends State<TransferTypeScreen> {
           title: Center(
             child: Text("روش انتقال", style: TextStyle(fontSize: 28)),
           ),
-          backgroundColor: const Color(0xFF1D4B7E),
+          backgroundColor: AppColors.primary,
           foregroundColor: Colors.white,
           automaticallyImplyLeading: true,
           actions: [
@@ -65,7 +65,7 @@ class _TransferTypeScreenState extends State<TransferTypeScreen> {
                     color: Colors.white,
                   ),
                 ),
-                Container(height: 250, color: const Color(0xFF1D4B7E)),
+                Container(height: 250, color: AppColors.primary),
                 Positioned(
                   top: 65,
                   left: 15,
@@ -100,7 +100,7 @@ class _TransferTypeScreenState extends State<TransferTypeScreen> {
 
                             child: ElevatedButton(
                               style: ElevatedButton.styleFrom(
-                                backgroundColor: const Color(0xFF1D4B7E),
+                                backgroundColor: AppColors.primary,
                                 padding: const EdgeInsets.symmetric(
                                   horizontal: 20,
                                   vertical: 10,
@@ -169,7 +169,7 @@ class _TransferTypeScreenState extends State<TransferTypeScreen> {
 
                             child: ElevatedButton(
                               style: ElevatedButton.styleFrom(
-                                backgroundColor: const Color(0xFF1D4B7E),
+                                backgroundColor: AppColors.primary,
                                 padding: const EdgeInsets.symmetric(
                                   horizontal: 20,
                                   vertical: 10,
@@ -237,7 +237,7 @@ class _TransferTypeScreenState extends State<TransferTypeScreen> {
 
                             child: ElevatedButton(
                               style: ElevatedButton.styleFrom(
-                                backgroundColor: const Color(0xFF1D4B7E),
+                                backgroundColor: AppColors.primary,
                                 padding: const EdgeInsets.symmetric(
                                   horizontal: 20,
                                   vertical: 10,
@@ -314,7 +314,7 @@ class _TransferTypeScreenState extends State<TransferTypeScreen> {
                             child: ElevatedButton(
                               style: ElevatedButton.styleFrom(
                                 elevation: 10,
-                                backgroundColor: const Color(0xFF1D4B7E),
+                                backgroundColor: AppColors.primary,
                                 padding: const EdgeInsets.symmetric(
                                   horizontal: AppSizes.spacing,
                                   vertical: 10,

@@ -73,6 +73,7 @@ flutter:
     - assets/images/aab.png
     - assets/images/mokhaberat.jpg
     - assets/images/hamrah.webp
+    - assets/images/banner.png
   fonts:
     - family: IranYekan
       fonts:

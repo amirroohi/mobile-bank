@@ -2,9 +2,12 @@ import 'package:flutter/material.dart';
 
 class AppColors {
   static const primary = Color(0xFF1D4B7E);
+  static const secondary =Color(0xFFFF6E40);
   static const background = Color.fromRGBO(245, 245, 245, 1);
   static const lightGrey = Color(0xFFF3F6FA);
   static const white = Colors.white;
+  static const darkPrimary = Colors.white;
+  static const darkSecondary = Colors.white;
 }
 
 class AppTextStyles {

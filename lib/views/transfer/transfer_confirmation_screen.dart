@@ -39,7 +39,7 @@ class _TransferConfirmationScreenState
           title: Center(
             child: Text("تایید اطلاعات", style: TextStyle(fontSize: 28)),
           ),
-          backgroundColor: const Color(0xFF1D4B7E),
+          backgroundColor: AppColors.primary,
           foregroundColor: Colors.white,
           automaticallyImplyLeading: true,
           actions: [
@@ -74,7 +74,7 @@ class _TransferConfirmationScreenState
                     color: Colors.white,
                   ),
                 ),
-                Container(height: 150, color: const Color(0xFF1D4B7E)),
+                Container(height: 150, color: AppColors.primary),
                 Positioned(
                   top: 65,
                   left: 15,
@@ -341,7 +341,7 @@ class _TransferConfirmationScreenState
                     margin: EdgeInsets.symmetric(horizontal: 40),
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: const Color(0xFF1D4B7E),
+                        backgroundColor: AppColors.primary,
                         padding: const EdgeInsets.symmetric(
                           horizontal: 40,
                           vertical: 15,
@@ -360,7 +360,6 @@ class _TransferConfirmationScreenState
                             ),
                           ),
                           builder: (BuildContext context) {
-                            String otp = '';
 
                             return Padding(
                               padding: EdgeInsets.only(

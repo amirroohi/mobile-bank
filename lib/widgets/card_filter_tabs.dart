@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../core/constants/app_constants.dart';
+
 class CardTypeTabs extends StatelessWidget {
   final List<String> types;
   final String selectedType;
@@ -19,7 +21,7 @@ class CardTypeTabs extends StatelessWidget {
               margin: const EdgeInsets.symmetric(horizontal: 4),
               padding: const EdgeInsets.symmetric(vertical: 10),
               decoration: BoxDecoration(
-                color: isSelected ? const Color(0xFF1D4B7E) : Colors.grey[200],
+                color: isSelected ? AppColors.primary : Colors.grey[200],
                 borderRadius: BorderRadius.circular(12),
               ),
               child: Text(

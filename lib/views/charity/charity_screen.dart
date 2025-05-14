@@ -33,7 +33,7 @@ class _CharityScreenState extends State<CharityScreen> {
           title: Center(
             child: Text("نیکوکاری", style: TextStyle(fontSize: 28)),
           ),
-          backgroundColor: const Color(0xFF1D4B7E),
+          backgroundColor: AppColors.primary,
           foregroundColor: Colors.white,
           automaticallyImplyLeading: true,
           actions: [
@@ -68,7 +68,7 @@ class _CharityScreenState extends State<CharityScreen> {
                     color: Colors.white,
                   ),
                 ),
-                Container(height: 150, color: const Color(0xFF1D4B7E)),
+                Container(height: 150, color: AppColors.primary),
                 Positioned(
                   top: 25,
                   left: 15,
@@ -171,7 +171,7 @@ class _CharityScreenState extends State<CharityScreen> {
                     margin: EdgeInsets.symmetric(horizontal: 40),
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: const Color(0xFF1D4B7E),
+                        backgroundColor: AppColors.primary,
                         padding: const EdgeInsets.symmetric(
                           horizontal: 40,
                           vertical: 15,

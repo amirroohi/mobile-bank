@@ -3,8 +3,10 @@ import 'package:mobile_bank/core/constants/app_constants.dart';
 import 'package:mobile_bank/views/transfer/transfer_type_screen.dart';
 import 'package:persian_number_utility/persian_number_utility.dart';
 
+import '../../core/utils/number_to_word.dart';
 import '../../models/bank-account.dart';
 import '../../widgets/account_item.dart';
+import '../../widgets/price_input_field.dart';
 import '../home/home_screen.dart';
 
 class TransferFormSection extends StatefulWidget {
@@ -23,7 +25,6 @@ class _TransferFormSectionState extends State<TransferFormSection> {
     balance: 150000000,
     logoAsset: "assets/images/bank_logo.png",
   );
-
   final TextEditingController _amountController = TextEditingController();
   String amountInWords = '';
 
@@ -51,7 +52,7 @@ class _TransferFormSectionState extends State<TransferFormSection> {
           title: Center(
             child: Text("انتقال وجه", style: TextStyle(fontSize: 28)),
           ),
-          backgroundColor: const Color(0xFF1D4B7E),
+          backgroundColor: AppColors.primary,
           foregroundColor: Colors.white,
           automaticallyImplyLeading: true,
           actions: [
@@ -86,7 +87,7 @@ class _TransferFormSectionState extends State<TransferFormSection> {
                     color: Colors.white,
                   ),
                 ),
-                Container(height: 150, color: const Color(0xFF1D4B7E)),
+                Container(height: 150, color: AppColors.primary),
                 Positioned(
                   top: 25,
                   left: 15,
@@ -144,39 +145,14 @@ class _TransferFormSectionState extends State<TransferFormSection> {
                           ),
                           const SizedBox(height: 40),
                           // 💰 Amount input
-                          TextField(
-                            maxLength: 9,
-                            controller: _amountController,
-                            decoration: InputDecoration(
-                              suffix: Text("ريال"),
-                              counterText: "",
-                              labelText: "مبلغ",
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(50),
-                              ),
-                            ),
-                            keyboardType: TextInputType.number,
+                          PriceInputField(controller: _amountController),
+                          NumberToWordsText(
+                            number: _amountController.text.isEmpty
+                                ? null
+                                : int.tryParse(_amountController.text.replaceAll(',', '')),
+                            textStyle: TextStyle(fontSize: 13, color: Colors.green.shade800,fontWeight: FontWeight.w700),
                           ),
-                          Container(
-                            width: double.infinity,
-                            height: 0,
-                            padding: EdgeInsets.symmetric(horizontal: 10),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                Flexible(
-                                  child: Text(
-                                    amountInWords,
-                                    style: const TextStyle(
-                                      color: Color(0xFF246C1D),
-                                      fontSize: 12,
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          const SizedBox(height: 40),
+                          const SizedBox(height: 30),
 
                           // 📝 Description input
                           TextField(
@@ -203,7 +179,7 @@ class _TransferFormSectionState extends State<TransferFormSection> {
                     margin: EdgeInsets.symmetric(horizontal: 40),
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: const Color(0xFF1D4B7E),
+                        backgroundColor: AppColors.primary,
                         padding: const EdgeInsets.symmetric(
                           horizontal: 40,
                           vertical: 15,

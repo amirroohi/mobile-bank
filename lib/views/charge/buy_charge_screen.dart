@@ -1,5 +1,6 @@
 import 'package:dropdown_search/dropdown_search.dart';
 import 'package:flutter/material.dart';
+import '../../core/constants/app_constants.dart';
 import '../../models/bank-account.dart';
 import '../../widgets/account_item.dart';
 import '../home/home_screen.dart';
@@ -65,7 +66,7 @@ class BuyChargeScreenState extends State<BuyChargeScreen> {
           title: Center(
             child: Text("خرید شارژ", style: TextStyle(fontSize: 28)),
           ),
-          backgroundColor: const Color(0xFF1D4B7E),
+          backgroundColor: AppColors.primary,
           foregroundColor: Colors.white,
           automaticallyImplyLeading: true,
           actions: [
@@ -100,7 +101,7 @@ class BuyChargeScreenState extends State<BuyChargeScreen> {
                     color: Colors.white,
                   ),
                 ),
-                Container(height: 150, color: const Color(0xFF1D4B7E)),
+                Container(height: 150, color: AppColors.primary),
                 Positioned(
                   top: 25,
                   left: 15,

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../models/bank-account.dart';
+import '../core/constants/app_constants.dart';
 
 class AccountItem extends StatelessWidget {
   final BankAccount account;
@@ -10,7 +11,7 @@ class AccountItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-      color: const Color(0xFF1D4B7E),
+      color: AppColors.primary,
       child: Padding(
         padding: const EdgeInsets.all(16),
         child: Column(

@@ -27,9 +27,9 @@ class BankCard extends StatelessWidget {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(25),
         gradient: LinearGradient(
-          colors: [Color(0xFF1D4B7E), Color(0xFF2E75B6)],
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
+          colors: [ Color(0xFF2E75B6),Color(0xFF8A8A8A), Color(0xFF2E75B6)],
+          begin : Alignment.topRight,
+          end: Alignment.bottomLeft,
         ),
         boxShadow: [
           BoxShadow(color: Colors.black12, blurRadius: 8, offset: Offset(0, 4)),
@@ -95,9 +95,15 @@ class BankCard extends StatelessWidget {
               ),
               Row(
                 children: [
-                  Text("ريال", style: TextStyle(color: Colors.white,fontSize: 18)),
+                  Text(
+                    "ريال",
+                    style: TextStyle(color: Colors.white, fontSize: 18),
+                  ),
                   SizedBox(width: 4),
-                  Text("$balance", style: TextStyle(color: Colors.white,fontSize: 18)),
+                  Text(
+                    "$balance",
+                    style: TextStyle(color: Colors.white, fontSize: 18),
+                  ),
                   SizedBox(width: 4),
                   Icon(Icons.visibility_off, color: Colors.white),
                 ],

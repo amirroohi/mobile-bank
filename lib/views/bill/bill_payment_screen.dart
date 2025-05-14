@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mobile_bank/views/bill/widgets/add_new_bill.dart';
 import 'package:mobile_bank/views/bill/widgets/bill_history_list.dart';
+import '../../core/constants/app_constants.dart';
 import '../../models/bank-account.dart';
 import '../../widgets/account_item.dart';
 import '../home/home_screen.dart';
@@ -50,7 +51,7 @@ class _BillPaymentScreenState extends State<BillPaymentScreen> {
           title: Center(
             child: Text("پرداخت قبض", style: TextStyle(fontSize: 28)),
           ),
-          backgroundColor: const Color(0xFF1D4B7E),
+          backgroundColor: AppColors.primary,
           foregroundColor: Colors.white,
           automaticallyImplyLeading: true,
           actions: [
@@ -85,7 +86,7 @@ class _BillPaymentScreenState extends State<BillPaymentScreen> {
                     color: Colors.white,
                   ),
                 ),
-                Container(height: 150, color: const Color(0xFF1D4B7E)),
+                Container(height: 150, color: AppColors.primary),
                 Positioned(
                   top: 25,
                   left: 15,

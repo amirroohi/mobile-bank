@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../core/constants/app_constants.dart';
 import '../home/home_screen.dart';
 
 class ProfileScreen extends StatefulWidget {
@@ -17,7 +18,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
       child: Scaffold(
         appBar: AppBar(
           title: Center(child: Text("پروفایل", style: TextStyle(fontSize: 28))),
-          backgroundColor: const Color(0xFF1D4B7E),
+          backgroundColor: AppColors.primary,
           foregroundColor: Colors.white,
           automaticallyImplyLeading: true,
           actions: [
@@ -46,7 +47,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   width: double.infinity,
                   color: Colors.white,
                 ),
-                Container(height: 250, color: const Color(0xFF1D4B7E)),
+                Container(height: 250, color: AppColors.primary),
 
                 Positioned(
                   top: 75,

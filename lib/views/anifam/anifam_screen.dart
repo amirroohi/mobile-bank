@@ -113,7 +113,7 @@ class _AnifamScreenState extends State<AnifamScreen>
             child: Text("آنی فام", style: TextStyle(fontSize: 28)),
           ),
           backgroundColor: const Color.fromRGBO(245, 245, 245, 1),
-          foregroundColor: const Color(0xFF1D4B7E),
+          foregroundColor: AppColors.primary,
           automaticallyImplyLeading: true,
           actions: [
             Padding(

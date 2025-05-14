@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../../core/constants/app_constants.dart';
 import '../home/home_screen.dart';
 import 'login_veiw_model.dart';
 
@@ -17,7 +18,7 @@ class LoginScreen extends StatelessWidget {
         backgroundColor: const Color(0xFFF4F4F4),
         body: Stack(
           children: [
-            Container(height: double.infinity, color: const Color(0xFF1D4B7E)),
+            Container(height: double.infinity, color: AppColors.primary),
             Center(
               child: Container(
                 width: 370,
@@ -94,7 +95,7 @@ class LoginScreen extends StatelessWidget {
                             }
                           },
                           style: ElevatedButton.styleFrom(
-                            backgroundColor: const Color(0xFF1D4B7E),
+                            backgroundColor: AppColors.primary,
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(12),
                             ),
@@ -137,7 +138,7 @@ class LoginScreen extends StatelessWidget {
                                         'رمز عبور را فراموش کردم',
                                         style: TextStyle(
                                           fontSize: 14,
-                                          color: const Color(0xFF1D4B7E),
+                                          color: AppColors.primary,
                                         ),
                                       ),
                                       SizedBox(width: 10),

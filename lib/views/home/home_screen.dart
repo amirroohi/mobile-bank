@@ -6,6 +6,7 @@ import 'package:mobile_bank/views/services/services_screen.dart';
 import 'package:mobile_bank/views/transfer/transfer_form_screen.dart';
 import 'package:mobile_bank/widgets/bottom_bar.dart';
 import 'package:mobile_bank/widgets/transfer_section.dart';
+import '../../core/constants/app_constants.dart';
 import '../../widgets/bank_card.dart';
 import '../../widgets/loan_banner.dart';
 import '../../widgets/quick_action.dart';
@@ -24,14 +25,14 @@ class _HomeScreenState extends State<HomeScreen> {
   late Widget screen;
   String _appBarTitle = '';
   ThemeData _currentTheme = ThemeData(
-    scaffoldBackgroundColor: const Color(0xFF1D4B7E),
+    scaffoldBackgroundColor: AppColors.primary,
     fontFamily: "IRANSans",
   );
   Color? _currentAppbar = Color.fromRGBO(29, 75, 126, 1);
 
   final Map<int, ThemeData> _themesByIndex = {
     -1: ThemeData(
-      scaffoldBackgroundColor: const Color(0xFF1D4B7E),
+      scaffoldBackgroundColor: AppColors.primary,
       fontFamily: "IRANSans",
     ), // Home
     0: ThemeData(
@@ -169,12 +170,12 @@ class _HomeScreenState extends State<HomeScreen> {
             onPressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => TransferFormSection()),
+                MaterialPageRoute(builder: (context) => AnifamScreen()),
               );
             },
             backgroundColor: Colors.deepOrangeAccent,
             foregroundColor: Colors.white,
-            child: const Icon(Icons.qr_code_scanner, size: 40),
+            child: const Icon(Icons.electric_bolt, size: 40),
           ),
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
@@ -197,128 +198,80 @@ class HomeContent extends StatefulWidget {
 }
 
 class _HomeContentState extends State<HomeContent> {
-  int selectedQuickActionIndex = 3;
-
-  Widget getTransferSection() {
-    switch (selectedQuickActionIndex) {
-      case 0:
-        return _buildTransferBox("نمایش تسهیلات فعال");
-      case 1:
-        return _buildTransferBox("شارژ سیم‌کارت");
-      case 2:
-        return _buildTransferBox("پرداخت قبض");
-      case 3:
-        return TransferSection();
-      default:
-        return Container(); // or an empty prompt
-    }
-  }
-
-  Widget _buildTransferBox(String text) {
-    return Container(
-      margin: const EdgeInsets.all(16),
-      padding: const EdgeInsets.all(16),
-      width: double.infinity,
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(16),
-      ),
-      child: Text(
-        text,
-        style: const TextStyle(fontSize: 16, color: Colors.black87),
-        textAlign: TextAlign.center,
-      ),
-    );
-  }
+  int selectedQuickActionIndex = -1;
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return Stack(
       children: [
-        const SizedBox(height: 10),
+        /// ❄️ Fixed Content (background)
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            /// 📇 Cards
+            SizedBox(
+              height: 250,
+              child: Swiper(
+                layout: SwiperLayout.TINDER,
+                itemWidth: 500,
+                itemHeight: 300,
+                itemBuilder: (BuildContext context, int index) {
+                  return BankCard(
+                    iban: "IR890750051511242000000150",
+                    accountNumber: "051511242000000150",
+                    cardNumber: "6062 5610 1799 4305",
+                    accountType: "سپرده قرض الحسنه",
+                    owner: "مینا علمی",
+                    balance: "150,000,000",
+                  );
+                },
+                itemCount: 3,
+              ),
+            ),
+            const SizedBox(height: 20),
 
-        // 📇 Bank cards (fixed)
-        SizedBox(
-          height: 250,
-          child: Swiper(
-            layout: SwiperLayout.TINDER,
-            itemWidth: 500,
-            itemHeight: 300,
-            itemBuilder: (BuildContext context, int index) {
-              return BankCard(
-                iban: "IR890750051511242000000150",
-                accountNumber: "051511242000000150",
-                cardNumber: "6062 5610 1799 4305",
-                accountType: "سپرده قرض الحسنه",
-                owner: "مینا علمی",
-                balance: "150,000,000",
-              );
-            },
-            itemCount: 3,
-          ),
+            /// ⚡ Quick Actions
+            QuickActions(
+              selectedIndex: selectedQuickActionIndex,
+              onActionSelected: (index) {
+                setState(() {
+                  selectedQuickActionIndex = index;
+                });
+              },
+            ),
+
+            const SizedBox(height: 10),
+
+            /// 📢 Loan Banner
+            loanBanner,
+          ],
         ),
-        // child: SizedBox(
-        //   height: 240,
-        //   child: PageView.builder(
-        //     controller: PageController(viewportFraction: 0.9),
-        //     itemCount: 3,
-        //     itemBuilder: (context, index) {
-        //       return BankCard(
-        //         iban: "IR890750051511242000000150",
-        //         accountNumber: "051511242000000150",
-        //         cardNumber: "6062 5610 1799 4305",
-        //         accountType: "سپرده قرض الحسنه",
-        //         owner: "مینا علمی",
-        //         balance: "150,000,000",
-        //       );
-        //     },
-        //   ),
-        // ),
-        const SizedBox(height: 20),
 
-        // 🪄 Controlled scrollable section
-        SizedBox(
-          height:
-              480, // Set based on the combined height of getTransferSection + desired scroll space
-          child: Stack(
-            children: [
-              // ⚡ Quick Actions (fixed)
-              Positioned(
-                top: 12,
-                left: 0,
-                right: 0,
-                child: QuickActions(
-                  selectedIndex: selectedQuickActionIndex,
-                  onActionSelected: (index) {
-                    setState(() {
-                      selectedQuickActionIndex = index;
-                    });
-                  },
-                ),
-              ),
-              Positioned(
-                top: 90, // Space that getTransferSection will scroll into
-                left: 0,
-                right: 0,
-                child: loanBanner, // ⬇️ This stays in place
-              ),
-              Positioned.fill(
-                child: NotificationListener<ScrollNotification>(
-                  onNotification: (scrollNotification) => true,
-                  child: SingleChildScrollView(
-                    physics: const ClampingScrollPhysics(),
-                    padding: EdgeInsets.only(top: 200),
-                    child: Column(
-                      children: [
-                        // ⬆️ This scrolls over loanBanner
-                        getTransferSection(),
-                      ],
-                    ),
+        /// 🧲 Draggable Scrollable Panel (overlay)
+        DraggableScrollableSheet(
+          initialChildSize: 0.44,
+          minChildSize: 0.42,
+          maxChildSize: 0.70,
+          builder: (context, scrollController) {
+            return Container(
+              margin:const EdgeInsets.all(16.0) ,
+              decoration: const BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.vertical(top: Radius.circular(25)),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black26,
+                    blurRadius: 10,
+                    offset: Offset(0, -2),
                   ),
-                ),
+                ],
               ),
-            ],
-          ),
+              child: SingleChildScrollView(
+                controller: scrollController,
+                child: TransferSection(),
+              ),
+            );
+          },
         ),
       ],
     );

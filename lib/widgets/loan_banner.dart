@@ -8,7 +8,6 @@ Widget loanBanner = Container(
     borderRadius: BorderRadius.circular(16),
   ),
   child: Row(
-
     children: [
       CircleAvatar(
         backgroundColor: Colors.orange,
@@ -21,6 +20,7 @@ Widget loanBanner = Container(
           style: TextStyle(fontSize: 13),
         ),
       ),
+
     ],
   ),
 );

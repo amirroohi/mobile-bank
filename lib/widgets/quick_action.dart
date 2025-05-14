@@ -1,16 +1,33 @@
 import 'package:flutter/material.dart';
+import 'package:mobile_bank/views/charge/buy_charge_screen.dart';
+import 'package:mobile_bank/views/laon/loan_repayment_screen.dart';
+import 'package:mobile_bank/views/transfer/transfer_form_screen.dart';
+
+import '../views/bill/bill_payment_screen.dart';
 
 class QuickActions extends StatelessWidget {
   final int selectedIndex;
   final Function(int) onActionSelected;
 
-  QuickActions({super.key, required this.selectedIndex, required this.onActionSelected});
+  QuickActions({
+    super.key,
+    required this.selectedIndex,
+    required this.onActionSelected,
+  });
 
   final List<Map<String, dynamic>> _actions = [
-    {'icon': Icons.account_balance, 'label': 'تسهیلات'},
-    {'icon': Icons.sim_card, 'label': 'شارژ'},
-    {'icon': Icons.receipt_long, 'label': 'قبض'},
-    {'icon': Icons.credit_card, 'label': 'انتقال وجه'},
+    {
+      'icon': Icons.account_balance,
+      'label': 'تسهیلات',
+      'screen': LoanRepaymentScreen(), // Replace with your actual screen
+    },
+    {'icon': Icons.sim_card, 'label': 'شارژ', 'screen': BuyChargeScreen()},
+    {'icon': Icons.receipt_long, 'label': 'قبض', 'screen': BillPaymentScreen()},
+    {
+      'icon': Icons.credit_card,
+      'label': 'انتقال وجه',
+      'screen': TransferFormSection(),
+    },
   ];
 
   @override
@@ -20,7 +37,15 @@ class QuickActions extends StatelessWidget {
       children: List.generate(_actions.length, (index) {
         final isSelected = selectedIndex == index;
         return GestureDetector(
-          onTap: () => onActionSelected(index),
+          onTap: () {
+            onActionSelected(index);
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => _actions[index]['screen'],
+              ),
+            );
+          },
           child: Column(
             children: [
               Container(
@@ -39,10 +64,7 @@ class QuickActions extends StatelessWidget {
               const SizedBox(height: 6),
               Text(
                 _actions[index]['label'],
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 16,
-                ),
+                style: TextStyle(color: Colors.white, fontSize: 16),
               ),
             ],
           ),

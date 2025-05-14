@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../core/constants/app_constants.dart';
+
 class AccountTypeTabs extends StatelessWidget {
   final List<String> types;
   final String selectedType;
@@ -22,7 +24,7 @@ class AccountTypeTabs extends StatelessWidget {
           label: Text(type),
           selected: isSelected,
           onSelected: (_) => onSelect(type),
-          selectedColor: const Color(0xFF1D4B7E),
+          selectedColor: AppColors.primary,
           backgroundColor: Colors.grey.shade200,
           labelStyle: TextStyle(
             color: isSelected ? Colors.white : Colors.black,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../core/constants/app_constants.dart';
 import '../../models/bank-account.dart';
 import '../../widgets/account_item.dart';
 import '../home/home_screen.dart';
@@ -32,7 +33,7 @@ class _AccountsScreenState extends State<AccountsScreen> {
             child: const Text("فهرست سپرده", style: TextStyle(fontSize: 28)),
           ),
           backgroundColor: Color.fromRGBO(245, 245, 245, 1),
-          foregroundColor: const Color(0xFF1D4B7E),
+          foregroundColor: AppColors.primary,
           elevation: 0,
           actions: [
             Padding(
@@ -68,7 +69,7 @@ class _AccountsScreenState extends State<AccountsScreen> {
                 },
                 borderRadius: BorderRadius.circular(50),
                 selectedColor: Colors.white,
-                fillColor: const Color(0xFF1D4B7E),
+                fillColor: AppColors.primary,
                 color: Colors.black,
                 children: const [
                   Padding(
@@ -135,7 +136,7 @@ class _AccountsScreenState extends State<AccountsScreen> {
   Widget buildAccountCard(BankAccount account) {
     return Card(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-      color: const Color(0xFF1D4B7E),
+      color: AppColors.primary,
       child: Padding(
         padding: const EdgeInsets.all(16),
         child: Column(

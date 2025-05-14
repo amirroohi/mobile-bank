@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../models/card_model.dart';
+import '../core/constants/app_constants.dart';
 
 class CardItem extends StatelessWidget {
   final BankCard card;
@@ -24,7 +25,7 @@ class CardItem extends StatelessWidget {
           margin: const EdgeInsets.symmetric(vertical: 12, horizontal: 8),
           padding: const EdgeInsets.all(16),
           decoration: BoxDecoration(
-            color: const Color(0xFF1D4B7E),
+            color: AppColors.primary,
             borderRadius: BorderRadius.circular(16),
           ),
           child: Column(

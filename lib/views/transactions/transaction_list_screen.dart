@@ -138,7 +138,7 @@ class _TransactionListScreenState extends State<TransactionListScreen> {
           title: Center(
             child: Text("فهرست تراکنش ها", style: TextStyle(fontSize: 28)),
           ),
-          backgroundColor: const Color(0xFF1D4B7E),
+          backgroundColor: AppColors.primary,
           foregroundColor: Colors.white,
           automaticallyImplyLeading: true,
           actions: [
@@ -173,7 +173,7 @@ class _TransactionListScreenState extends State<TransactionListScreen> {
                     color: Colors.white,
                   ),
                 ),
-                Container(height: 150, color: const Color(0xFF1D4B7E)),
+                Container(height: 150, color: AppColors.primary),
                 Positioned(
                   top: 25,
                   left: 15,

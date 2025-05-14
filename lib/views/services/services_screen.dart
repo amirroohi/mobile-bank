@@ -10,6 +10,7 @@ import 'package:mobile_bank/views/inquiry/iban_inquiry_screen.dart';
 import 'package:mobile_bank/views/laon/loan_repayment_screen.dart';
 import 'package:mobile_bank/views/transactions/transaction_list_screen.dart';
 
+import '../../core/constants/app_constants.dart';
 import '../../widgets/service_item.dart';
 import '../../widgets/service_section.dart';
 import '../home/home_screen.dart';
@@ -29,66 +30,66 @@ class _ServicesScreenState extends State<ServicesScreen> {
 
   void _navigateToService(String title) {
     switch (title) {
-      case "قرارداد ها":
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (_) => HomeScreen()),
-        );
-        break;
+      // case "قرارداد ها":
+      //   Navigator.push(
+      //     context,
+      //     MaterialPageRoute(builder: (_) => HomeScreen()),
+      //   );
+      //   break;
       case "بازپرداخت":
         Navigator.push(
           context,
           MaterialPageRoute(builder: (_) => LoanRepaymentScreen()),
         );
         break;
-      case "جزئیات":
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (_) => HomeScreen()),
-        );
-        break;
-      case "در انتظار تایید":
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (_) => HomeScreen()),
-        );
-        break;
-      case "گزارشات":
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (_) => HomeScreen()),
-        );
-        break;
-      case "صیاد":
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (_) => HomeScreen()),
-        );
-        break;
-      case "مسدودی":
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (_) => HomeScreen()),
-        );
-        break;
-      case "وضعیت دسته چک":
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (_) => HomeScreen()),
-        );
-        break;
-      case "چک های برگشتی":
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (_) => HomeScreen()),
-        );
-        break;
-      case "تسهیلات":
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (_) => HomeScreen()),
-        );
-        break;
+      // case "جزئیات":
+      //   Navigator.push(
+      //     context,
+      //     MaterialPageRoute(builder: (_) => HomeScreen()),
+      //   );
+      //   break;
+      // case "در انتظار تایید":
+      //   Navigator.push(
+      //     context,
+      //     MaterialPageRoute(builder: (_) => HomeScreen()),
+      //   );
+      //   break;
+      // case "گزارشات":
+      //   Navigator.push(
+      //     context,
+      //     MaterialPageRoute(builder: (_) => HomeScreen()),
+      //   );
+      //   break;
+      // case "صیاد":
+      //   Navigator.push(
+      //     context,
+      //     MaterialPageRoute(builder: (_) => HomeScreen()),
+      //   );
+      //   break;
+      // case "مسدودی":
+      //   Navigator.push(
+      //     context,
+      //     MaterialPageRoute(builder: (_) => HomeScreen()),
+      //   );
+      //   break;
+      // case "وضعیت دسته چک":
+      //   Navigator.push(
+      //     context,
+      //     MaterialPageRoute(builder: (_) => HomeScreen()),
+      //   );
+      //   break;
+      // case "چک های برگشتی":
+      //   Navigator.push(
+      //     context,
+      //     MaterialPageRoute(builder: (_) => HomeScreen()),
+      //   );
+      //   break;
+      // case "تسهیلات":
+      //   Navigator.push(
+      //     context,
+      //     MaterialPageRoute(builder: (_) => HomeScreen()),
+      //   );
+      //   break;
       case "شبا":
         Navigator.push(
           context,
@@ -117,12 +118,6 @@ class _ServicesScreenState extends State<ServicesScreen> {
         Navigator.push(
           context,
           MaterialPageRoute(builder: (_) => AddContactScreen()),
-        );
-        break;
-      case "آنی فام":
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (_) => AnifamScreen()),
         );
         break;
       case "فهرست تراکنش ها":
@@ -181,7 +176,6 @@ class _ServicesScreenState extends State<ServicesScreen> {
           ServiceItemData("پرداخت قبوض", Icons.receipt_outlined),
           ServiceItemData("خرید شارژ", Icons.receipt_outlined),
           ServiceItemData("افزودن منتخب", Icons.person_add_alt),
-          ServiceItemData("آنی فام", Icons.speed_outlined),
         ],
       ),
     ];
@@ -219,7 +213,7 @@ class _ServicesScreenState extends State<ServicesScreen> {
             child: Text("خدمات", style: TextStyle(fontSize: 28)),
           ),
           backgroundColor: const Color.fromRGBO(245, 245, 245, 1),
-          foregroundColor: const Color(0xFF1D4B7E),
+          foregroundColor: AppColors.primary,
           automaticallyImplyLeading: true,
           actions: [
             Padding(

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../core/constants/app_constants.dart';
 import '../login/Login_screen.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -47,7 +48,7 @@ class _SplashScreenState extends State<SplashScreen> {
               style: TextStyle(
                 fontSize: 24,
                 fontWeight: FontWeight.w700,
-                color: const Color(0xFF1D4B7E),
+                color: AppColors.primary,
               ),
             ),            SizedBox(height: 40),
             Text(
@@ -55,7 +56,7 @@ class _SplashScreenState extends State<SplashScreen> {
               style: TextStyle(
                 fontSize: 24,
                 fontWeight: FontWeight.w700,
-                color: const Color(0xFF1D4B7E),
+                color: AppColors.primary,
               ),
             ),
           ],

@@ -36,7 +36,7 @@ class _TransferReceiptScreenState extends State<TransferReceiptScreen> {
           title: Center(
             child: Text("جزییات تراکنش", style: TextStyle(fontSize: 28)),
           ),
-          backgroundColor: const Color(0xFF1D4B7E),
+          backgroundColor: AppColors.primary,
           foregroundColor: Colors.white,
           automaticallyImplyLeading: true,
           actions: [
@@ -71,7 +71,7 @@ class _TransferReceiptScreenState extends State<TransferReceiptScreen> {
                     color: Colors.white,
                   ),
                 ),
-                Container(height: 150, color: const Color(0xFF1D4B7E)),
+                Container(height: 150, color: AppColors.primary),
                 Positioned(
                   top: 45,
                   left: 15,
@@ -364,7 +364,7 @@ class _TransferReceiptScreenState extends State<TransferReceiptScreen> {
                     margin: EdgeInsets.symmetric(horizontal: 40),
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: const Color(0xFF1D4B7E),
+                        backgroundColor: AppColors.primary,
                         padding: const EdgeInsets.symmetric(
                           horizontal: 40,
                           vertical: 15,
@@ -422,7 +422,7 @@ class _TransferReceiptScreenState extends State<TransferReceiptScreen> {
                                   ),
                                   ElevatedButton(
                                     style: ElevatedButton.styleFrom(
-                                      backgroundColor: const Color(0xFF1D4B7E),
+                                      backgroundColor: AppColors.primary,
                                     ),
                                     child: const Text(
                                       "تأیید",

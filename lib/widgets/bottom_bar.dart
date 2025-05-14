@@ -61,7 +61,7 @@ class BottomBar extends StatelessWidget {
         ),
         child: BottomAppBar(
           padding: const EdgeInsets.symmetric(horizontal: 18),
-          height: 65,
+          height: 70,
           color: Colors.white,
           shape: const CircularNotchedRectangle(
           ),
