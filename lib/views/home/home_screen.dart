@@ -3,15 +3,36 @@ import 'package:flutter/material.dart';
 import 'package:mobile_bank/views/accounts/accounts_screen.dart';
 import 'package:mobile_bank/views/anifam/anifam_screen.dart';
 import 'package:mobile_bank/views/services/services_screen.dart';
-import 'package:mobile_bank/views/transfer/transfer_form_screen.dart';
 import 'package:mobile_bank/widgets/bottom_bar.dart';
 import 'package:mobile_bank/widgets/transfer_section.dart';
 import '../../core/constants/app_constants.dart';
+import '../../models/bank-account.dart';
 import '../../widgets/bank_card.dart';
 import '../../widgets/loan_banner.dart';
 import '../../widgets/quick_action.dart';
 import '../cards/cards_screen.dart';
 import '../profile/profile_screen.dart';
+
+final List<BankAccount> userAccounts = [
+  BankAccount(
+    ownerName: "مینا علمی",
+    accountNumber: "051511242000000150",
+    iban: "IR890750051511242000000150",
+    type: "سپرده قرض الحسنه",
+    balance: 150000000,
+    logoAsset: 'assets/images/melal_icon.png',
+  ),
+  BankAccount(
+    ownerName: "علی احمدی",
+    accountNumber: "051511242000000151",
+    iban: "IR230750051511242000000151",
+    type: "سپرده کوتاه مدت",
+    balance: 87500000,
+    logoAsset: 'assets/images/melal_icon.png',
+  ),
+  // More accounts...
+];
+
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -59,6 +80,10 @@ class _HomeScreenState extends State<HomeScreen> {
     2: Color.fromRGBO(245, 245, 245, 1), // Cards
     3: Color.fromRGBO(245, 245, 245, 1), // Accounts
   };
+
+
+
+
 
   @override
   void initState() {
@@ -216,18 +241,12 @@ class _HomeContentState extends State<HomeContent> {
                 itemWidth: 500,
                 itemHeight: 300,
                 itemBuilder: (BuildContext context, int index) {
-                  return BankCard(
-                    iban: "IR890750051511242000000150",
-                    accountNumber: "051511242000000150",
-                    cardNumber: "6062 5610 1799 4305",
-                    accountType: "سپرده قرض الحسنه",
-                    owner: "مینا علمی",
-                    balance: "150,000,000",
-                  );
+                  return BankCard(account: userAccounts[index]);
                 },
-                itemCount: 3,
+                itemCount: userAccounts.length,
               ),
             ),
+
             const SizedBox(height: 20),
 
             /// ⚡ Quick Actions
@@ -240,7 +259,7 @@ class _HomeContentState extends State<HomeContent> {
               },
             ),
 
-            const SizedBox(height: 10),
+            const SizedBox(height: 0),
 
             /// 📢 Loan Banner
             loanBanner,
@@ -249,8 +268,8 @@ class _HomeContentState extends State<HomeContent> {
 
         /// 🧲 Draggable Scrollable Panel (overlay)
         DraggableScrollableSheet(
-          initialChildSize: 0.44,
-          minChildSize: 0.42,
+          initialChildSize: 0.40,
+          minChildSize: 0.40,
           maxChildSize: 0.70,
           builder: (context, scrollController) {
             return Container(

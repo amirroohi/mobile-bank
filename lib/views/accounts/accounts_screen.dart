@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:card_swiper/card_swiper.dart';
 import '../../core/constants/app_constants.dart';
+import '../../core/utils/text_mask.dart';
 import '../../models/bank-account.dart';
-import '../../widgets/account_item.dart';
+import '../../widgets/bank_card.dart';
 import '../home/home_screen.dart';
 
 class AccountsScreen extends StatefulWidget {
@@ -13,15 +15,34 @@ class AccountsScreen extends StatefulWidget {
 
 class _AccountsScreenState extends State<AccountsScreen> {
   String selectedTab = "سپرده منفرد";
+  int selectedIndex = 0;
 
-  final BankAccount account = BankAccount(
-    ownerName: "مینا علمی",
-    accountNumber: "051511242000000150",
-    iban: "IR890750051511242000000150",
-    type: "سپرده قرض الحسنه",
-    balance: 150000000,
-    logoAsset: "assets/images/bank_logo.png",
-  );
+  final List<BankAccount> accounts = [
+    BankAccount(
+      ownerName: "مینا علمی",
+      accountNumber: "051511242000000150",
+      iban: "IR890750051511242000000150",
+      type: "سپرده قرض الحسنه",
+      balance: 150000000,
+      logoAsset: "assets/images/melal_logo.png",
+    ),
+    BankAccount(
+      ownerName: "علی رضایی",
+      accountNumber: "051511242000000151",
+      iban: "IR890750051511242000000151",
+      type: "سپرده کوتاه مدت",
+      balance: 85000000,
+      logoAsset: "assets/images/melal_logo.png",
+    ),
+    BankAccount(
+      ownerName: "فاطمه کریمی",
+      accountNumber: "051511242000000152",
+      iban: "IR890750051511242000000152",
+      type: "سپرده بلند مدت",
+      balance: 200000000,
+      logoAsset: "assets/images/melal_logo.png",
+    ),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -29,10 +50,10 @@ class _AccountsScreenState extends State<AccountsScreen> {
       textDirection: TextDirection.rtl,
       child: Scaffold(
         appBar: AppBar(
-          title: Center(
-            child: const Text("فهرست سپرده", style: TextStyle(fontSize: 28)),
+          title: const Center(
+            child: Text("فهرست سپرده", style: TextStyle(fontSize: 28)),
           ),
-          backgroundColor: Color.fromRGBO(245, 245, 245, 1),
+          backgroundColor: const Color.fromRGBO(245, 245, 245, 1),
           foregroundColor: AppColors.primary,
           elevation: 0,
           actions: [
@@ -84,100 +105,32 @@ class _AccountsScreenState extends State<AccountsScreen> {
               ),
               const SizedBox(height: 20),
               SizedBox(
-                height: 240,
-                child: PageView.builder(
-                  controller: PageController(viewportFraction: 0.9),
-                  itemCount:
-                      3, // you can replace with `accounts.length` if you have a list
+                height: 250,
+                child: Swiper(
+                  itemCount: accounts.length,
+                  itemWidth: 500,
+                  itemHeight: 300,
+                  layout: SwiperLayout.TINDER,
+                  onIndexChanged: (index) {
+                    setState(() {
+                      selectedIndex = index;
+                    });
+                  },
                   itemBuilder: (context, index) {
-                    return AccountItem(account: account);
+                    return BankCard(account: accounts[index]);
                   },
                 ),
               ),
-              const SizedBox(height: 16),
-              OutlinedButton(
-                onPressed: () {},
-                style: OutlinedButton.styleFrom(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(50),
-                  ),
-                  side: const BorderSide(color: Colors.black),
-                  minimumSize: const Size.fromHeight(50),
-                ),
-                child: const Text(
-                  "صورت حساب",
-                  style: TextStyle(fontSize: 18, color: AppColors.primary),
-                ),
-              ),
               const SizedBox(height: 20),
-              buildAccountDetails(),
+              buildAccountDetails(accounts[selectedIndex]),
             ],
           ),
         ),
-        bottomNavigationBar: BottomNavigationBar(
-          currentIndex: 3,
-          items: const [
-            BottomNavigationBarItem(icon: Icon(Icons.person), label: "پروفایل"),
-            BottomNavigationBarItem(icon: Icon(Icons.apps), label: "خدمات"),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.credit_card),
-              label: "کارت",
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.account_balance),
-              label: "سپرده",
-            ),
-          ],
-        ),
       ),
     );
   }
 
-  Widget buildAccountCard(BankAccount account) {
-    return Card(
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-      color: AppColors.primary,
-      child: Padding(
-        padding: const EdgeInsets.all(16),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.end,
-          children: [
-            Text(account.iban, style: const TextStyle(color: AppColors.white)),
-            Text(
-              account.accountNumber,
-              style: const TextStyle(color: AppColors.white),
-            ),
-            Text(
-              "6062 5610 1799 4305",
-              style: const TextStyle(color: AppColors.white),
-            ), // Dummy card number
-            Text(account.type, style: const TextStyle(color: AppColors.white)),
-            Text(
-              account.ownerName,
-              style: const TextStyle(color: AppColors.white),
-            ),
-            const SizedBox(height: 10),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: const [
-                Icon(Icons.person, color: AppColors.white),
-                Icon(Icons.link, color: AppColors.white),
-                Icon(Icons.insert_drive_file, color: AppColors.white),
-                Icon(Icons.qr_code, color: AppColors.white),
-              ],
-            ),
-            const SizedBox(height: 10),
-            Text(
-              "${account.balance.toStringAsFixed(0)} ریال",
-              style: const TextStyle(color: AppColors.white),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-
-  Widget buildAccountDetails() {
+  Widget buildAccountDetails(BankAccount account) {
     return Container(
       padding: const EdgeInsets.all(26),
       decoration: BoxDecoration(
@@ -200,12 +153,9 @@ class _AccountsScreenState extends State<AccountsScreen> {
               ),
             ),
             const SizedBox(height: 8),
-            const DetailRow(
-              label: "نوع سپرده",
-              value: "کوتاه مدت ماه شمار - حقیقی",
-            ),
+            DetailRow(label: "نوع سپرده", value: account.type),
             const DetailRow(label: "نوع مسدودی", value: "بخشی"),
-            const DetailRow(label: "مبلغ مسدودی", value: "500,000 ریال"),
+            DetailRow(label: "مبلغ مسدودی", value: formatWithCommas(account.balance.toString())),
             const DetailRow(label: "تاریخ افتتاح", value: "1401/08/09"),
             const DetailRow(label: "تاریخ سود", value: "1401/08/09"),
           ],

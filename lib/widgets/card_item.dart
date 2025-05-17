@@ -21,24 +21,33 @@ class CardItem extends StatelessWidget {
         // Card Display
         Container(
           width: 360,
-          height: 200,
+          height: 220,
           margin: const EdgeInsets.symmetric(vertical: 12, horizontal: 8),
           padding: const EdgeInsets.all(16),
           decoration: BoxDecoration(
-            color: AppColors.primary,
             borderRadius: BorderRadius.circular(16),
+            gradient: LinearGradient(
+              colors: [Color(0xFF1D4F7A), Color(0xFFA8A8A8), Color(0xFF2E75B6)],
+              begin: Alignment.topRight,
+              end: Alignment.bottomLeft,
+            ),
           ),
           child: Column(
             spacing: 7,
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
               Row(
-                mainAxisAlignment: MainAxisAlignment.end,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: const [
+                  CircleAvatar(
+                    radius: 25,
+                    backgroundColor: Colors.transparent,
+                    foregroundImage: AssetImage("assets/images/melal_icon.png"),
+                  ),
                   Icon(Icons.bookmark_border, color: AppColors.white),
+
                 ],
               ),
-              const SizedBox(height: 8),
               Center(
                 child: Text(
                   card.iban,

@@ -6,6 +6,7 @@ class AppColors {
   static const background = Color.fromRGBO(245, 245, 245, 1);
   static const lightGrey = Color(0xFFF3F6FA);
   static const white = Colors.white;
+  static const transparent = Colors.transparent;
   static const darkPrimary = Colors.white;
   static const darkSecondary = Colors.white;
 }

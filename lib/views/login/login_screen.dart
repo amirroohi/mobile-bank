@@ -10,7 +10,7 @@ class LoginScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final loginVM = Provider.of<LoginViewModel>(context);
+     final loginVM = Provider.of<LoginViewModel>(context);
 
     return Directionality(
       textDirection: TextDirection.rtl,

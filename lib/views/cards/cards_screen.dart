@@ -1,3 +1,4 @@
+import 'package:card_swiper/card_swiper.dart';
 import 'package:flutter/material.dart';
 import '../../core/constants/app_constants.dart';
 import '../../models/card_model.dart';
@@ -84,35 +85,32 @@ class _CardsScreenState extends State<CardsScreen> {
               const SizedBox(height: AppSizes.spacing),
               SizedBox(
                 height: AppSizes.cardHeight,
-                child: PageView.builder(
-                  controller: PageController(viewportFraction: 0.9),
+                child: Swiper(
                   itemCount: filteredCards.length,
+                  layout: SwiperLayout.TINDER,
+                  itemWidth: MediaQuery.of(context).size.width * 0.9,
+                  itemHeight: AppSizes.cardHeight,
+                  onIndexChanged: (index) {
+                    // Optional: do something when card changes
+                  },
                   itemBuilder: (context, index) {
-                    return filteredCards.isNotEmpty
-                        ? CardItem(
-                          card: filteredCards[index],
-                          onBlockPressed: () {
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              const SnackBar(
-                                content: Text(AppStrings.snackbarBlocked),
-                              ),
-                            );
-                          },
-                          onToggleSecondPassword: () {
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              const SnackBar(
-                                content: Text(AppStrings.snackbarPassword),
-                              ),
-                            );
-                          },
-                        )
-                        : Text(
-                          AppStrings.noCardFound,
-                          style: AppTextStyles.cardTitle,
+                    return CardItem(
+                      card: filteredCards[index],
+                      onBlockPressed: () {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(content: Text(AppStrings.snackbarBlocked)),
                         );
+                      },
+                      onToggleSecondPassword: () {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(content: Text(AppStrings.snackbarPassword)),
+                        );
+                      },
+                    );
                   },
                 ),
               ),
+
               const SizedBox(height: AppSizes.spacing),
               Column(
                 children: [

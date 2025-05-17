@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:card_swiper/card_swiper.dart';
 import 'package:mobile_bank/core/constants/app_constants.dart';
 import 'package:mobile_bank/views/transfer/transfer_type_screen.dart';
 import 'package:persian_number_utility/persian_number_utility.dart';
 
 import '../../core/utils/number_to_word.dart';
 import '../../models/bank-account.dart';
-import '../../widgets/account_item.dart';
+import '../../widgets/bank_card.dart';
 import '../../widgets/price_input_field.dart';
 import '../home/home_screen.dart';
 
@@ -17,17 +18,27 @@ class LoanRepaymentScreen extends StatefulWidget {
 }
 
 class _LoanRepaymentScreenState extends State<LoanRepaymentScreen> {
-  final BankAccount account = BankAccount(
-    ownerName: "مینا علمی",
-    accountNumber: "051511242000000150",
-    iban: "IR890750051511242000000150",
-    type: "سپرده قرض الحسنه",
-    balance: 150000000,
-    logoAsset: "assets/images/bank_logo.png",
-  );
-
   final TextEditingController _amountController = TextEditingController();
   String amountInWords = '';
+
+  final List<BankAccount> userAccounts = [
+    BankAccount(
+      ownerName: "مینا علمی",
+      accountNumber: "051511242000000150",
+      iban: "IR890750051511242000000150",
+      type: "سپرده قرض الحسنه",
+      balance: 150000000,
+      logoAsset: "assets/images/bank_logo.png",
+    ),
+    BankAccount(
+      ownerName: "علی رضایی",
+      accountNumber: "0215458789500000012",
+      iban: "IR1207500215458789500000012",
+      type: "سپرده جاری",
+      balance: 92000000,
+      logoAsset: "assets/images/bank_logo.png",
+    ),
+  ];
 
   @override
   void initState() {
@@ -36,7 +47,7 @@ class _LoanRepaymentScreenState extends State<LoanRepaymentScreen> {
       setState(() {
         final value = _amountController.text;
         if (value.isNotEmpty) {
-          amountInWords = value.toWord(); // Ensure this works with your package
+          amountInWords = value.toWord();
         } else {
           amountInWords = '';
         }
@@ -50,7 +61,7 @@ class _LoanRepaymentScreenState extends State<LoanRepaymentScreen> {
       textDirection: TextDirection.rtl,
       child: Scaffold(
         appBar: AppBar(
-          title: Center(
+          title: const Center(
             child: Text("پرداخت قسط", style: TextStyle(fontSize: 28)),
           ),
           backgroundColor: AppColors.primary,
@@ -60,7 +71,7 @@ class _LoanRepaymentScreenState extends State<LoanRepaymentScreen> {
             Padding(
               padding: const EdgeInsets.only(left: 8.0),
               child: IconButton(
-                icon: const Icon(Icons.home,size: 32,),
+                icon: const Icon(Icons.home, size: 32),
                 tooltip: 'خانه',
                 onPressed: () {
                   Navigator.push(
@@ -76,18 +87,7 @@ class _LoanRepaymentScreenState extends State<LoanRepaymentScreen> {
           children: [
             Stack(
               children: [
-                ConstrainedBox(
-                  constraints: const BoxConstraints(
-                    minWidth: double.infinity,
-                    minHeight: 770,
-                    maxHeight: 790,
-                  ),
-                  child: Container(
-                    height: double.infinity,
-                    width: double.infinity,
-                    color: Colors.white,
-                  ),
-                ),
+                Container(height: 790, color: Colors.white),
                 Container(height: 150, color: AppColors.primary),
                 Positioned(
                   top: 25,
@@ -97,30 +97,31 @@ class _LoanRepaymentScreenState extends State<LoanRepaymentScreen> {
                     elevation: 3,
                     borderRadius: BorderRadius.circular(25),
                     child: Container(
-                      height: 570,
+                      height: 590,
                       padding: const EdgeInsets.symmetric(
-                        horizontal: 10,
-                        vertical: 15,
-                      ),
+                          horizontal: 10, vertical: 15),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(25),
                         color: Colors.white,
                       ),
                       child: Column(
                         children: [
+                          /// 📇 Swiper with BankCards
                           SizedBox(
-                            height: 240,
-                            child: PageView.builder(
-                              controller: PageController(viewportFraction: 0.9),
-                              itemCount: 4,
-                              // you can replace with `accounts.length` if you have a list
+                            height: 250,
+                            child: Swiper(
+                              layout: SwiperLayout.TINDER,
+                              itemWidth: 500,
+                              itemHeight: 300,
                               itemBuilder: (context, index) {
-                                return AccountItem(account: account);
+                                return BankCard(account: userAccounts[index]);
                               },
+                              itemCount: userAccounts.length,
                             ),
                           ),
-                          SizedBox(height: 30),
-                          // 📥 Destination input
+                          const SizedBox(height: 30),
+
+                          /// 📋 Loan number
                           TextField(
                             decoration: InputDecoration(
                               counterText: "",
@@ -128,38 +129,38 @@ class _LoanRepaymentScreenState extends State<LoanRepaymentScreen> {
                               border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(50),
                               ),
-                              suffixIcon: InkWell(
-                                borderRadius: BorderRadius.circular(50),
-
-                                onTap: () {},
-                                child: IconButton(
-                                  onPressed: () {},
-                                  icon: Icon(
-                                    Icons.perm_contact_calendar_outlined,
-                                    color: AppColors.primary,
-                                  ),
+                              suffixIcon: IconButton(
+                                onPressed: () {},
+                                icon: const Icon(
+                                  Icons.perm_contact_calendar_outlined,
+                                  color: AppColors.primary,
                                 ),
                               ),
                             ),
-
                             keyboardType: TextInputType.number,
                           ),
                           const SizedBox(height: 30),
-                          // 💰 Amount input
+
+                          /// 💰 Amount
                           PriceInputField(controller: _amountController),
                           const SizedBox(height: 10),
 
+                          /// 🔤 Amount in words
                           NumberToWordsText(
                             number: _amountController.text.isEmpty
                                 ? null
-                                : int.tryParse(_amountController.text.replaceAll(',', '')),
-                            textStyle: TextStyle(fontSize: 13, color: Colors.green.shade800,fontWeight: FontWeight.w700),
+                                : int.tryParse(_amountController.text
+                                .replaceAll(',', '')),
+                            textStyle: TextStyle(
+                              fontSize: 13,
+                              color: Colors.green.shade800,
+                              fontWeight: FontWeight.w700,
+                            ),
                           ),
-                          const SizedBox(height: 10),
+                          const SizedBox(height: 20),
 
-                          // 📝 Description input
+                          /// 📅 Installments + Button
                           Row(
-                            spacing: 10,
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Expanded(
@@ -174,10 +175,12 @@ class _LoanRepaymentScreenState extends State<LoanRepaymentScreen> {
                                   keyboardType: TextInputType.number,
                                 ),
                               ),
+                              const SizedBox(width: 8),
                               Expanded(
                                 child: ElevatedButton(
                                   style: ElevatedButton.styleFrom(
-                                    backgroundColor: const Color(0xFFEF7F00),
+                                    backgroundColor:
+                                    const Color(0xFFEF7F00),
                                     foregroundColor: Colors.white,
                                     padding: const EdgeInsets.symmetric(
                                       horizontal: 30,
@@ -191,11 +194,10 @@ class _LoanRepaymentScreenState extends State<LoanRepaymentScreen> {
                                     Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                        builder:
-                                            (context) => TransferTypeScreen(),
+                                        builder: (context) =>
+                                        const TransferTypeScreen(),
                                       ),
                                     );
-                                    // TODO: Handle transfer logic or navigation
                                   },
                                   child: const Text(
                                     "محاسبه اقساط",
@@ -213,37 +215,32 @@ class _LoanRepaymentScreenState extends State<LoanRepaymentScreen> {
                     ),
                   ),
                 ),
-                // ✅ Submit button
+
+                /// ✅ Continue Button
                 Positioned(
                   top: 640,
-                  right: 0,
-                  left: 0,
-                  child: Container(
-                    margin: EdgeInsets.symmetric(horizontal: 40),
-                    child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: AppColors.primary,
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 40,
-                          vertical: 15,
-                        ),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(50),
-                        ),
+                  left: 40,
+                  right: 40,
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: AppColors.primary,
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 40, vertical: 15),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(50),
                       ),
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => TransferTypeScreen(),
-                          ),
-                        );
-                        // TODO: Handle transfer logic or navigation
-                      },
-                      child: const Text(
-                        "ادامه",
-                        style: TextStyle(fontSize: 18, color: Colors.white),
-                      ),
+                    ),
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const TransferTypeScreen(),
+                        ),
+                      );
+                    },
+                    child: const Text(
+                      "ادامه",
+                      style: TextStyle(fontSize: 18, color: Colors.white),
                     ),
                   ),
                 ),

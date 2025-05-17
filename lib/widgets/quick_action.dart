@@ -34,7 +34,7 @@ class QuickActions extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceAround,
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: List.generate(_actions.length, (index) {
         final isSelected = selectedIndex == index;
         return GestureDetector(

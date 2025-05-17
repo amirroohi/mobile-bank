@@ -1,9 +1,11 @@
+import 'package:card_swiper/card_swiper.dart';
 import 'package:flutter/material.dart';
 import 'package:mobile_bank/views/bill/widgets/add_new_bill.dart';
 import 'package:mobile_bank/views/bill/widgets/bill_history_list.dart';
 import '../../core/constants/app_constants.dart';
 import '../../models/bank-account.dart';
 import '../../widgets/account_item.dart';
+import '../../widgets/bank_card.dart';
 import '../home/home_screen.dart';
 import 'package:persian_number_utility/persian_number_utility.dart';
 
@@ -15,14 +17,24 @@ class BillPaymentScreen extends StatefulWidget {
 }
 
 class _BillPaymentScreenState extends State<BillPaymentScreen> {
-  final BankAccount account = BankAccount(
-    ownerName: "مینا علمی",
-    accountNumber: "051511242000000150",
-    iban: "IR890750051511242000000150",
-    type: "سپرده قرض الحسنه",
-    balance: 150000000,
-    logoAsset: "assets/images/bank_logo.png",
-  );
+  final List<BankAccount> userAccounts = [
+    BankAccount(
+      ownerName: "مینا علمی",
+      accountNumber: "051511242000000150",
+      iban: "IR890750051511242000000150",
+      type: "سپرده قرض الحسنه",
+      balance: 150000000,
+      logoAsset: "assets/images/bank_logo.png",
+    ),
+    BankAccount(
+      ownerName: "علی رضایی",
+      accountNumber: "0215458789500000012",
+      iban: "IR1207500215458789500000012",
+      type: "سپرده جاری",
+      balance: 92000000,
+      logoAsset: "assets/images/bank_logo.png",
+    ),
+  ];
   String selectedTab = "پرداخت قبض";
   final TextEditingController _amountController = TextEditingController();
   String amountInWords = '';
@@ -109,15 +121,15 @@ class _BillPaymentScreenState extends State<BillPaymentScreen> {
                         child: Column(
                           children: [
                             SizedBox(
-                              height: 240,
-                              child: PageView.builder(
-                                controller: PageController(
-                                  viewportFraction: 0.9,
-                                ),
-                                itemCount: 4,
-                                itemBuilder:
-                                    (context, index) =>
-                                        AccountItem(account: account),
+                              height: 250,
+                              child: Swiper(
+                                layout: SwiperLayout.TINDER,
+                                itemWidth: 500,
+                                itemHeight: 300,
+                                itemBuilder: (context, index) {
+                                  return BankCard(account: userAccounts[index]);
+                                },
+                                itemCount: userAccounts.length,
                               ),
                             ),
                             const SizedBox(height: 20),

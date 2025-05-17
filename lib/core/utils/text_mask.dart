@@ -28,3 +28,17 @@ class ThousandsSeparatorInputFormatter extends TextInputFormatter {
     return buffer.toString();
   }
 }
+
+String formatWithCommas(String value) {
+  value = value.replaceAll(RegExp(r'[^\d]'), '');
+  if (value.isEmpty) return '';
+  final buffer = StringBuffer();
+  int offset = value.length % 3;
+  if (offset > 0) buffer.write(value.substring(0, offset));
+
+  for (int i = offset; i < value.length; i += 3) {
+    if (buffer.isNotEmpty) buffer.write(',');
+    buffer.write(value.substring(i, i + 3));
+  }
+  return buffer.toString();
+}

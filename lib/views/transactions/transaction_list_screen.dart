@@ -1,4 +1,6 @@
+import 'package:card_swiper/card_swiper.dart';
 import 'package:flutter/material.dart';
+import 'package:mobile_bank/widgets/bank_card.dart';
 import '../../core/constants/app_constants.dart';
 import '../../models/bank-account.dart';
 import '../../widgets/account_item.dart';
@@ -11,7 +13,26 @@ class TransactionListScreen extends StatefulWidget {
 }
 
 class _TransactionListScreenState extends State<TransactionListScreen> {
+
   final TextEditingController _searchController = TextEditingController();
+  final List<BankAccount> userAccounts = [
+    BankAccount(
+      ownerName: "مینا علمی",
+      accountNumber: "051511242000000150",
+      iban: "IR890750051511242000000150",
+      type: "سپرده قرض الحسنه",
+      balance: 150000000,
+      logoAsset: "assets/images/bank_logo.png",
+    ),
+    BankAccount(
+      ownerName: "علی رضایی",
+      accountNumber: "0215458789500000012",
+      iban: "IR1207500215458789500000012",
+      type: "سپرده جاری",
+      balance: 92000000,
+      logoAsset: "assets/images/bank_logo.png",
+    ),
+  ];
   List<Map<String, dynamic>> transactions = [
     {
       'name': 'امیر محمد غفاری',
@@ -194,13 +215,14 @@ class _TransactionListScreenState extends State<TransactionListScreen> {
                       child: Column(
                         children: [
                           SizedBox(
-                            height: 240,
-                            child: PageView.builder(
-                              controller: PageController(viewportFraction: 0.9),
-                              itemCount: 4,
-                              // you can replace with `accounts.length` if you have a list
+                            height: 250,
+                            child: Swiper(
+                              layout: SwiperLayout.TINDER,
+                              itemWidth: 500,
+                              itemHeight: 300,
+                              itemCount: userAccounts.length,
                               itemBuilder: (context, index) {
-                                return AccountItem(account: account);
+                                return BankCard(account: userAccounts[index]);
                               },
                             ),
                           ),
@@ -278,7 +300,6 @@ class _TransactionListScreenState extends State<TransactionListScreen> {
                                       mainAxisAlignment:
                                           MainAxisAlignment.center,
                                       children: [
-
                                         Text(
                                           item['type'] ??
                                               "", // Or any other detail like "قبض"
@@ -304,7 +325,6 @@ class _TransactionListScreenState extends State<TransactionListScreen> {
                                             fontWeight: FontWeight.bold,
                                           ),
                                         ),
-
                                       ],
                                     ),
                                   ),
