@@ -37,7 +37,7 @@ class _TransferReceiptScreenState extends State<TransferReceiptScreen> {
             child: Text("جزییات تراکنش", style: TextStyle(fontSize: 28)),
           ),
           backgroundColor: AppColors.primary,
-          foregroundColor: Colors.white,
+          foregroundColor: AppColors.white,
           automaticallyImplyLeading: true,
           actions: [
             Padding(
@@ -68,7 +68,7 @@ class _TransferReceiptScreenState extends State<TransferReceiptScreen> {
                   child: Container(
                     height: double.infinity,
                     width: double.infinity,
-                    color: Colors.white,
+                    color: AppColors.white,
                   ),
                 ),
                 Container(height: 150, color: AppColors.primary),
@@ -87,7 +87,7 @@ class _TransferReceiptScreenState extends State<TransferReceiptScreen> {
                       ),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(25),
-                        color: Colors.white,
+                        color: AppColors.white,
                       ),
                       child: Column(
                         children: [
@@ -284,7 +284,7 @@ class _TransferReceiptScreenState extends State<TransferReceiptScreen> {
                   child: Container(
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.all(Radius.circular(50)),
-                      color: Colors.white,
+                      color: AppColors.white,
                     ),
                     padding: EdgeInsets.fromLTRB(5, 3, 5, 0),
                     child: CircleAvatar(
@@ -293,7 +293,7 @@ class _TransferReceiptScreenState extends State<TransferReceiptScreen> {
                       child: const Icon(
                         Icons.download_done,
                         size: 40,
-                        color: Colors.white,
+                        color: AppColors.white,
                       ),
                     ),
                   ),

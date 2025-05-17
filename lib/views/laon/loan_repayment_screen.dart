@@ -5,6 +5,7 @@ import 'package:persian_number_utility/persian_number_utility.dart';
 
 import '../../models/bank-account.dart';
 import '../../widgets/account_item.dart';
+import '../../widgets/price_input_field.dart';
 import '../home/home_screen.dart';
 
 class LoanRepaymentScreen extends StatefulWidget {
@@ -144,19 +145,8 @@ class _LoanRepaymentScreenState extends State<LoanRepaymentScreen> {
                           ),
                           const SizedBox(height: 30),
                           // 💰 Amount input
-                          TextField(
-                            maxLength: 9,
-                            controller: _amountController,
-                            decoration: InputDecoration(
-                              suffix: Text("ريال"),
-                              counterText: "",
-                              labelText: "مبلغ قسط",
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(50),
-                              ),
-                            ),
-                            keyboardType: TextInputType.number,
-                          ),
+                          PriceInputField(controller: _amountController),
+
                           const SizedBox(height: 10),
                           Container(
                             width: double.infinity,

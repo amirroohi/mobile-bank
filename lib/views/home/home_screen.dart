@@ -109,7 +109,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     child: Text(_appBarTitle, style: TextStyle(fontSize: 28)),
                   ),
                   backgroundColor: _currentAppbar,
-                  foregroundColor: Colors.white,
+                  foregroundColor: AppColors.white,
                   automaticallyImplyLeading: true,
                   actions: [
                     _selectedIndex == -1
@@ -117,7 +117,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           icon: const Icon(
                             Icons.menu,
                             size: 40,
-                            color: Colors.white70,
+                            color: AppColors.white,
                           ),
                           onPressed: () {},
                         )
@@ -125,7 +125,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           margin: EdgeInsets.only(right: 20),
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(50),
-                            color: Colors.white,
+                            color: AppColors.white,
                           ),
                           child: IconButton(
                             icon: const Icon(
@@ -174,7 +174,7 @@ class _HomeScreenState extends State<HomeScreen> {
               );
             },
             backgroundColor: Colors.deepOrangeAccent,
-            foregroundColor: Colors.white,
+            foregroundColor: AppColors.white,
             child: const Icon(Icons.electric_bolt, size: 40),
           ),
         ),
@@ -256,7 +256,7 @@ class _HomeContentState extends State<HomeContent> {
             return Container(
               margin:const EdgeInsets.all(16.0) ,
               decoration: const BoxDecoration(
-                color: Colors.white,
+                color: AppColors.white,
                 borderRadius: BorderRadius.vertical(top: Radius.circular(25)),
                 boxShadow: [
                   BoxShadow(

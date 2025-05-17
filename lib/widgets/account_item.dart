@@ -25,14 +25,14 @@ class AccountItem extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    Icon(Icons.bookmark_border, color: Colors.white),
-                    Icon(Icons.more_vert, color: Colors.white),
+                    Icon(Icons.bookmark_border, color: AppColors.white),
+                    Icon(Icons.more_vert, color: AppColors.white),
                   ],
                 ),
                 Center(
                   child: Text(
                     account.iban,
-                    style: const TextStyle(color: Colors.white),
+                    style: const TextStyle(color: AppColors.white),
                   ),
                 ),
                 Row(
@@ -40,11 +40,11 @@ class AccountItem extends StatelessWidget {
                   children: [
                     Text(
                       account.type,
-                      style: const TextStyle(color: Colors.white),
+                      style: const TextStyle(color: AppColors.white),
                     ),
                     Text(
                       account.accountNumber,
-                      style: const TextStyle(color: Colors.white),
+                      style: const TextStyle(color: AppColors.white),
                     ),
                   ],
                 ),
@@ -54,11 +54,11 @@ class AccountItem extends StatelessWidget {
                   children: [
                     Text(
                       account.ownerName,
-                      style: const TextStyle(color: Colors.white),
+                      style: const TextStyle(color: AppColors.white),
                     ),
                     const Text(
                       "6062 5610 1799 4305",
-                      style: TextStyle(color: Colors.white),
+                      style: TextStyle(color: AppColors.white),
                     ),
                   ],
                 ),
@@ -70,15 +70,15 @@ class AccountItem extends StatelessWidget {
               children: [
                 Text(
                   "${account.balance.toStringAsFixed(0)} ریال",
-                  style: const TextStyle(color: Colors.white, fontSize: 18),
+                  style: const TextStyle(color: AppColors.white, fontSize: 18),
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: const [
-                    Icon(Icons.person, color: Colors.white),
-                    Icon(Icons.link, color: Colors.white),
-                    Icon(Icons.insert_drive_file, color: Colors.white),
-                    Icon(Icons.qr_code, color: Colors.white),
+                    Icon(Icons.person, color: AppColors.white),
+                    Icon(Icons.link, color: AppColors.white),
+                    Icon(Icons.insert_drive_file, color: AppColors.white),
+                    Icon(Icons.qr_code, color: AppColors.white),
                   ],
                 ),
               ],

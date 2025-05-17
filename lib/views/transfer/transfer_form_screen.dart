@@ -53,7 +53,7 @@ class _TransferFormSectionState extends State<TransferFormSection> {
             child: Text("انتقال وجه", style: TextStyle(fontSize: 28)),
           ),
           backgroundColor: AppColors.primary,
-          foregroundColor: Colors.white,
+          foregroundColor: AppColors.white,
           automaticallyImplyLeading: true,
           actions: [
             Padding(
@@ -84,7 +84,7 @@ class _TransferFormSectionState extends State<TransferFormSection> {
                   child: Container(
                     height: double.infinity,
                     width: double.infinity,
-                    color: Colors.white,
+                    color: AppColors.white,
                   ),
                 ),
                 Container(height: 150, color: AppColors.primary),
@@ -103,7 +103,7 @@ class _TransferFormSectionState extends State<TransferFormSection> {
                       ),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(25),
-                        color: Colors.white,
+                        color: AppColors.white,
                       ),
                       child: Column(
                         children: [
@@ -199,7 +199,7 @@ class _TransferFormSectionState extends State<TransferFormSection> {
                       },
                       child: const Text(
                         "ادامه",
-                        style: TextStyle(fontSize: 18, color: Colors.white),
+                        style: TextStyle(fontSize: 18, color: AppColors.white),
                       ),
                     ),
                   ),

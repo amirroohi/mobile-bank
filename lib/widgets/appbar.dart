@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../core/constants/app_constants.dart';
+
 class CustomHeaderBar extends StatelessWidget implements PreferredSizeWidget {
   const CustomHeaderBar({super.key});
 
@@ -25,7 +27,7 @@ class CustomHeaderBar extends StatelessWidget implements PreferredSizeWidget {
                 const Text(
                   'AppBar Demo',
                   style: TextStyle(
-                    color: Colors.white,
+                    color: AppColors.white,
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
                   ),
@@ -33,7 +35,7 @@ class CustomHeaderBar extends StatelessWidget implements PreferredSizeWidget {
                 Row(
                   children: [
                     IconButton(
-                      icon: const Icon(Icons.add_alert, color: Colors.white),
+                      icon: const Icon(Icons.add_alert, color: AppColors.white),
                       onPressed: () {
                         ScaffoldMessenger.of(context).showSnackBar(
                           const SnackBar(content: Text('This is a snackbar')),
@@ -43,7 +45,7 @@ class CustomHeaderBar extends StatelessWidget implements PreferredSizeWidget {
                     IconButton(
                       icon: const Icon(
                         Icons.navigate_next,
-                        color: Colors.white,
+                        color: AppColors.white,
                       ),
                       onPressed: () {
                         Navigator.push(
@@ -73,7 +75,7 @@ class CustomHeaderBar extends StatelessWidget implements PreferredSizeWidget {
           left: MediaQuery.of(context).size.width / 2 - 35,
           child: FloatingActionButton(
             onPressed: () {},
-            backgroundColor: Colors.white,
+            backgroundColor: AppColors.white,
             shape: const CircleBorder(),
             child: const Icon(
               Icons.qr_code_scanner,

@@ -33,7 +33,7 @@ class _IbanInquiryScreenState extends State<IbanInquiryScreen> {
             child: Text("استعلام شبا", style: TextStyle(fontSize: 28)),
           ),
           backgroundColor: AppColors.primary,
-          foregroundColor: Colors.white,
+          foregroundColor: AppColors.white,
           automaticallyImplyLeading: true,
           actions: [
             Padding(

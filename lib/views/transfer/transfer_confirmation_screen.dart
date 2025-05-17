@@ -40,7 +40,7 @@ class _TransferConfirmationScreenState
             child: Text("تایید اطلاعات", style: TextStyle(fontSize: 28)),
           ),
           backgroundColor: AppColors.primary,
-          foregroundColor: Colors.white,
+          foregroundColor: AppColors.white,
           automaticallyImplyLeading: true,
           actions: [
             Padding(
@@ -71,7 +71,7 @@ class _TransferConfirmationScreenState
                   child: Container(
                     height: double.infinity,
                     width: double.infinity,
-                    color: Colors.white,
+                    color: AppColors.white,
                   ),
                 ),
                 Container(height: 150, color: AppColors.primary),
@@ -90,7 +90,7 @@ class _TransferConfirmationScreenState
                       ),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(25),
-                        color: Colors.white,
+                        color: AppColors.white,
                       ),
                       child: Column(
                         children: [
@@ -245,7 +245,7 @@ class _TransferConfirmationScreenState
                   child: Container(
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.all(Radius.circular(50)),
-                      color: Colors.white,
+                      color: AppColors.white,
                     ),
                     padding: EdgeInsets.fromLTRB(5, 3, 5, 0),
                     child: CircleAvatar(
@@ -254,7 +254,7 @@ class _TransferConfirmationScreenState
                       child: const Icon(
                         Icons.credit_card,
                         size: 50,
-                        color: Colors.white,
+                        color: AppColors.white,
                       ),
                     ),
                   ),
@@ -274,7 +274,7 @@ class _TransferConfirmationScreenState
                       ),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(25),
-                        color: Colors.white,
+                        color: AppColors.white,
                       ),
                       child: Directionality(
                         textDirection: TextDirection.rtl,
@@ -293,7 +293,7 @@ class _TransferConfirmationScreenState
                                 ),
                             showSearchBox: true,
                             menuProps: MenuProps(
-                              backgroundColor: Colors.white,
+                              backgroundColor: AppColors.white,
                               elevation: 4,
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(20),

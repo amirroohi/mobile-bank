@@ -19,7 +19,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
         appBar: AppBar(
           title: Center(child: Text("پروفایل", style: TextStyle(fontSize: 28))),
           backgroundColor: AppColors.primary,
-          foregroundColor: Colors.white,
+          foregroundColor: AppColors.white,
           automaticallyImplyLeading: true,
           actions: [
             Padding(
@@ -45,7 +45,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 Container(
                   height: 340,
                   width: double.infinity,
-                  color: Colors.white,
+                  color: AppColors.white,
                 ),
                 Container(height: 250, color: AppColors.primary),
 
@@ -67,7 +67,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         ),
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(25),
-                          color: Colors.white,
+                          color: AppColors.white,
                         ),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -170,7 +170,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   child: Container(
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.all(Radius.circular(50)),
-                      color: Colors.white,
+                      color: AppColors.white,
                     ),
                     padding: EdgeInsets.all(3),
                     child: CircleAvatar(
@@ -224,7 +224,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
     return Directionality(
       textDirection: TextDirection.rtl,
       child: Container(
-        color: Colors.white,
+        color: AppColors.white,
         padding: const EdgeInsets.fromLTRB(10, 10, 10, 0),
         child: Material(
           elevation: 0,
@@ -257,7 +257,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
         padding: const EdgeInsets.fromLTRB(10, 10, 10, 0),
         child: SwitchListTile(
           activeTrackColor: Colors.green,
-          activeColor: Colors.white,
+          activeColor: AppColors.white,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(25),
           ),

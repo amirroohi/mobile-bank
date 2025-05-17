@@ -25,7 +25,7 @@ class LoginScreen extends StatelessWidget {
                 height: 600,
                 padding: const EdgeInsets.all(20),
                 decoration: BoxDecoration(
-                  color: Colors.white,
+                  color: AppColors.white,
                   borderRadius: BorderRadius.circular(30),
                 ),
                 child: Form(
@@ -103,13 +103,13 @@ class LoginScreen extends StatelessWidget {
                           child:
                               loginVM.isLoading
                                   ? const CircularProgressIndicator(
-                                    color: Colors.white,
+                                    color: AppColors.white,
                                   )
                                   : const Text(
                                     'ورود',
                                     style: TextStyle(
                                       fontSize: 18,
-                                      color: Colors.white,
+                                      color: AppColors.white,
                                     ),
                                   ),
                         ),
@@ -129,7 +129,7 @@ class LoginScreen extends StatelessWidget {
                           child:
                               loginVM.isLoading
                                   ? const CircularProgressIndicator(
-                                    color: Colors.white,
+                                    color: AppColors.white,
                                   )
                                   : Row(
                                     mainAxisAlignment: MainAxisAlignment.center,

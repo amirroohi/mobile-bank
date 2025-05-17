@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../core/constants/app_constants.dart';
+
 class BottomBar extends StatelessWidget {
   final int selectedIndex;
   final Function(int) onItemTapped;
@@ -62,7 +64,7 @@ class BottomBar extends StatelessWidget {
         child: BottomAppBar(
           padding: const EdgeInsets.symmetric(horizontal: 18),
           height: 70,
-          color: Colors.white,
+          color: AppColors.white,
           shape: const CircularNotchedRectangle(
           ),
           notchMargin: 8,

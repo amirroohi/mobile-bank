@@ -153,7 +153,7 @@ class _CardsScreenState extends State<CardsScreen> {
                             AppSizes.buttonHeight,
                           ),
                           backgroundColor: AppColors.primary,
-                          foregroundColor: Colors.white,
+                          foregroundColor: AppColors.white,
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(50),
                           ),

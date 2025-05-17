@@ -31,7 +31,7 @@ class _TransferTypeScreenState extends State<TransferTypeScreen> {
             child: Text("روش انتقال", style: TextStyle(fontSize: 28)),
           ),
           backgroundColor: AppColors.primary,
-          foregroundColor: Colors.white,
+          foregroundColor: AppColors.white,
           automaticallyImplyLeading: true,
           actions: [
             Padding(
@@ -62,7 +62,7 @@ class _TransferTypeScreenState extends State<TransferTypeScreen> {
                   child: Container(
                     height: double.infinity,
                     width: double.infinity,
-                    color: Colors.white,
+                    color: AppColors.white,
                   ),
                 ),
                 Container(height: 250, color: AppColors.primary),
@@ -81,7 +81,7 @@ class _TransferTypeScreenState extends State<TransferTypeScreen> {
                       ),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(25),
-                        color: Colors.white,
+                        color: AppColors.white,
                       ),
                       child: Column(
                         children: [
@@ -134,7 +134,7 @@ class _TransferTypeScreenState extends State<TransferTypeScreen> {
                                         "کارت به کارت",
                                         style: TextStyle(
                                           fontSize: 18,
-                                          color: Colors.white,
+                                          color: AppColors.white,
                                         ),
                                       ),
                                       const Text(
@@ -202,7 +202,7 @@ class _TransferTypeScreenState extends State<TransferTypeScreen> {
                                         "بین بانکی (پایا)",
                                         style: TextStyle(
                                           fontSize: 18,
-                                          color: Colors.white,
+                                          color: AppColors.white,
                                         ),
                                       ),
                                       const Text(

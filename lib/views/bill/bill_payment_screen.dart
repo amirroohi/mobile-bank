@@ -132,7 +132,7 @@ class _BillPaymentScreenState extends State<BillPaymentScreen> {
                                 unselectedLabelColor: Colors.black,
                                 indicator: BoxDecoration(
                                   borderRadius: BorderRadius.circular(50),
-                                  color: Color(0xFF1D4B7E),
+                                  color: AppColors.primary,
                                 ),
                                 tabs: const [
                                   Tab(

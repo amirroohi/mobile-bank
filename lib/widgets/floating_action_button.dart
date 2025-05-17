@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../core/constants/app_constants.dart';
+
 class FloatingActionButtonCustom extends StatelessWidget {
   const FloatingActionButtonCustom({super.key});
 
@@ -14,7 +16,7 @@ class FloatingActionButtonCustom extends StatelessWidget {
         ),
         onPressed: () {},
         backgroundColor: Colors.deepOrangeAccent,
-        foregroundColor: Colors.white,
+        foregroundColor: AppColors.white,
         child: const Icon(Icons.qr_code_scanner, size: 40),
       ),
     );

@@ -35,14 +35,14 @@ class CardItem extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: const [
-                  Icon(Icons.bookmark_border, color: Colors.white),
+                  Icon(Icons.bookmark_border, color: AppColors.white),
                 ],
               ),
               const SizedBox(height: 8),
               Center(
                 child: Text(
                   card.iban,
-                  style: const TextStyle(color: Colors.white),
+                  style: const TextStyle(color: AppColors.white),
                 ),
               ),
               const SizedBox(height: 8),
@@ -51,14 +51,14 @@ class CardItem extends StatelessWidget {
                   Text(
                     card.ownerName,
                     style: const TextStyle(
-                      color: Colors.white,
+                      color: AppColors.white,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
                   const Spacer(),
                   Text(
                     card.cardNumber,
-                    style: const TextStyle(color: Colors.white, fontSize: 18),
+                    style: const TextStyle(color: AppColors.white, fontSize: 18),
                   ),
                 ],
               ),
@@ -67,12 +67,12 @@ class CardItem extends StatelessWidget {
                 children: [
                   Text(
                     "${card.balance.toStringAsFixed(0)} ريال",
-                    style: const TextStyle(color: Colors.white),
+                    style: const TextStyle(color: AppColors.white),
                   ),
                   const Spacer(),
                   Text(
                     "تاریخ انقضا: ${card.expiry}",
-                    style: const TextStyle(color: Colors.white70),
+                    style: const TextStyle(color: AppColors.white),
                   ),
                 ],
               ),

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../core/constants/app_constants.dart';
+
 class BankCard extends StatelessWidget {
   final String iban;
   final String accountNumber;
@@ -42,8 +44,8 @@ class BankCard extends StatelessWidget {
             alignment: Alignment.topLeft,
             child: Row(
               children: [
-                Icon(Icons.more_vert, color: Colors.white),
-                Icon(Icons.bookmark_border_outlined, color: Colors.white),
+                Icon(Icons.more_vert, color: AppColors.white),
+                Icon(Icons.bookmark_border_outlined, color: AppColors.white),
               ],
             ),
           ),
@@ -51,7 +53,7 @@ class BankCard extends StatelessWidget {
           Center(
             child: Text(
               iban,
-              style: TextStyle(color: Colors.white, fontSize: 18),
+              style: TextStyle(color: AppColors.white, fontSize: 18),
             ),
           ),
           const SizedBox(height: 16),
@@ -60,9 +62,9 @@ class BankCard extends StatelessWidget {
             children: [
               Text(
                 accountNumber,
-                style: TextStyle(color: Colors.white, fontSize: 18),
+                style: TextStyle(color: AppColors.white, fontSize: 18),
               ),
-              Text(accountType, style: TextStyle(color: Colors.white)),
+              Text(accountType, style: TextStyle(color: AppColors.white)),
             ],
           ),
           const SizedBox(height: 16),
@@ -72,10 +74,10 @@ class BankCard extends StatelessWidget {
             children: [
               Text(
                 cardNumber,
-                style: TextStyle(color: Colors.white, fontSize: 18),
+                style: TextStyle(color: AppColors.white, fontSize: 18),
               ),
 
-              Text(owner, style: TextStyle(color: Colors.white)),
+              Text(owner, style: TextStyle(color: AppColors.white)),
             ],
           ),
           const Spacer(),
@@ -84,28 +86,28 @@ class BankCard extends StatelessWidget {
             children: [
               Row(
                 children: [
-                  Icon(Icons.group, color: Colors.white),
+                  Icon(Icons.group, color: AppColors.white),
                   SizedBox(width: 6),
-                  Icon(Icons.account_balance, color: Colors.white),
+                  Icon(Icons.account_balance, color: AppColors.white),
                   SizedBox(width: 6),
-                  Icon(Icons.compare_arrows, color: Colors.white),
+                  Icon(Icons.compare_arrows, color: AppColors.white),
                   SizedBox(width: 6),
-                  Icon(Icons.credit_card, color: Colors.white),
+                  Icon(Icons.credit_card, color: AppColors.white),
                 ],
               ),
               Row(
                 children: [
                   Text(
                     "ريال",
-                    style: TextStyle(color: Colors.white, fontSize: 18),
+                    style: TextStyle(color: AppColors.white, fontSize: 18),
                   ),
                   SizedBox(width: 4),
                   Text(
                     "$balance",
-                    style: TextStyle(color: Colors.white, fontSize: 18),
+                    style: TextStyle(color: AppColors.white, fontSize: 18),
                   ),
                   SizedBox(width: 4),
-                  Icon(Icons.visibility_off, color: Colors.white),
+                  Icon(Icons.visibility_off, color: AppColors.white),
                 ],
               ),
             ],

@@ -27,7 +27,7 @@ class AccountTypeTabs extends StatelessWidget {
           selectedColor: AppColors.primary,
           backgroundColor: Colors.grey.shade200,
           labelStyle: TextStyle(
-            color: isSelected ? Colors.white : Colors.black,
+            color: isSelected ? AppColors.white : Colors.black,
           ),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(50),

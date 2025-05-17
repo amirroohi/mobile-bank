@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../core/constants/app_constants.dart';
+
 class ServiceItem extends StatelessWidget {
   final String title;
   final IconData icon;
@@ -16,7 +18,7 @@ class ServiceItem extends StatelessWidget {
           CircleAvatar(
             radius: 32,
             backgroundColor: const Color(0xFFE2E9F3),
-            child: Icon(icon, color: Color(0xFF1D4B7E),size: 28),
+            child: Icon(icon, color: AppColors.primary,size: 28),
           ),
           const SizedBox(height: 8),
           Text(title, style: TextStyle(fontSize: 12)),

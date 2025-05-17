@@ -68,7 +68,7 @@ class _AccountsScreenState extends State<AccountsScreen> {
                   });
                 },
                 borderRadius: BorderRadius.circular(50),
-                selectedColor: Colors.white,
+                selectedColor: AppColors.white,
                 fillColor: AppColors.primary,
                 color: Colors.black,
                 children: const [
@@ -106,7 +106,7 @@ class _AccountsScreenState extends State<AccountsScreen> {
                 ),
                 child: const Text(
                   "صورت حساب",
-                  style: TextStyle(fontSize: 18, color: Color(0xFF1D4B7E)),
+                  style: TextStyle(fontSize: 18, color: AppColors.primary),
                 ),
               ),
               const SizedBox(height: 20),
@@ -142,34 +142,34 @@ class _AccountsScreenState extends State<AccountsScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
-            Text(account.iban, style: const TextStyle(color: Colors.white)),
+            Text(account.iban, style: const TextStyle(color: AppColors.white)),
             Text(
               account.accountNumber,
-              style: const TextStyle(color: Colors.white),
+              style: const TextStyle(color: AppColors.white),
             ),
             Text(
               "6062 5610 1799 4305",
-              style: const TextStyle(color: Colors.white),
+              style: const TextStyle(color: AppColors.white),
             ), // Dummy card number
-            Text(account.type, style: const TextStyle(color: Colors.white)),
+            Text(account.type, style: const TextStyle(color: AppColors.white)),
             Text(
               account.ownerName,
-              style: const TextStyle(color: Colors.white),
+              style: const TextStyle(color: AppColors.white),
             ),
             const SizedBox(height: 10),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: const [
-                Icon(Icons.person, color: Colors.white),
-                Icon(Icons.link, color: Colors.white),
-                Icon(Icons.insert_drive_file, color: Colors.white),
-                Icon(Icons.qr_code, color: Colors.white),
+                Icon(Icons.person, color: AppColors.white),
+                Icon(Icons.link, color: AppColors.white),
+                Icon(Icons.insert_drive_file, color: AppColors.white),
+                Icon(Icons.qr_code, color: AppColors.white),
               ],
             ),
             const SizedBox(height: 10),
             Text(
               "${account.balance.toStringAsFixed(0)} ریال",
-              style: const TextStyle(color: Colors.white),
+              style: const TextStyle(color: AppColors.white),
             ),
           ],
         ),
@@ -181,7 +181,7 @@ class _AccountsScreenState extends State<AccountsScreen> {
     return Container(
       padding: const EdgeInsets.all(26),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: AppColors.white,
         borderRadius: BorderRadius.circular(30),
       ),
       child: Directionality(
@@ -194,7 +194,7 @@ class _AccountsScreenState extends State<AccountsScreen> {
                 "جزئیات حساب",
                 style: TextStyle(
                   fontSize: 20,
-                  color: Color(0xFF1D4B7E),
+                  color: AppColors.primary,
                   fontWeight: FontWeight.bold,
                 ),
               ),
