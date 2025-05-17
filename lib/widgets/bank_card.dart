@@ -29,8 +29,8 @@ class BankCard extends StatelessWidget {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(25),
         gradient: LinearGradient(
-          colors: [ Color(0xFF2E75B6),Color(0xFF8A8A8A), Color(0xFF2E75B6)],
-          begin : Alignment.topRight,
+          colors: [Color(0xFF2E75B6), Color(0xFF8A8A8A), Color(0xFF2E75B6)],
+          begin: Alignment.topRight,
           end: Alignment.bottomLeft,
         ),
         boxShadow: [
@@ -43,20 +43,34 @@ class BankCard extends StatelessWidget {
           Align(
             alignment: Alignment.topLeft,
             child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Icon(Icons.more_vert, color: AppColors.white),
-                Icon(Icons.bookmark_border_outlined, color: AppColors.white),
+                Row(
+                  children: [
+                    Icon(Icons.more_vert, color: AppColors.white),
+                    Icon(
+                      Icons.bookmark_border_outlined,
+                      color: AppColors.white,
+                    ),
+                  ],
+                ),
+                CircleAvatar(
+                  radius: 25,
+                  backgroundColor: Colors.transparent,
+                  foregroundImage: AssetImage('assets/images/melal_icon.png'),
+                ),
               ],
             ),
           ),
-          const SizedBox(height: 8),
+
+          // const SizedBox(height: 8),
           Center(
             child: Text(
               iban,
               style: TextStyle(color: AppColors.white, fontSize: 18),
             ),
           ),
-          const SizedBox(height: 16),
+          const SizedBox(height: 12),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -67,7 +81,7 @@ class BankCard extends StatelessWidget {
               Text(accountType, style: TextStyle(color: AppColors.white)),
             ],
           ),
-          const SizedBox(height: 16),
+          const SizedBox(height: 12),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
 

@@ -3,6 +3,7 @@ import 'package:mobile_bank/core/constants/app_constants.dart';
 import 'package:mobile_bank/views/transfer/transfer_type_screen.dart';
 import 'package:persian_number_utility/persian_number_utility.dart';
 
+import '../../core/utils/number_to_word.dart';
 import '../../models/bank-account.dart';
 import '../../widgets/account_item.dart';
 import '../../widgets/price_input_field.dart';
@@ -146,26 +147,13 @@ class _LoanRepaymentScreenState extends State<LoanRepaymentScreen> {
                           const SizedBox(height: 30),
                           // 💰 Amount input
                           PriceInputField(controller: _amountController),
-
                           const SizedBox(height: 10),
-                          Container(
-                            width: double.infinity,
-                            height: 40,
-                            padding: EdgeInsets.symmetric(horizontal: 10),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                Flexible(
-                                  child: Text(
-                                    amountInWords,
-                                    style: const TextStyle(
-                                      color: Color(0xFF246C1D),
-                                      fontSize: 12,
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
+
+                          NumberToWordsText(
+                            number: _amountController.text.isEmpty
+                                ? null
+                                : int.tryParse(_amountController.text.replaceAll(',', '')),
+                            textStyle: TextStyle(fontSize: 13, color: Colors.green.shade800,fontWeight: FontWeight.w700),
                           ),
                           const SizedBox(height: 10),
 

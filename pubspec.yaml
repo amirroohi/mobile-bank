@@ -74,6 +74,8 @@ flutter:
     - assets/images/mokhaberat.jpg
     - assets/images/hamrah.webp
     - assets/images/banner.png
+    - assets/images/melal_icon.svg
+    - assets/images/melal_icon.png
   fonts:
     - family: IranYekan
       fonts:
