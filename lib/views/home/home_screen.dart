@@ -130,6 +130,7 @@ class _HomeScreenState extends State<HomeScreen> {
         appBar:
             _selectedIndex == -1
                 ? AppBar(
+              actionsPadding: EdgeInsets.symmetric(horizontal: 16),
                   title: Center(
                     child: Text(_appBarTitle, style: TextStyle(fontSize: 28)),
                   ),

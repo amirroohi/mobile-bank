@@ -136,7 +136,7 @@ class BuyChargeScreenState extends State<BuyChargeScreen> {
                         child: Column(
                           children: [
                             SizedBox(
-                              height: 250,
+                              height: 240,
                               child: Swiper(
                                 layout: SwiperLayout.TINDER,
                                 itemWidth: 500,
@@ -319,7 +319,7 @@ class BuyChargeScreenState extends State<BuyChargeScreen> {
                                           ),
                                           dropdownDecoratorProps: DropDownDecoratorProps(
                                             dropdownSearchDecoration: InputDecoration(
-                                              labelText: "بابت",
+                                              labelText: "مبلغ شارژ",
                                               labelStyle: TextStyle(
                                                 fontSize: 21,
                                                 fontWeight: FontWeight.w700,
@@ -335,7 +335,7 @@ class BuyChargeScreenState extends State<BuyChargeScreen> {
                                           onChanged: (value) {
                                             print("Selected: $value");
                                           },
-                                          items: ["10000 تومان", "20000 تومان", "50000 تومان", "70000 تومان"],
+                                          items: ["10,000 تومان", "20,000 تومان", "50,000 تومان", "70,000 تومان"],
                                           selectedItem: "",
                                         ),
                                       ],

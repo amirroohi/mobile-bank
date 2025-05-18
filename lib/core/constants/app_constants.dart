@@ -5,6 +5,7 @@ class AppColors {
   static const secondary =Color(0xFFFF6E40);
   static const background = Color.fromRGBO(245, 245, 245, 1);
   static const lightGrey = Color(0xFFF3F6FA);
+  static const bankCardIcon = Color(0x4CFF5E00);
   static const white = Colors.white;
   static const transparent = Colors.transparent;
   static const darkPrimary = Colors.white;

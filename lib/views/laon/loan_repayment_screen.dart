@@ -108,7 +108,7 @@ class _LoanRepaymentScreenState extends State<LoanRepaymentScreen> {
                         children: [
                           /// 📇 Swiper with BankCards
                           SizedBox(
-                            height: 250,
+                            height: 240,
                             child: Swiper(
                               layout: SwiperLayout.TINDER,
                               itemWidth: 500,

@@ -3,17 +3,47 @@ import '../core/constants/app_constants.dart';
 import '../core/utils/text_mask.dart';
 import '../models/bank-account.dart';
 
-class BankCard extends StatelessWidget {
+class BankCard extends StatefulWidget {
   final BankAccount account;
   // you can send assetsImage to this
 
   const BankCard({super.key, required this.account});
 
   @override
+  State<BankCard> createState() => _BankCardState();
+}
+
+class _BankCardState extends State<BankCard> {
+  bool isBalanceVisible = false; // Add this in your state
+  bool isBookmarked = false; // state variable
+  final GlobalKey _menuKey = GlobalKey();
+
+  void _showPopupMenu() {
+    final RenderBox renderBox =
+        _menuKey.currentContext!.findRenderObject() as RenderBox;
+    final Offset offset = renderBox.localToGlobal(Offset.zero);
+    final Size size = renderBox.size;
+
+    showMenu(
+      context: context,
+      position: RelativeRect.fromLTRB(
+        offset.dx,
+        offset.dy + size.height,
+        offset.dx + size.width,
+        0,
+      ),
+      items: [
+        PopupMenuItem(child: Text('گزینه اول')),
+        PopupMenuItem(child: Text('گزینه دوم')),
+      ],
+    );
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Container(
       height: 300,
-      margin: const EdgeInsets.symmetric(horizontal: 8),
+      // margin: const EdgeInsets.symmetric(horizontal: 8),
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(25),
@@ -30,16 +60,38 @@ class BankCard extends StatelessWidget {
         textDirection: TextDirection.ltr,
         child: Column(
           children: [
-            const SizedBox(height: 12),
             Align(
               alignment: Alignment.topLeft,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Row(
+                    mainAxisSize: MainAxisSize.min,
                     children: [
-                      Icon(Icons.more_vert, color: AppColors.white),
-                      Icon(Icons.bookmark_border_outlined, color: AppColors.white),
+                      // more_vert IconButton with exact positioning
+                      IconButton(
+                        key: _menuKey,
+                        icon: Icon(Icons.more_vert, color: AppColors.white),
+                        onPressed: _showPopupMenu,
+                      ),
+
+                      // 🔖 Bookmark toggle
+                      IconButton(
+                        icon: Icon(
+                          isBookmarked
+                              ? Icons.bookmark
+                              : Icons.bookmark_border_outlined,
+                          color:
+                              isBookmarked
+                                  ? AppColors.secondary
+                                  : AppColors.white,
+                        ),
+                        onPressed: () {
+                          setState(() {
+                            isBookmarked = !isBookmarked;
+                          });
+                        },
+                      ),
                     ],
                   ),
                   CircleAvatar(
@@ -52,22 +104,25 @@ class BankCard extends StatelessWidget {
             ),
             Center(
               child: Text(
-                account.iban,
+                widget.account.iban,
                 style: TextStyle(color: AppColors.white, fontSize: 18),
               ),
             ),
-            const SizedBox(height: 12),
+            const Spacer(),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  account.accountNumber,
+                  widget.account.accountNumber,
                   style: TextStyle(color: AppColors.white, fontSize: 18),
                 ),
-                Text(account.type, style: TextStyle(color: AppColors.white)),
+                Text(
+                  widget.account.type,
+                  style: TextStyle(color: AppColors.white),
+                ),
               ],
             ),
-            const SizedBox(height: 12),
+            const Spacer(),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -75,7 +130,10 @@ class BankCard extends StatelessWidget {
                   "شماره کارت ندارد", // You can add card number to your model if needed
                   style: TextStyle(color: AppColors.white, fontSize: 18),
                 ),
-                Text(account.ownerName, style: TextStyle(color: AppColors.white)),
+                Text(
+                  widget.account.ownerName,
+                  style: TextStyle(color: AppColors.white),
+                ),
               ],
             ),
             const Spacer(),
@@ -84,13 +142,13 @@ class BankCard extends StatelessWidget {
               children: [
                 Row(
                   children: [
-                    Icon(Icons.group, color: AppColors.white),
-                    SizedBox(width: 6),
-                    Icon(Icons.account_balance, color: AppColors.white),
-                    SizedBox(width: 6),
-                    Icon(Icons.compare_arrows, color: AppColors.white),
-                    SizedBox(width: 6),
-                    Icon(Icons.credit_card, color: AppColors.white),
+                    _buildCircularIcon(Icons.group),
+                    SizedBox(width: 4),
+                    _buildCircularIcon(Icons.account_balance),
+                    SizedBox(width: 4),
+                    _buildCircularIcon(Icons.compare_arrows),
+                    SizedBox(width: 4),
+                    _buildCircularIcon(Icons.credit_card),
                   ],
                 ),
                 Row(
@@ -99,22 +157,50 @@ class BankCard extends StatelessWidget {
                       "ریال",
                       style: TextStyle(color: AppColors.white, fontSize: 18),
                     ),
-                    SizedBox(width: 4),
+                    SizedBox(width: 2),
                     Text(
-                      // account.balance.toStringAsFixed(0),
-                      formatWithCommas(account.balance.toString()),
+                      isBalanceVisible
+                          ? formatWithCommas(
+                            widget.account.balance.toString(),
+                          ) // 👈 real balance
+                          : "****", // 👈 masked balance
                       style: TextStyle(color: AppColors.white, fontSize: 18),
                     ),
-                    SizedBox(width: 4),
-                    Icon(Icons.visibility_off, color: AppColors.white),
+                    SizedBox(width: 2),
+                    IconButton(
+                      icon: Icon(
+                        isBalanceVisible
+                            ? Icons.visibility
+                            : Icons.visibility_off,
+                        color: AppColors.white,
+                      ),
+                      onPressed: () {
+                        setState(() {
+                          isBalanceVisible =
+                              !isBalanceVisible; // 👈 toggle visibility
+                        });
+                      },
+                    ),
                   ],
                 ),
               ],
             ),
-            const SizedBox(height: 16),
+            const SizedBox(height: 12),
           ],
         ),
       ),
     );
   }
+}
+
+Widget _buildCircularIcon(IconData iconData) {
+  return Container(
+    width: 35,
+    height: 35,
+    decoration: BoxDecoration(
+      color: AppColors.bankCardIcon, // background color
+      shape: BoxShape.circle,
+    ),
+    child: Center(child: Icon(iconData, color: AppColors.white, size: 22)),
+  );
 }

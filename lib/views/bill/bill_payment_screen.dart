@@ -121,7 +121,7 @@ class _BillPaymentScreenState extends State<BillPaymentScreen> {
                         child: Column(
                           children: [
                             SizedBox(
-                              height: 250,
+                              height: 240,
                               child: Swiper(
                                 layout: SwiperLayout.TINDER,
                                 itemWidth: 500,
