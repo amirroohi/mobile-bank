@@ -265,14 +265,14 @@ class _HomeContentState extends State<HomeContent> {
             SizedBox(
               height: 250,
               child: Swiper(
-                index: initialBookmarkedIndex, // 👈 start from bookmarked
+                index: initialBookmarkedIndex, //  start from bookmarked
                 layout: SwiperLayout.TINDER,
                 itemWidth: 500,
                 itemHeight: 300,
                 itemBuilder: (BuildContext context, int index) {
                   return BankCard(
                     account: userAccounts[index],
-                    onBookmarkPressed: () => _toggleBookmark(index), // 👈 here
+                    onBookmarkPressed: () => _toggleBookmark(index), //  here
                   );
                 },
 

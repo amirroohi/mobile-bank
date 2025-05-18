@@ -136,6 +136,7 @@ class _LoanRepaymentScreenState extends State<LoanRepaymentScreen> {
                           SizedBox(
                             height: 240,
                             child: Swiper(
+                              index: initialBookmarkedIndex, //  start from bookmarked
                               layout: SwiperLayout.TINDER,
                               itemWidth: 500,
                               itemHeight: 300,

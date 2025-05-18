@@ -15,7 +15,7 @@ class AccountsScreen extends StatefulWidget {
 
 class _AccountsScreenState extends State<AccountsScreen> {
   String selectedTab = "سپرده منفرد";
-  int selectedIndex = 0;
+  int selectedIndex = 1;
   int selectedQuickActionIndex = -1;
   late List<BankAccount> userAccounts;
   late int initialBookmarkedIndex;
@@ -28,32 +28,32 @@ class _AccountsScreenState extends State<AccountsScreen> {
       initialBookmarkedIndex = index;
     });
   }
-  final List<BankAccount> accounts = [
-    BankAccount(
-      ownerName: "مینا علمی",
-      accountNumber: "051511242000000150",
-      iban: "IR890750051511242000000150",
-      type: "سپرده قرض الحسنه",
-      balance: 150000000,
-      logoAsset: "assets/images/melal_logo.png",
-    ),
-    BankAccount(
-      ownerName: "علی رضایی",
-      accountNumber: "051511242000000151",
-      iban: "IR890750051511242000000151",
-      type: "سپرده کوتاه مدت",
-      balance: 85000000,
-      logoAsset: "assets/images/melal_logo.png",
-    ),
-    BankAccount(
-      ownerName: "فاطمه کریمی",
-      accountNumber: "051511242000000152",
-      iban: "IR890750051511242000000152",
-      type: "سپرده بلند مدت",
-      balance: 200000000,
-      logoAsset: "assets/images/melal_logo.png",
-    ),
-  ];
+  // final List<BankAccount> accounts = [
+  //   BankAccount(
+  //     ownerName: "مینا علمی",
+  //     accountNumber: "051511242000000150",
+  //     iban: "IR890750051511242000000150",
+  //     type: "سپرده قرض الحسنه",
+  //     balance: 150000000,
+  //     logoAsset: "assets/images/melal_logo.png",
+  //   ),
+  //   BankAccount(
+  //     ownerName: "علی رضایی",
+  //     accountNumber: "051511242000000151",
+  //     iban: "IR890750051511242000000151",
+  //     type: "سپرده کوتاه مدت",
+  //     balance: 85000000,
+  //     logoAsset: "assets/images/melal_logo.png",
+  //   ),
+  //   BankAccount(
+  //     ownerName: "فاطمه کریمی",
+  //     accountNumber: "051511242000000152",
+  //     iban: "IR890750051511242000000152",
+  //     type: "سپرده بلند مدت",
+  //     balance: 200000000,
+  //     logoAsset: "assets/images/melal_logo.png",
+  //   ),
+  // ];
 
   @override
   void initState() {
@@ -160,25 +160,21 @@ class _AccountsScreenState extends State<AccountsScreen> {
               SizedBox(
                 height: 250,
                 child: Swiper(
-                  itemCount: accounts.length,
+                  index: initialBookmarkedIndex, //  start from bookmarked
+                  itemCount: userAccounts.length,
                   itemWidth: 500,
                   itemHeight: 300,
                   layout: SwiperLayout.TINDER,
-                  onIndexChanged: (index) {
-                    setState(() {
-                      selectedIndex = index;
-                    });
-                  },
                   itemBuilder: (context, index) {
-                    return BankCard(account: accounts[index],
-                      onBookmarkPressed: () => _toggleBookmark(index), // 👈 here
+                    return BankCard(account: userAccounts[index],
+                      onBookmarkPressed: () => _toggleBookmark(index), //  here
 
                     );
                   },
                 ),
               ),
               const SizedBox(height: 20),
-              buildAccountDetails(accounts[selectedIndex]),
+              buildAccountDetails(userAccounts[selectedIndex]),
             ],
           ),
         ),
