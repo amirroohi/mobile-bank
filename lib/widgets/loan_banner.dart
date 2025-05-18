@@ -4,7 +4,6 @@ import '../core/constants/app_constants.dart';
 
 Widget loanBanner = Container(
   margin: const EdgeInsets.all(16),
-  // padding: const EdgeInsets.all(16),
   decoration: BoxDecoration(
     color: AppColors.transparent,
     borderRadius: BorderRadius.circular(25),
@@ -12,15 +11,13 @@ Widget loanBanner = Container(
   child: SizedBox(
     height: 110,
     width: double.infinity,
-    child: Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      mainAxisSize: MainAxisSize.min,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        Image(
-          image: AssetImage('assets/images/banner.png'),
-        ),
-      ],
+    child: ClipRRect(
+      borderRadius: BorderRadius.circular(25),
+      child: Image.asset(
+        'assets/images/banner.png',
+        fit: BoxFit.cover,
+      ),
     ),
   ),
 );
+

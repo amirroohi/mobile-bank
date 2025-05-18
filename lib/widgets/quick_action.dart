@@ -50,8 +50,8 @@ class QuickActions extends StatelessWidget {
           child: Column(
             children: [
               Container(
-                height: 50,
-                width: 50,
+                height: 60,
+                width: 60,
                 padding: const EdgeInsets.all(12),
                 decoration: BoxDecoration(
                   color: isSelected ? Colors.deepOrangeAccent : AppColors.white,
