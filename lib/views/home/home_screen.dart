@@ -21,6 +21,7 @@ final List<BankAccount> userAccounts = [
     type: "سپرده قرض الحسنه",
     balance: 150000000,
     logoAsset: 'assets/images/melal_icon.png',
+    isBookmarked: false
   ),
   BankAccount(
     ownerName: "علی احمدی",
@@ -29,6 +30,7 @@ final List<BankAccount> userAccounts = [
     type: "سپرده کوتاه مدت",
     balance: 87500000,
     logoAsset: 'assets/images/melal_icon.png',
+    isBookmarked: false
   ),
   // More accounts...
 ];

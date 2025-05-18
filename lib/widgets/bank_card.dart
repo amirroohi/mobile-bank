@@ -16,8 +16,9 @@ class BankCard extends StatefulWidget {
 class _BankCardState extends State<BankCard> {
   bool isBalanceVisible = false; // Add this in your state
   bool isBookmarked = false; // state variable
-  final GlobalKey _menuKey = GlobalKey();
 
+  // popup fnc
+  final GlobalKey _menuKey = GlobalKey();
   void _showPopupMenu() {
     final RenderBox renderBox =
         _menuKey.currentContext!.findRenderObject() as RenderBox;
@@ -32,9 +33,115 @@ class _BankCardState extends State<BankCard> {
         offset.dx + size.width,
         0,
       ),
+      color: AppColors.white,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       items: [
-        PopupMenuItem(child: Text('گزینه اول')),
-        PopupMenuItem(child: Text('گزینه دوم')),
+        PopupMenuItem(
+          padding: EdgeInsets.symmetric(horizontal: 20),
+
+          height: 40,
+          child: Directionality(
+            textDirection: TextDirection.rtl,
+            child: Row(
+              children: [
+                Icon(
+                  Icons.account_balance_wallet_outlined,
+                  color: AppColors.secondary,
+                ),
+                SizedBox(width: 8),
+                Text(
+                  'ویرایش',
+                  style: TextStyle(fontSize: 15, color: Colors.black87),
+                ),
+              ],
+            ),
+          ),
+        ),
+        PopupMenuItem(
+          padding: EdgeInsets.symmetric(horizontal: 20),
+          height: 40,
+          child: Directionality(
+            textDirection: TextDirection.rtl,
+            child: Row(
+              children: [
+                Icon(Icons.edit, color: AppColors.secondary),
+                SizedBox(width: 8),
+                Text(
+                  'ویرایش',
+                  style: TextStyle(fontSize: 15, color: Colors.black87),
+                ),
+              ],
+            ),
+          ),
+        ),
+        PopupMenuItem(
+          padding: EdgeInsets.symmetric(horizontal: 20),
+          height: 40,
+          child: Directionality(
+            textDirection: TextDirection.rtl,
+            child: Row(
+              children: [
+                Icon(Icons.mobile_friendly, color: AppColors.secondary),
+                SizedBox(width: 8),
+                Text(
+                  'ویرایش',
+                  style: TextStyle(fontSize: 15, color: Colors.black87),
+                ),
+              ],
+            ),
+          ),
+        ),
+        PopupMenuItem(
+          padding: EdgeInsets.symmetric(horizontal: 20),
+          height: 40,
+          child: Directionality(
+            textDirection: TextDirection.rtl,
+            child: Row(
+              children: [
+                Icon(Icons.mobile_friendly, color: AppColors.secondary),
+                SizedBox(width: 8),
+                Text(
+                  'ویرایش',
+                  style: TextStyle(fontSize: 15, color: Colors.black87),
+                ),
+              ],
+            ),
+          ),
+        ),
+        PopupMenuItem(
+          padding: EdgeInsets.symmetric(horizontal: 20),
+          height: 40,
+          child: Directionality(
+            textDirection: TextDirection.rtl,
+            child: Row(
+              children: [
+                Icon(Icons.mobile_friendly, color: AppColors.secondary),
+                SizedBox(width: 8),
+                Text(
+                  'ویرایش',
+                  style: TextStyle(fontSize: 15, color: Colors.black87),
+                ),
+              ],
+            ),
+          ),
+        ),
+        PopupMenuItem(
+          padding: EdgeInsets.symmetric(horizontal: 20),
+          height: 40,
+          child: Directionality(
+            textDirection: TextDirection.rtl,
+            child: Row(
+              children: [
+                Icon(Icons.mobile_friendly, color: AppColors.secondary),
+                SizedBox(width: 8),
+                Text(
+                  'ویرایش',
+                  style: TextStyle(fontSize: 15, color: Colors.black87),
+                ),
+              ],
+            ),
+          ),
+        ),
       ],
     );
   }
@@ -70,6 +177,7 @@ class _BankCardState extends State<BankCard> {
                     children: [
                       // more_vert IconButton with exact positioning
                       IconButton(
+                        iconSize: 30,
                         key: _menuKey,
                         icon: Icon(Icons.more_vert, color: AppColors.white),
                         onPressed: _showPopupMenu,
@@ -77,6 +185,7 @@ class _BankCardState extends State<BankCard> {
 
                       // 🔖 Bookmark toggle
                       IconButton(
+                        iconSize: 30,
                         icon: Icon(
                           isBookmarked
                               ? Icons.bookmark

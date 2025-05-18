@@ -1,10 +1,11 @@
 class BankAccount {
-  final String ownerName;
-  final String accountNumber;
-  final String iban;
-  final String type;
-  final double balance;
-  final String logoAsset;
+  String ownerName;
+  String accountNumber;
+  String iban;
+  String type;
+  double balance;
+  String logoAsset;
+  bool isBookmarked; // ✅ New property
 
   BankAccount({
     required this.ownerName,
@@ -13,5 +14,6 @@ class BankAccount {
     required this.type,
     required this.balance,
     required this.logoAsset,
+    this.isBookmarked = false, // Default to false
   });
 }
