@@ -16,44 +16,18 @@ class BuyChargeScreen extends StatefulWidget {
 }
 
 class BuyChargeScreenState extends State<BuyChargeScreen> {
-  final List<BankAccount> userAccounts = [
-    BankAccount(
-      ownerName: "مینا علمی",
-      accountNumber: "051511242000000150",
-      iban: "IR890750051511242000000150",
-      type: "سپرده قرض الحسنه",
-      balance: 150000000,
-      logoAsset: "assets/images/bank_logo.png",
-    ),
-    BankAccount(
-      ownerName: "علی رضایی",
-      accountNumber: "0215458789500000012",
-      iban: "IR1207500215458789500000012",
-      type: "سپرده جاری",
-      balance: 92000000,
-      logoAsset: "assets/images/bank_logo.png",
-    ),
-  ];
-  String selectedTab = "شارژ مستقیم";
-  final TextEditingController _amountController = TextEditingController();
-  String amountInWords = '';
+  int selectedQuickActionIndex = -1;
+  late List<BankAccount> userAccounts;
+  late int initialBookmarkedIndex;
+  void _toggleBookmark(int index) {
+    setState(() {
+      for (int i = 0; i < userAccounts.length; i++) {
+        userAccounts[i].isBookmarked = i == index;
+      }
+      initialBookmarkedIndex = index;
+    });
+  }
 
-  final TextEditingController _controller = TextEditingController();
-  int? selectedSimIndex;
-  final List<Map<String, String>> simOptions = [
-    {
-      'name': 'همراه اول',
-      'image': 'assets/images/hamrah.webp',
-    },
-    {
-      'name': 'ایرانسل',
-      'image': 'assets/images/hamrah.webp',
-    },
-    {
-      'name': 'رایتل',
-      'image': 'assets/images/hamrah.webp',
-    },
-  ];
   @override
   void initState() {
     super.initState();
@@ -67,7 +41,54 @@ class BuyChargeScreenState extends State<BuyChargeScreen> {
         }
       });
     });
+    // Define local accounts
+    userAccounts = [
+      BankAccount(
+        ownerName: "مینا علمی",
+        accountNumber: "051511242000000150",
+        iban: "IR890750051511242000000150",
+        type: "سپرده قرض الحسنه",
+        balance: 150000000,
+        logoAsset: 'assets/images/melal_icon.png',
+        isBookmarked: false,
+      ),
+      BankAccount(
+        ownerName: "علی احمدی",
+        accountNumber: "051511242000000151",
+        iban: "IR230750051511242000000151",
+        type: "سپرده کوتاه مدت",
+        balance: 87500000,
+        logoAsset: 'assets/images/melal_icon.png',
+        isBookmarked: true, // this one is initially selected
+      ),
+      BankAccount(
+        ownerName: "خودم",
+        accountNumber: "051511242000000151",
+        iban: "IR230750051511242000000151",
+        type: "سپرده بلند مدت",
+        balance: 87500000,
+        logoAsset: 'assets/images/melal_icon.png',
+        isBookmarked: false, // this one is initially selected
+      ),
+      // Add more accounts if needed
+    ];
+
+    // Find initial bookmarked account index
+    initialBookmarkedIndex = userAccounts.indexWhere((a) => a.isBookmarked);
+    if (initialBookmarkedIndex == -1) initialBookmarkedIndex = 0;
   }
+
+  String selectedTab = "شارژ مستقیم";
+  final TextEditingController _amountController = TextEditingController();
+  String amountInWords = '';
+
+  final TextEditingController _controller = TextEditingController();
+  int? selectedSimIndex;
+  final List<Map<String, String>> simOptions = [
+    {'name': 'همراه اول', 'image': 'assets/images/hamrah.webp'},
+    {'name': 'ایرانسل', 'image': 'assets/images/hamrah.webp'},
+    {'name': 'رایتل', 'image': 'assets/images/hamrah.webp'},
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -142,7 +163,11 @@ class BuyChargeScreenState extends State<BuyChargeScreen> {
                                 itemWidth: 500,
                                 itemHeight: 300,
                                 itemBuilder: (context, index) {
-                                  return BankCard(account: userAccounts[index]);
+                                  return BankCard(
+                                    account: userAccounts[index],
+                                    onBookmarkPressed:
+                                        () => _toggleBookmark(index),
+                                  );
                                 },
                                 itemCount: userAccounts.length,
                               ),
@@ -165,21 +190,29 @@ class BuyChargeScreenState extends State<BuyChargeScreen> {
                                   Tab(
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
-                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
 
                                       children: [
                                         SizedBox(width: 4),
-                                        Text('شارژ مستقیم', style: TextStyle(fontSize: 16)),
+                                        Text(
+                                          'شارژ مستقیم',
+                                          style: TextStyle(fontSize: 16),
+                                        ),
                                       ],
                                     ),
                                   ),
                                   Tab(
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
-                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
                                       children: [
                                         SizedBox(width: 4),
-                                        Text('رمز شارژ', style: TextStyle(fontSize: 16)),
+                                        Text(
+                                          'رمز شارژ',
+                                          style: TextStyle(fontSize: 16),
+                                        ),
                                       ],
                                     ),
                                   ),
@@ -195,117 +228,174 @@ class BuyChargeScreenState extends State<BuyChargeScreen> {
                                 children: [
                                   // ➤ Tab 1: شارژ مستقیم
                                   SingleChildScrollView(
-                                    padding: EdgeInsets.symmetric(horizontal: 12),
+                                    padding: EdgeInsets.symmetric(
+                                      horizontal: 12,
+                                    ),
                                     child: Column(
-                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
                                       children: [
                                         // 📱 TextField with prefix/suffix
                                         TextField(
                                           controller: _controller,
                                           decoration: InputDecoration(
                                             labelText: 'شماره همراه',
-                                            prefixIcon: Icon(Icons.edit_outlined),
-                                            suffixIcon: IconButton(
-                                              icon: Icon(Icons.perm_contact_calendar_outlined),
-                                              onPressed: () => _controller.clear(),
+                                            prefixIcon: Icon(
+                                              Icons.edit_outlined,
                                             ),
-                                            border: OutlineInputBorder(borderRadius: BorderRadius.circular(50)),
+                                            suffixIcon: IconButton(
+                                              icon: Icon(
+                                                Icons
+                                                    .perm_contact_calendar_outlined,
+                                              ),
+                                              onPressed:
+                                                  () => _controller.clear(),
+                                            ),
+                                            border: OutlineInputBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(50),
+                                            ),
                                           ),
                                           keyboardType: TextInputType.phone,
                                         ),
                                         SizedBox(height: 16),
 
                                         // 📶 SIM card selector
-                                        Text('نوع سیم کارت را انتخاب کنید:', style: TextStyle(fontWeight: FontWeight.bold)),
+                                        Text(
+                                          'نوع سیم کارت را انتخاب کنید:',
+                                          style: TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        ),
                                         SizedBox(height: 10),
                                         Row(
-                                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                          children: List.generate(simOptions.length, (index) {
-                                            final isSelected = selectedSimIndex == index;
-                                            return GestureDetector(
-                                              onTap: () {
-                                                setState(() {
-                                                  selectedSimIndex = index;
-                                                });
-                                              },
-                                              child: Column(
-                                                children: [
-                                                  CircleAvatar(
-                                                    backgroundColor: isSelected ? Colors.blue.shade100 : Colors.grey.shade200,
-                                                    radius: 30,
-                                                    child: Image.asset(
-                                                      simOptions[index]['image']!,
-                                                      height: 30,
-                                                      width: 30,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          children: List.generate(
+                                            simOptions.length,
+                                            (index) {
+                                              final isSelected =
+                                                  selectedSimIndex == index;
+                                              return GestureDetector(
+                                                onTap: () {
+                                                  setState(() {
+                                                    selectedSimIndex = index;
+                                                  });
+                                                },
+                                                child: Column(
+                                                  children: [
+                                                    CircleAvatar(
+                                                      backgroundColor:
+                                                          isSelected
+                                                              ? Colors
+                                                                  .blue
+                                                                  .shade100
+                                                              : Colors
+                                                                  .grey
+                                                                  .shade200,
+                                                      radius: 30,
+                                                      child: Image.asset(
+                                                        simOptions[index]['image']!,
+                                                        height: 30,
+                                                        width: 30,
+                                                      ),
                                                     ),
-                                                  ),
-                                                  SizedBox(height: 6),
-                                                  Text(simOptions[index]['name']!),
-                                                ],
-                                              ),
-                                            );
-                                          }),
+                                                    SizedBox(height: 6),
+                                                    Text(
+                                                      simOptions[index]['name']!,
+                                                    ),
+                                                  ],
+                                                ),
+                                              );
+                                            },
+                                          ),
                                         ),
                                       ],
-                                    ) ,
+                                    ),
                                   ),
                                   // ➤ Tab 2: رمز شارژ
                                   SingleChildScrollView(
-                                    padding: EdgeInsets.symmetric(horizontal: 12),
+                                    padding: EdgeInsets.symmetric(
+                                      horizontal: 12,
+                                    ),
                                     child: Column(
-                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
                                       children: [
                                         // 📶 SIM card selector
-                                        Text('نوع سیم کارت را انتخاب کنید:', style: TextStyle(fontWeight: FontWeight.bold)),
+                                        Text(
+                                          'نوع سیم کارت را انتخاب کنید:',
+                                          style: TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        ),
                                         SizedBox(height: 10),
                                         Row(
-                                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                          children: List.generate(simOptions.length, (index) {
-                                            final isSelected = selectedSimIndex == index;
-                                            return GestureDetector(
-                                              onTap: () {
-                                                setState(() {
-                                                  selectedSimIndex = index;
-                                                });
-                                              },
-                                              child: Column(
-                                                children: [
-                                                  CircleAvatar(
-                                                    backgroundColor: isSelected ? Colors.blue.shade100 : Colors.grey.shade200,
-                                                    radius: 30,
-                                                    child: Image.asset(
-                                                      simOptions[index]['image']!,
-                                                      height: 30,
-                                                      width: 30,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          children: List.generate(
+                                            simOptions.length,
+                                            (index) {
+                                              final isSelected =
+                                                  selectedSimIndex == index;
+                                              return GestureDetector(
+                                                onTap: () {
+                                                  setState(() {
+                                                    selectedSimIndex = index;
+                                                  });
+                                                },
+                                                child: Column(
+                                                  children: [
+                                                    CircleAvatar(
+                                                      backgroundColor:
+                                                          isSelected
+                                                              ? Colors
+                                                                  .blue
+                                                                  .shade100
+                                                              : Colors
+                                                                  .grey
+                                                                  .shade200,
+                                                      radius: 30,
+                                                      child: Image.asset(
+                                                        simOptions[index]['image']!,
+                                                        height: 30,
+                                                        width: 30,
+                                                      ),
                                                     ),
-                                                  ),
-                                                  SizedBox(height: 6),
-                                                  Text(simOptions[index]['name']!),
-                                                ],
-                                              ),
-                                            );
-                                          }),
+                                                    SizedBox(height: 6),
+                                                    Text(
+                                                      simOptions[index]['name']!,
+                                                    ),
+                                                  ],
+                                                ),
+                                              );
+                                            },
+                                          ),
                                         ),
                                         SizedBox(height: 16),
                                         // 📱 TextField with prefix/suffix
                                         DropdownSearch<String>(
                                           popupProps: PopupProps.menu(
                                             itemBuilder:
-                                                (context, item, isSelected) => Directionality(
-                                              textDirection: TextDirection.rtl,
-                                              child: ListTile(
-                                                title: Text(
-                                                  item,
-                                                  textAlign: TextAlign.right,
-                                                ),
-                                              ),
-                                            ),
+                                                (context, item, isSelected) =>
+                                                    Directionality(
+                                                      textDirection:
+                                                          TextDirection.rtl,
+                                                      child: ListTile(
+                                                        title: Text(
+                                                          item,
+                                                          textAlign:
+                                                              TextAlign.right,
+                                                        ),
+                                                      ),
+                                                    ),
                                             showSearchBox: false,
                                             menuProps: MenuProps(
                                               backgroundColor: Colors.white,
                                               elevation: 4,
                                               shape: RoundedRectangleBorder(
-                                                borderRadius: BorderRadius.circular(20),
+                                                borderRadius:
+                                                    BorderRadius.circular(20),
                                               ),
                                             ),
                                             searchFieldProps: TextFieldProps(
@@ -317,29 +407,45 @@ class BuyChargeScreenState extends State<BuyChargeScreen> {
                                               ),
                                             ),
                                           ),
-                                          dropdownDecoratorProps: DropDownDecoratorProps(
-                                            dropdownSearchDecoration: InputDecoration(
-                                              labelText: "مبلغ شارژ",
-                                              labelStyle: TextStyle(
-                                                fontSize: 21,
-                                                fontWeight: FontWeight.w700,
+                                          dropdownDecoratorProps:
+                                              DropDownDecoratorProps(
+                                                dropdownSearchDecoration:
+                                                    InputDecoration(
+                                                      labelText: "مبلغ شارژ",
+                                                      labelStyle: TextStyle(
+                                                        fontSize: 21,
+                                                        fontWeight:
+                                                            FontWeight.w700,
+                                                      ),
+                                                      prefixIcon: Icon(
+                                                        Icons.edit,
+                                                      ),
+                                                      suffixIcon: Icon(
+                                                        Icons
+                                                            .keyboard_arrow_down,
+                                                      ),
+                                                      border: OutlineInputBorder(
+                                                        borderRadius:
+                                                            BorderRadius.circular(
+                                                              50,
+                                                            ),
+                                                      ),
+                                                    ),
                                               ),
-                                              prefixIcon: Icon(Icons.edit),
-                                              suffixIcon: Icon(Icons.keyboard_arrow_down),
-                                              border: OutlineInputBorder(
-                                                borderRadius: BorderRadius.circular(50),
-                                              ),
-                                            ),
-                                          ),
 
                                           onChanged: (value) {
                                             print("Selected: $value");
                                           },
-                                          items: ["10,000 تومان", "20,000 تومان", "50,000 تومان", "70,000 تومان"],
+                                          items: [
+                                            "10,000 تومان",
+                                            "20,000 تومان",
+                                            "50,000 تومان",
+                                            "70,000 تومان",
+                                          ],
                                           selectedItem: "",
                                         ),
                                       ],
-                                    ) ,
+                                    ),
                                   ),
                                 ],
                               ),

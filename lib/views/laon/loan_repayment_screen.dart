@@ -20,26 +20,17 @@ class LoanRepaymentScreen extends StatefulWidget {
 class _LoanRepaymentScreenState extends State<LoanRepaymentScreen> {
   final TextEditingController _amountController = TextEditingController();
   String amountInWords = '';
-
-  final List<BankAccount> userAccounts = [
-    BankAccount(
-      ownerName: "مینا علمی",
-      accountNumber: "051511242000000150",
-      iban: "IR890750051511242000000150",
-      type: "سپرده قرض الحسنه",
-      balance: 150000000,
-      logoAsset: "assets/images/bank_logo.png",
-    ),
-    BankAccount(
-      ownerName: "علی رضایی",
-      accountNumber: "0215458789500000012",
-      iban: "IR1207500215458789500000012",
-      type: "سپرده جاری",
-      balance: 92000000,
-      logoAsset: "assets/images/bank_logo.png",
-    ),
-  ];
-
+  int selectedQuickActionIndex = -1;
+  late List<BankAccount> userAccounts;
+  late int initialBookmarkedIndex;
+  void _toggleBookmark(int index) {
+    setState(() {
+      for (int i = 0; i < userAccounts.length; i++) {
+        userAccounts[i].isBookmarked = i == index;
+      }
+      initialBookmarkedIndex = index;
+    });
+  }
   @override
   void initState() {
     super.initState();
@@ -47,12 +38,47 @@ class _LoanRepaymentScreenState extends State<LoanRepaymentScreen> {
       setState(() {
         final value = _amountController.text;
         if (value.isNotEmpty) {
-          amountInWords = value.toWord();
+          amountInWords = value.toWord(); // Ensure this works with your package
         } else {
           amountInWords = '';
         }
       });
     });
+    // Define local accounts
+    userAccounts = [
+      BankAccount(
+        ownerName: "مینا علمی",
+        accountNumber: "051511242000000150",
+        iban: "IR890750051511242000000150",
+        type: "سپرده قرض الحسنه",
+        balance: 150000000,
+        logoAsset: 'assets/images/melal_icon.png',
+        isBookmarked: false,
+      ),
+      BankAccount(
+        ownerName: "علی احمدی",
+        accountNumber: "051511242000000151",
+        iban: "IR230750051511242000000151",
+        type: "سپرده کوتاه مدت",
+        balance: 87500000,
+        logoAsset: 'assets/images/melal_icon.png',
+        isBookmarked: true, // this one is initially selected
+      ),
+      BankAccount(
+        ownerName: "خودم",
+        accountNumber: "051511242000000151",
+        iban: "IR230750051511242000000151",
+        type: "سپرده بلند مدت",
+        balance: 87500000,
+        logoAsset: 'assets/images/melal_icon.png',
+        isBookmarked: false, // this one is initially selected
+      ),
+      // Add more accounts if needed
+    ];
+
+    // Find initial bookmarked account index
+    initialBookmarkedIndex = userAccounts.indexWhere((a) => a.isBookmarked);
+    if (initialBookmarkedIndex == -1) initialBookmarkedIndex = 0;
   }
 
   @override
@@ -114,7 +140,7 @@ class _LoanRepaymentScreenState extends State<LoanRepaymentScreen> {
                               itemWidth: 500,
                               itemHeight: 300,
                               itemBuilder: (context, index) {
-                                return BankCard(account: userAccounts[index]);
+                                return BankCard(account: userAccounts[index],onBookmarkPressed: ()=>_toggleBookmark(index),);
                               },
                               itemCount: userAccounts.length,
                             ),

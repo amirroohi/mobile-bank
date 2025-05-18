@@ -13,29 +13,6 @@ import '../../widgets/quick_action.dart';
 import '../cards/cards_screen.dart';
 import '../profile/profile_screen.dart';
 
-final List<BankAccount> userAccounts = [
-  BankAccount(
-    ownerName: "مینا علمی",
-    accountNumber: "051511242000000150",
-    iban: "IR890750051511242000000150",
-    type: "سپرده قرض الحسنه",
-    balance: 150000000,
-    logoAsset: 'assets/images/melal_icon.png',
-    isBookmarked: false
-  ),
-  BankAccount(
-    ownerName: "علی احمدی",
-    accountNumber: "051511242000000151",
-    iban: "IR230750051511242000000151",
-    type: "سپرده کوتاه مدت",
-    balance: 87500000,
-    logoAsset: 'assets/images/melal_icon.png',
-    isBookmarked: false
-  ),
-  // More accounts...
-];
-
-
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
@@ -83,10 +60,6 @@ class _HomeScreenState extends State<HomeScreen> {
     3: Color.fromRGBO(245, 245, 245, 1), // Accounts
   };
 
-
-
-
-
   @override
   void initState() {
     super.initState();
@@ -132,7 +105,7 @@ class _HomeScreenState extends State<HomeScreen> {
         appBar:
             _selectedIndex == -1
                 ? AppBar(
-              actionsPadding: EdgeInsets.symmetric(horizontal: 16),
+                  actionsPadding: EdgeInsets.symmetric(horizontal: 16),
                   title: Center(
                     child: Text(_appBarTitle, style: TextStyle(fontSize: 28)),
                   ),
@@ -227,6 +200,58 @@ class HomeContent extends StatefulWidget {
 
 class _HomeContentState extends State<HomeContent> {
   int selectedQuickActionIndex = -1;
+  late List<BankAccount> userAccounts;
+  late int initialBookmarkedIndex;
+
+  void _toggleBookmark(int index) {
+    setState(() {
+      for (int i = 0; i < userAccounts.length; i++) {
+        userAccounts[i].isBookmarked = i == index;
+      }
+      initialBookmarkedIndex = index;
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+
+    // Define local accounts
+    userAccounts = [
+      BankAccount(
+        ownerName: "مینا علمی",
+        accountNumber: "051511242000000150",
+        iban: "IR890750051511242000000150",
+        type: "سپرده قرض الحسنه",
+        balance: 150000000,
+        logoAsset: 'assets/images/melal_icon.png',
+        isBookmarked: false,
+      ),
+      BankAccount(
+        ownerName: "علی احمدی",
+        accountNumber: "051511242000000151",
+        iban: "IR230750051511242000000151",
+        type: "سپرده کوتاه مدت",
+        balance: 87500000,
+        logoAsset: 'assets/images/melal_icon.png',
+        isBookmarked: true, // this one is initially selected
+      ),
+      BankAccount(
+        ownerName: "خودم",
+        accountNumber: "051511242000000151",
+        iban: "IR230750051511242000000151",
+        type: "سپرده بلند مدت",
+        balance: 87500000,
+        logoAsset: 'assets/images/melal_icon.png',
+        isBookmarked: false, // this one is initially selected
+      ),
+      // Add more accounts if needed
+    ];
+
+    // Find initial bookmarked account index
+    initialBookmarkedIndex = userAccounts.indexWhere((a) => a.isBookmarked);
+    if (initialBookmarkedIndex == -1) initialBookmarkedIndex = 0;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -240,12 +265,17 @@ class _HomeContentState extends State<HomeContent> {
             SizedBox(
               height: 250,
               child: Swiper(
+                index: initialBookmarkedIndex, // 👈 start from bookmarked
                 layout: SwiperLayout.TINDER,
                 itemWidth: 500,
                 itemHeight: 300,
                 itemBuilder: (BuildContext context, int index) {
-                  return BankCard(account: userAccounts[index]);
+                  return BankCard(
+                    account: userAccounts[index],
+                    onBookmarkPressed: () => _toggleBookmark(index), // 👈 here
+                  );
                 },
+
                 itemCount: userAccounts.length,
               ),
             ),
@@ -276,7 +306,7 @@ class _HomeContentState extends State<HomeContent> {
           maxChildSize: 0.70,
           builder: (context, scrollController) {
             return Container(
-              margin:const EdgeInsets.all(16.0) ,
+              margin: const EdgeInsets.all(16.0),
               decoration: const BoxDecoration(
                 color: AppColors.white,
                 borderRadius: BorderRadius.vertical(top: Radius.circular(25)),

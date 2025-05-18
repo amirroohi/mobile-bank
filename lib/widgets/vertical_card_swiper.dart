@@ -61,7 +61,7 @@ class _VerticalStackSwiperState extends State<VerticalStackSwiper> {
                 ),
               );
             },
-            child: BankCard(account: widget.accounts[index]),
+            // child: BankCard(account: widget.accounts[index]),
           );
         },
       ),

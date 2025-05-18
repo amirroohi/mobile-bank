@@ -7,7 +7,13 @@ class BankCard extends StatefulWidget {
   final BankAccount account;
   // you can send assetsImage to this
 
-  const BankCard({super.key, required this.account});
+  final VoidCallback onBookmarkPressed;
+
+  const BankCard({
+    super.key,
+    required this.account,
+    required this.onBookmarkPressed,
+  });
 
   @override
   State<BankCard> createState() => _BankCardState();
@@ -38,7 +44,6 @@ class _BankCardState extends State<BankCard> {
       items: [
         PopupMenuItem(
           padding: EdgeInsets.symmetric(horizontal: 20),
-
           height: 40,
           child: Directionality(
             textDirection: TextDirection.rtl,
@@ -187,19 +192,15 @@ class _BankCardState extends State<BankCard> {
                       IconButton(
                         iconSize: 30,
                         icon: Icon(
-                          isBookmarked
+                          widget.account.isBookmarked
                               ? Icons.bookmark
                               : Icons.bookmark_border_outlined,
                           color:
-                              isBookmarked
+                              widget.account.isBookmarked
                                   ? AppColors.secondary
                                   : AppColors.white,
                         ),
-                        onPressed: () {
-                          setState(() {
-                            isBookmarked = !isBookmarked;
-                          });
-                        },
+                        onPressed: widget.onBookmarkPressed,
                       ),
                     ],
                   ),

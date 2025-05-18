@@ -16,7 +16,18 @@ class AccountsScreen extends StatefulWidget {
 class _AccountsScreenState extends State<AccountsScreen> {
   String selectedTab = "سپرده منفرد";
   int selectedIndex = 0;
+  int selectedQuickActionIndex = -1;
+  late List<BankAccount> userAccounts;
+  late int initialBookmarkedIndex;
 
+  void _toggleBookmark(int index) {
+    setState(() {
+      for (int i = 0; i < userAccounts.length; i++) {
+        userAccounts[i].isBookmarked = i == index;
+      }
+      initialBookmarkedIndex = index;
+    });
+  }
   final List<BankAccount> accounts = [
     BankAccount(
       ownerName: "مینا علمی",
@@ -43,6 +54,48 @@ class _AccountsScreenState extends State<AccountsScreen> {
       logoAsset: "assets/images/melal_logo.png",
     ),
   ];
+
+  @override
+  void initState() {
+    super.initState();
+
+    // Define local accounts
+    userAccounts = [
+      BankAccount(
+        ownerName: "مینا علمی",
+        accountNumber: "051511242000000150",
+        iban: "IR890750051511242000000150",
+        type: "سپرده قرض الحسنه",
+        balance: 150000000,
+        logoAsset: 'assets/images/melal_icon.png',
+        isBookmarked: false,
+      ),
+      BankAccount(
+        ownerName: "علی احمدی",
+        accountNumber: "051511242000000151",
+        iban: "IR230750051511242000000151",
+        type: "سپرده کوتاه مدت",
+        balance: 87500000,
+        logoAsset: 'assets/images/melal_icon.png',
+        isBookmarked: true, // this one is initially selected
+      ),
+      BankAccount(
+        ownerName: "خودم",
+        accountNumber: "051511242000000151",
+        iban: "IR230750051511242000000151",
+        type: "سپرده بلند مدت",
+        balance: 87500000,
+        logoAsset: 'assets/images/melal_icon.png',
+        isBookmarked: false, // this one is initially selected
+      ),
+      // Add more accounts if needed
+    ];
+
+    // Find initial bookmarked account index
+    initialBookmarkedIndex = userAccounts.indexWhere((a) => a.isBookmarked);
+    if (initialBookmarkedIndex == -1) initialBookmarkedIndex = 0;
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -117,7 +170,10 @@ class _AccountsScreenState extends State<AccountsScreen> {
                     });
                   },
                   itemBuilder: (context, index) {
-                    return BankCard(account: accounts[index]);
+                    return BankCard(account: accounts[index],
+                      onBookmarkPressed: () => _toggleBookmark(index), // 👈 here
+
+                    );
                   },
                 ),
               ),

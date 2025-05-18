@@ -27,32 +27,24 @@ class _TransferFormSectionState extends State<TransferFormSection> {
   //   balance: 150000000,
   //   logoAsset: "assets/images/bank_logo.png",
   // );
-  final List<BankAccount> userAccounts = [
-    BankAccount(
-      ownerName: "مینا علمی",
-      accountNumber: "051511242000000150",
-      iban: "IR890750051511242000000150",
-      type: "سپرده قرض الحسنه",
-      balance: 150000000,
-      logoAsset: "assets/images/bank_logo.png",
-    ),
-    BankAccount(
-      ownerName: "علی رضایی",
-      accountNumber: "0215458789500000012",
-      iban: "IR1207500215458789500000012",
-      type: "سپرده جاری",
-      balance: 92000000,
-      logoAsset: "assets/images/bank_logo.png",
-    ),
-  ];
 
   final TextEditingController _amountController = TextEditingController();
   String amountInWords = '';
 
+  int selectedQuickActionIndex = -1;
+  late List<BankAccount> userAccounts;
+  late int initialBookmarkedIndex;
+  void _toggleBookmark(int index) {
+    setState(() {
+      for (int i = 0; i < userAccounts.length; i++) {
+        userAccounts[i].isBookmarked = i == index;
+      }
+      initialBookmarkedIndex = index;
+    });
+  }
   @override
   void initState() {
     super.initState();
-
     _amountController.addListener(() {
       setState(() {
         final value = _amountController.text;
@@ -63,6 +55,41 @@ class _TransferFormSectionState extends State<TransferFormSection> {
         }
       });
     });
+    // Define local accounts
+    userAccounts = [
+      BankAccount(
+        ownerName: "مینا علمی",
+        accountNumber: "051511242000000150",
+        iban: "IR890750051511242000000150",
+        type: "سپرده قرض الحسنه",
+        balance: 150000000,
+        logoAsset: 'assets/images/melal_icon.png',
+        isBookmarked: false,
+      ),
+      BankAccount(
+        ownerName: "علی احمدی",
+        accountNumber: "051511242000000151",
+        iban: "IR230750051511242000000151",
+        type: "سپرده کوتاه مدت",
+        balance: 87500000,
+        logoAsset: 'assets/images/melal_icon.png',
+        isBookmarked: true, // this one is initially selected
+      ),
+      BankAccount(
+        ownerName: "خودم",
+        accountNumber: "051511242000000151",
+        iban: "IR230750051511242000000151",
+        type: "سپرده بلند مدت",
+        balance: 87500000,
+        logoAsset: 'assets/images/melal_icon.png',
+        isBookmarked: false, // this one is initially selected
+      ),
+      // Add more accounts if needed
+    ];
+
+    // Find initial bookmarked account index
+    initialBookmarkedIndex = userAccounts.indexWhere((a) => a.isBookmarked);
+    if (initialBookmarkedIndex == -1) initialBookmarkedIndex = 0;
   }
   @override
   Widget build(BuildContext context) {
@@ -136,7 +163,7 @@ class _TransferFormSectionState extends State<TransferFormSection> {
                               itemHeight: 300,
                               itemCount: userAccounts.length,
                               itemBuilder: (context, index) {
-                                return BankCard(account: userAccounts[index]);
+                                return BankCard(account: userAccounts[index],onBookmarkPressed: ()=>_toggleBookmark(index),);
                               },
                             ),
                           ),

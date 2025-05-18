@@ -63,7 +63,7 @@ class NumberToWordsText extends StatelessWidget {
         children: [
           Flexible(
             child: Text(
-              _convertNumberToWords(number!),
+              "${_convertNumberToWords(number!)} ریال ",
               style: textStyle ??
                   const TextStyle(
                     color: Color(0xFF246C1D),
