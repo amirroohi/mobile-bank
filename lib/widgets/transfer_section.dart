@@ -30,21 +30,24 @@ class TransferSection extends StatelessWidget {
               children: const [
                 Text(
                   'انتقال وجه',
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.w700),
                 ),
                 SizedBox(
-                  width: 75,
+                  width: 60,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
                         'مشاهده',
-                        style: TextStyle(color: Colors.orange, fontSize: 14),
+                        style: TextStyle(
+                          color: AppColors.secondary,
+                          fontSize: 12,
+                        ),
                       ),
                       Icon(
                         Icons.arrow_forward_ios,
-                        size: 14,
-                        color: Colors.orange,
+                        size: 12,
+                        color: AppColors.secondary,
                       ),
                     ],
                   ),
@@ -115,26 +118,26 @@ class TransferSection extends StatelessWidget {
                       Text(
                         'سوابق تراکنش',
                         style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
+                          fontSize: 18,
+                          fontWeight: FontWeight.w700,
                         ),
                       ),
                       SizedBox(
-                        width: 75,
+                        width: 60,
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
                               'مشاهده',
                               style: TextStyle(
-                                color: Colors.orange,
-                                fontSize: 14,
+                                color: AppColors.secondary,
+                                fontSize: 12,
                               ),
                             ),
                             Icon(
                               Icons.arrow_forward_ios,
-                              size: 14,
-                              color: Colors.orange,
+                              size: 12,
+                              color: AppColors.secondary,
                             ),
                           ],
                         ),
@@ -147,7 +150,6 @@ class TransferSection extends StatelessWidget {
                   SizedBox(
                     height: 260, // adjust based on your design
                     child: ListView(
-
                       physics: const BouncingScrollPhysics(),
                       children: const [
                         TransactionItem(
@@ -241,21 +243,21 @@ class TransactionItem extends StatelessWidget {
                       name,
                       style: const TextStyle(
                         fontSize: 16,
-                        fontWeight: FontWeight.bold,
+                        fontWeight: FontWeight.w500,
                       ),
                     ),
                     Text(
                       type,
                       style: const TextStyle(
                         fontSize: 10,
-                        fontWeight: FontWeight.bold,
+                        fontWeight: FontWeight.w500,
                       ),
                     ),
                     Text(
                       date,
                       style: const TextStyle(
                         fontSize: 10,
-                        fontWeight: FontWeight.bold,
+                        fontWeight: FontWeight.w500,
                       ),
                     ),
                   ],

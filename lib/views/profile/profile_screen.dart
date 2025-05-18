@@ -199,7 +199,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
       _settingsSwitchTile(
         Icons.dark_mode,
         'تغییر تم',
-        value: false,
+        value: true,
         onChanged: (val) { return !val; },
       ),
       _settingsTile(Icons.star, 'مدیریت خدمات برگزیده', onTap: () {}),

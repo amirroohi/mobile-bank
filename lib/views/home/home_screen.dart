@@ -162,8 +162,8 @@ class _HomeScreenState extends State<HomeScreen> {
                 : null,
         body: screen,
         floatingActionButton: SizedBox(
-          width: 80,
-          height: 80,
+          width: 75,
+          height: 75,
           child: FloatingActionButton(
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(100),
