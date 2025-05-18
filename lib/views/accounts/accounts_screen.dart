@@ -165,6 +165,11 @@ class _AccountsScreenState extends State<AccountsScreen> {
                   itemWidth: 500,
                   itemHeight: 300,
                   layout: SwiperLayout.TINDER,
+                  onIndexChanged: (index) {
+                    setState(() {
+                      selectedIndex = index; // 👈 This updates the details
+                    });
+                  },
                   itemBuilder: (context, index) {
                     return BankCard(account: userAccounts[index],
                       onBookmarkPressed: () => _toggleBookmark(index), //  here
