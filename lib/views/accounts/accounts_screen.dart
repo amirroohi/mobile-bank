@@ -75,7 +75,7 @@ class _AccountsScreenState extends State<AccountsScreen> {
         accountNumber: "051511242000000151",
         iban: "IR230750051511242000000151",
         type: "سپرده کوتاه مدت",
-        balance: 87500000,
+        balance: 875000000000,
         logoAsset: 'assets/images/melal_icon.png',
         isBookmarked: true, // this one is initially selected
       ),

@@ -13,6 +13,7 @@ import 'package:mobile_bank/views/transactions/transaction_list_screen.dart';
 import '../../core/constants/app_constants.dart';
 import '../../widgets/service_item.dart';
 import '../../widgets/service_section.dart';
+import '../../widgets/slide_navigation.dart';
 import '../home/home_screen.dart';
 
 class ServicesScreen extends StatefulWidget {
@@ -39,7 +40,7 @@ class _ServicesScreenState extends State<ServicesScreen> {
       case "بازپرداخت":
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (_) => LoanRepaymentScreen()),
+          slideFromRight(LoanRepaymentScreen()),
         );
         break;
       // case "جزئیات":
@@ -93,37 +94,37 @@ class _ServicesScreenState extends State<ServicesScreen> {
       case "شبا":
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (_) => IbanInquiryScreen()),
+          slideFromRight(IbanInquiryScreen()),
         );
         break;
       case "نیکوکاری":
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (_) => CharityScreen()),
+          slideFromRight(CharityScreen()),
         );
         break;
       case "پرداخت قبوض":
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (_) => BillPaymentScreen()),
+          slideFromRight(BillPaymentScreen()),
         );
         break;
       case "خرید شارژ":
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (_) => BuyChargeScreen()),
+          slideFromRight(BuyChargeScreen()),
         );
         break;
       case "افزودن منتخب":
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (_) => AddContactScreen()),
+          slideFromRight(AddContactScreen()),
         );
         break;
       case "فهرست تراکنش ها":
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (_) => TransactionListScreen()),
+          slideFromRight(TransactionListScreen()),
         );
         break;
       default:

@@ -269,16 +269,16 @@ class _BankCardState extends State<BankCard> {
                   children: [
                     Text(
                       "ریال",
-                      style: TextStyle(color: AppColors.white, fontSize: 18),
+                      style: TextStyle(color: AppColors.white, fontSize: 12),
                     ),
-                    SizedBox(width: 2),
+                    SizedBox(width: 4),
                     Text(
                       isBalanceVisible
                           ? formatWithCommas(
                             widget.account.balance.toString(),
                           ) //  real balance
                           : "****", //  masked balance
-                      style: TextStyle(color: AppColors.white, fontSize: 18),
+                      style: TextStyle(color: AppColors.white, fontSize: 16),
                     ),
                     SizedBox(width: 2),
                     IconButton(

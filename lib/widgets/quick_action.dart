@@ -27,7 +27,7 @@ class QuickActions extends StatelessWidget {
     {
       'icon': Icons.credit_card,
       'label': 'انتقال وجه',
-      'screen': TransferFormSection(),
+      'screen': TransferFormScreen(),
     },
   ];
 

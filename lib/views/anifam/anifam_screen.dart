@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:mobile_bank/core/constants/app_constants.dart';
 import 'package:mobile_bank/views/transfer/transfer_form_screen.dart';
 import '../../widgets/card_filter_tabs.dart';
+import '../../widgets/slide_navigation.dart';
 import '../home/home_screen.dart';
 
 class AnifamScreen extends StatefulWidget {
@@ -97,7 +98,7 @@ class _AnifamScreenState extends State<AnifamScreen>
             onPressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (_) => TransferFormSection()),
+                slideFromRight(TransferFormScreen()),
               );
             },
             backgroundColor: Colors.deepOrangeAccent,

@@ -10,6 +10,7 @@ import '../../models/bank-account.dart';
 import '../../widgets/bank_card.dart';
 import '../../widgets/loan_banner.dart';
 import '../../widgets/quick_action.dart';
+import '../../widgets/slide_navigation.dart';
 import '../cards/cards_screen.dart';
 import '../profile/profile_screen.dart';
 
@@ -20,10 +21,13 @@ class HomeScreen extends StatefulWidget {
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateMixin{
+
+  late AnimationController _controller;
+  late Animation<double> _scaleAnimation;
+
   int _selectedIndex = -1; // -1 means home
   late Widget screen;
-  String _appBarTitle = '';
   ThemeData _currentTheme = ThemeData(
     scaffoldBackgroundColor: AppColors.primary,
     fontFamily: "IRANSans",
@@ -64,6 +68,25 @@ class _HomeScreenState extends State<HomeScreen> {
   void initState() {
     super.initState();
     screen = const HomeContent();
+
+    _controller = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 1000),
+    );
+
+    _scaleAnimation = TweenSequence<double>([
+      TweenSequenceItem(tween: Tween(begin: 1.0, end: 1.3), weight: 50),
+      TweenSequenceItem(tween: Tween(begin: 1.3, end: 1.0), weight: 50),
+    ]).animate(CurvedAnimation(parent: _controller, curve: Curves.easeInOut));
+
+    _controller.repeat(); // 🔁 Start infinite loop
+
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
   }
 
   void _onItemTapped(int index) {
@@ -74,23 +97,18 @@ class _HomeScreenState extends State<HomeScreen> {
       switch (index) {
         case 0:
           screen = const ProfileScreen();
-          _appBarTitle = 'پروفایل';
           break;
         case 1:
           screen = const ServicesScreen();
-          _appBarTitle = 'خدمات';
           break;
         case 2:
           screen = const CardsScreen();
-          _appBarTitle = 'کارت';
           break;
         case 3:
           screen = const AccountsScreen();
-          _appBarTitle = 'سپرده';
           break;
         default:
           screen = const HomeContent();
-          _appBarTitle = '';
       }
     });
   }
@@ -106,40 +124,22 @@ class _HomeScreenState extends State<HomeScreen> {
             _selectedIndex == -1
                 ? AppBar(
                   actionsPadding: EdgeInsets.symmetric(horizontal: 16),
-                  title: Center(
-                    child: Text(_appBarTitle, style: TextStyle(fontSize: 28)),
-                  ),
+                  // title: Center(
+                  //   child: Text(_appBarTitle, style: TextStyle(fontSize: 28)),
+                  // ),
                   backgroundColor: _currentAppbar,
                   foregroundColor: AppColors.white,
                   automaticallyImplyLeading: true,
-                  actions: [
-                    _selectedIndex == -1
-                        ? IconButton(
-                          icon: const Icon(
-                            Icons.menu,
-                            size: 40,
-                            color: AppColors.white,
-                          ),
-                          onPressed: () {},
-                        )
-                        : Container(
-                          margin: EdgeInsets.only(right: 20),
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(50),
-                            color: AppColors.white,
-                          ),
-                          child: IconButton(
-                            icon: const Icon(
-                              Icons.arrow_forward,
-                              size: 30,
-                              color: Colors.black54,
-                            ),
-                            onPressed: () {
-                              // Navigator.pop(context);
-                            },
-                          ),
-                        ),
-                  ],
+                  // actions: [
+                  //   IconButton(
+                  //     icon: const Icon(
+                  //       Icons.menu,
+                  //       size: 40,
+                  //       color: AppColors.white,
+                  //     ),
+                  //     onPressed: () {},
+                  //   ),
+                  // ],
                   leading:
                       _selectedIndex != -1
                           ? IconButton(
@@ -152,7 +152,6 @@ class _HomeScreenState extends State<HomeScreen> {
                               setState(() {
                                 _selectedIndex = -1;
                                 screen = const HomeContent();
-                                _appBarTitle = '';
                                 _currentTheme = _themesByIndex[-1]!;
                               });
                             },
@@ -169,14 +168,14 @@ class _HomeScreenState extends State<HomeScreen> {
               borderRadius: BorderRadius.circular(100),
             ),
             onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => AnifamScreen()),
-              );
+              Navigator.push(context, slideFromRight(AnifamScreen()));
             },
             backgroundColor: Colors.deepOrangeAccent,
             foregroundColor: AppColors.white,
-            child: const Icon(Icons.electric_bolt, size: 40),
+            child: ScaleTransition(
+              scale: _scaleAnimation,
+              child: const Icon(Icons.electric_bolt, size: 40),
+            ),
           ),
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
@@ -223,7 +222,7 @@ class _HomeContentState extends State<HomeContent> {
         accountNumber: "051511242000000150",
         iban: "IR890750051511242000000150",
         type: "سپرده قرض الحسنه",
-        balance: 150000000,
+        balance: 1500000000000,
         logoAsset: 'assets/images/melal_icon.png',
         isBookmarked: false,
       ),

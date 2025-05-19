@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mobile_bank/widgets/slide_navigation.dart';
 import 'package:provider/provider.dart';
 
 import '../../core/constants/app_constants.dart';
@@ -82,9 +83,7 @@ class LoginScreen extends StatelessWidget {
                             if (success) {
                               Navigator.pushReplacement(
                                 context,
-                                MaterialPageRoute(
-                                  builder: (_) => const HomeScreen(),
-                                ),
+                                slideFromRight(HomeScreen())
                               );
                             } else {
                               ScaffoldMessenger.of(context).showSnackBar(
