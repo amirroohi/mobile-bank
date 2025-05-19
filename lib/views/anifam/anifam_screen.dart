@@ -222,11 +222,12 @@ class _AnifamScreenState extends State<AnifamScreen>
                                         item['name'],
                                         style: TextStyle(
                                           fontWeight: FontWeight.bold,
+                                          color: AppColors.primary,
                                         ),
                                       ),
                                       SizedBox(height: 4),
-                                      Text(item['cardNumber']),
-                                      Text("ریال${item['amount']}"),
+                                      Text(item['cardNumber'], style: TextStyle(color: AppColors.primary,),),
+                                      Text("ریال${item['amount']}", style: TextStyle(color: AppColors.primary,),),
                                     ],
                                   ),
                                   trailing: ElevatedButton(

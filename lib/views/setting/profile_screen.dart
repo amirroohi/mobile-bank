@@ -1,4 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:mobile_bank/views/login/Login_screen.dart';
+import 'package:mobile_bank/views/setting/change_password_screen.dart';
+import 'package:mobile_bank/views/setting/selected_list_screen.dart';
+import 'package:mobile_bank/views/setting/selected_services_mngmnt_screen.dart';
+import 'package:mobile_bank/widgets/slide_navigation.dart';
 
 import '../../core/constants/app_constants.dart';
 import '../home/home_screen.dart';
@@ -25,7 +30,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
             Padding(
               padding: const EdgeInsets.only(left: 8.0),
               child: IconButton(
-                icon: const Icon(Icons.home,size: 32,),
+                icon: const Icon(Icons.home, size: 32),
                 tooltip: 'خانه',
                 onPressed: () {
                   Navigator.push(
@@ -62,7 +67,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       child: Container(
                         height: 250,
                         padding: const EdgeInsets.symmetric(
-                          horizontal: 20,
+                          horizontal: 15,
                           vertical: 25,
                         ),
                         decoration: BoxDecoration(
@@ -77,6 +82,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               style: TextStyle(
                                 fontSize: 30,
                                 fontWeight: FontWeight.bold,
+                                color: AppColors.primary,
                               ),
                             ),
                             SizedBox(height: 30),
@@ -91,28 +97,38 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                       mainAxisAlignment:
                                           MainAxisAlignment.spaceBetween,
                                       children: [
-
                                         Text(
-                                          'ایمیل:',
+                                          'تاریخ تولد:',
                                           style: TextStyle(
                                             fontWeight: FontWeight.bold,
+                                            color: AppColors.primary,
                                           ),
                                         ),
-                                        Text('m@yahoo.com'),
+                                        Text(
+                                          '1370/09/27',
+                                          style: TextStyle(
+                                            color: AppColors.primary,
+                                          ),
+                                        ),
                                       ],
                                     ),
                                     Row(
                                       mainAxisAlignment:
                                           MainAxisAlignment.spaceBetween,
                                       children: [
-
                                         Text(
-                                          'تاریخ تولد:',
+                                          'ایمیل:',
                                           style: TextStyle(
                                             fontWeight: FontWeight.bold,
+                                            color: AppColors.primary,
                                           ),
                                         ),
-                                        Text('1370/09/27'),
+                                        Text(
+                                          'm@yahoo.com',
+                                          style: TextStyle(
+                                            color: AppColors.primary,
+                                          ),
+                                        ),
                                       ],
                                     ),
                                   ],
@@ -124,28 +140,38 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                       mainAxisAlignment:
                                           MainAxisAlignment.spaceBetween,
                                       children: [
-
                                         Text(
-                                          'کد ملی:',
+                                          'شماره تماس:',
                                           style: TextStyle(
                                             fontWeight: FontWeight.bold,
+                                            color: AppColors.primary,
                                           ),
                                         ),
-                                        Text('0480383650'),
+                                        Text(
+                                          '09121250058',
+                                          style: TextStyle(
+                                            color: AppColors.primary,
+                                          ),
+                                        ),
                                       ],
                                     ),
                                     Row(
                                       mainAxisAlignment:
                                           MainAxisAlignment.spaceBetween,
                                       children: [
-
                                         Text(
-                                          'شماره تماس:',
+                                          'کد ملی:',
                                           style: TextStyle(
                                             fontWeight: FontWeight.bold,
+                                            color: AppColors.primary,
                                           ),
                                         ),
-                                        Text('09121250058'),
+                                        Text(
+                                          '0480383650',
+                                          style: TextStyle(
+                                            color: AppColors.primary,
+                                          ),
+                                        ),
                                       ],
                                     ),
                                   ],
@@ -189,19 +215,33 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
   List<Widget> _settingsTiles(BuildContext context) {
     return [
-      _settingsTile(Icons.lock, 'تغییر رمز عبور', onTap: () {}),
+      _settingsTile(
+        Icons.lock,
+        'تغییر رمز عبور',
+        onTap: () {
+          Navigator.push(context, slideFromLeft(ChangePasswordScreen()));
+        },
+      ),
       _settingsSwitchTile(
         Icons.dark_mode,
         'تغییر تم',
         value: true,
-        onChanged: (val) { return !val; },
+        onChanged: (val) {
+          return !val;
+        },
       ),
-      _settingsTile(Icons.star, 'مدیریت خدمات برگزیده', onTap: () {}),
-      _settingsTile(Icons.list, 'فهرست منتخب', onTap: () {}),
+      _settingsTile(Icons.star, 'مدیریت خدمات برگزیده', onTap: () {
+        Navigator.push(context, slideFromLeft(SelectedServicesMngmntScreen()));
+      }),
+      _settingsTile(Icons.list, 'فهرست منتخب', onTap: () {
+        Navigator.push(context, slideFromLeft(SelectedListScreen()));
+      }),
       _settingsTile(
         Icons.power_settings_new,
         'خروج',
-        onTap: () {},
+        onTap: () {
+          Navigator.push(context, slideFromLeft(LoginScreen()));
+        },
         color: Colors.red,
         iconColor: Colors.red,
       ),
@@ -229,8 +269,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
             ),
             tileColor: Color.fromRGBO(241, 241, 241, 1.0),
             leading: Icon(icon, color: color ?? AppColors.primary),
-            title: Text(title, style: TextStyle(color: color ?? AppColors.primary)),
-            trailing: const Icon(Icons.arrow_forward),
+            title: Text(
+              title,
+              style: TextStyle(color: color ?? AppColors.primary),
+            ),
+            trailing: Icon(
+              Icons.arrow_forward,
+              color: color ?? AppColors.primary,
+            ),
             onTap: onTap,
             iconColor: iconColor,
           ),
@@ -256,8 +302,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
             borderRadius: BorderRadius.circular(25),
           ),
           tileColor: Color.fromRGBO(236, 236, 236, 1.0),
-          secondary: Icon(icon),
-          title: Text(title),
+          secondary: Icon(icon, color: AppColors.primary),
+          title: Text(title, style: TextStyle(color: AppColors.primary)),
           value: value,
           onChanged: onChanged,
         ),

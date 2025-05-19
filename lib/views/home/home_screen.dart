@@ -12,7 +12,7 @@ import '../../widgets/loan_banner.dart';
 import '../../widgets/quick_action.dart';
 import '../../widgets/slide_navigation.dart';
 import '../cards/cards_screen.dart';
-import '../profile/profile_screen.dart';
+import '../setting/profile_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -21,8 +21,8 @@ class HomeScreen extends StatefulWidget {
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateMixin{
-
+class _HomeScreenState extends State<HomeScreen>
+    with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   late Animation<double> _scaleAnimation;
 
@@ -80,7 +80,6 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
     ]).animate(CurvedAnimation(parent: _controller, curve: Curves.easeInOut));
 
     _controller.repeat(); // 🔁 Start infinite loop
-
   }
 
   @override
