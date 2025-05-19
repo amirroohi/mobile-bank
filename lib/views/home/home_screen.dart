@@ -71,7 +71,7 @@ class _HomeScreenState extends State<HomeScreen>
 
     _controller = AnimationController(
       vsync: this,
-      duration: const Duration(milliseconds: 1000),
+      duration: const Duration(milliseconds: 700),
     );
 
     _scaleAnimation = TweenSequence<double>([
@@ -327,3 +327,4 @@ class _HomeContentState extends State<HomeContent> {
     );
   }
 }
+
