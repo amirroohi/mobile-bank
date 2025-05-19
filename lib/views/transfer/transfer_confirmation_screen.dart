@@ -413,7 +413,7 @@ class _TransferConfirmationScreenState
                                               height: 56,
                                               textStyle: TextStyle(
                                                 fontSize: 20,
-                                                color: Colors.black,
+                                                color: AppColors.primary,
                                               ),
                                               decoration: BoxDecoration(
                                                 color: Colors.white,
@@ -429,7 +429,7 @@ class _TransferConfirmationScreenState
                                               height: 56,
                                               textStyle: TextStyle(
                                                 fontSize: 20,
-                                                color: Colors.black,
+                                                color: AppColors.primary,
                                               ),
                                               decoration: BoxDecoration(
                                                 color: Colors.white,

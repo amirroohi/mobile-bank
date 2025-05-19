@@ -2,7 +2,6 @@ import 'package:card_swiper/card_swiper.dart';
 import 'package:dropdown_search/dropdown_search.dart';
 import 'package:flutter/material.dart';
 import 'package:mobile_bank/core/constants/app_constants.dart';
-import 'package:mobile_bank/views/transfer/transfer_type_screen.dart';
 
 import '../../core/utils/number_to_word.dart';
 import '../../models/bank-account.dart';
@@ -199,7 +198,7 @@ class _CharityScreenState extends State<CharityScreen> {
                                         suffixIcon: Icon(
                                           Icons.keyboard_arrow_down_outlined,
                                         ),
-                                        suffixIconColor: Colors.black,
+                                        suffixIconColor: AppColors.primary,
                                         focusColor: AppColors.primary,
                                         border: OutlineInputBorder(
                                           borderRadius: BorderRadius.circular(

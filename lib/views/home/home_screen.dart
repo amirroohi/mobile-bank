@@ -311,7 +311,7 @@ class _HomeContentState extends State<HomeContent> {
                 borderRadius: BorderRadius.vertical(top: Radius.circular(25)),
                 boxShadow: [
                   BoxShadow(
-                    color: Colors.black26,
+                    color: AppColors.primary,
                     blurRadius: 10,
                     offset: Offset(0, -2),
                   ),

@@ -1,18 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:card_swiper/card_swiper.dart';
 import 'package:mobile_bank/core/constants/app_constants.dart';
 import 'package:mobile_bank/views/laon/widgets/account_swiper.dart';
 import 'package:mobile_bank/views/laon/widgets/installment_section.dart';
 import 'package:mobile_bank/views/laon/widgets/loan_app_bar.dart';
 import 'package:mobile_bank/views/laon/widgets/loan_form_fields.dart';
-import 'package:mobile_bank/views/transfer/transfer_type_screen.dart';
 import 'package:persian_number_utility/persian_number_utility.dart';
 
-import '../../core/utils/number_to_word.dart';
 import '../../models/bank-account.dart';
-import '../../widgets/bank_card.dart';
-import '../../widgets/price_input_field.dart';
-import '../home/home_screen.dart';
 import '../transfer/widgets/transfer_continue_button.dart';
 
 class LoanRepaymentScreen extends StatefulWidget {

@@ -1,7 +1,6 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:mobile_bank/views/anifam/anifam_screen.dart';
 import 'package:mobile_bank/views/bill/bill_payment_screen.dart';
 import 'package:mobile_bank/views/charge/buy_charge_screen.dart';
 import 'package:mobile_bank/views/charity/charity_screen.dart';

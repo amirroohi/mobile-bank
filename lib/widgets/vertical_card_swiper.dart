@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import '../../models/bank-account.dart';
-import '../../widgets/bank_card.dart';
 
 class VerticalStackSwiper extends StatefulWidget {
   final List<BankAccount> accounts;

@@ -21,7 +21,7 @@ class ServiceItem extends StatelessWidget {
             child: Icon(icon, color: AppColors.primary,size: 28),
           ),
           const SizedBox(height: 8),
-          Text(title, style: TextStyle(fontSize: 12)),
+          Text(title, style: TextStyle(fontSize: 12,color: AppColors.primary)),
         ],
       ),
     );

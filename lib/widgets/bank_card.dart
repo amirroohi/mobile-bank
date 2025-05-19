@@ -56,7 +56,7 @@ class _BankCardState extends State<BankCard> {
                 SizedBox(width: 8),
                 Text(
                   'ویرایش',
-                  style: TextStyle(fontSize: 15, color: Colors.black87),
+                  style: TextStyle(fontSize: 15, color: AppColors.primary),
                 ),
               ],
             ),
@@ -73,7 +73,7 @@ class _BankCardState extends State<BankCard> {
                 SizedBox(width: 8),
                 Text(
                   'ویرایش',
-                  style: TextStyle(fontSize: 15, color: Colors.black87),
+                  style: TextStyle(fontSize: 15, color: AppColors.primary),
                 ),
               ],
             ),
@@ -90,7 +90,7 @@ class _BankCardState extends State<BankCard> {
                 SizedBox(width: 8),
                 Text(
                   'ویرایش',
-                  style: TextStyle(fontSize: 15, color: Colors.black87),
+                  style: TextStyle(fontSize: 15, color: AppColors.primary),
                 ),
               ],
             ),
@@ -107,7 +107,7 @@ class _BankCardState extends State<BankCard> {
                 SizedBox(width: 8),
                 Text(
                   'ویرایش',
-                  style: TextStyle(fontSize: 15, color: Colors.black87),
+                  style: TextStyle(fontSize: 15, color: AppColors.primary),
                 ),
               ],
             ),
@@ -124,7 +124,7 @@ class _BankCardState extends State<BankCard> {
                 SizedBox(width: 8),
                 Text(
                   'ویرایش',
-                  style: TextStyle(fontSize: 15, color: Colors.black87),
+                  style: TextStyle(fontSize: 15, color: AppColors.primary),
                 ),
               ],
             ),
@@ -141,7 +141,7 @@ class _BankCardState extends State<BankCard> {
                 SizedBox(width: 8),
                 Text(
                   'ویرایش',
-                  style: TextStyle(fontSize: 15, color: Colors.black87),
+                  style: TextStyle(fontSize: 15, color: AppColors.primary),
                 ),
               ],
             ),

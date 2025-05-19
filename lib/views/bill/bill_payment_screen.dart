@@ -4,7 +4,6 @@ import 'package:mobile_bank/views/bill/widgets/add_new_bill.dart';
 import 'package:mobile_bank/views/bill/widgets/bill_history_list.dart';
 import '../../core/constants/app_constants.dart';
 import '../../models/bank-account.dart';
-import '../../widgets/account_item.dart';
 import '../../widgets/bank_card.dart';
 import '../home/home_screen.dart';
 import 'package:persian_number_utility/persian_number_utility.dart';
@@ -173,7 +172,7 @@ class _BillPaymentScreenState extends State<BillPaymentScreen> {
                                 padding: EdgeInsets.symmetric(horizontal: 10),
                                 indicatorPadding: EdgeInsets.only(bottom: 8),
                                 labelColor: Colors.white,
-                                unselectedLabelColor: Colors.black,
+                                unselectedLabelColor: AppColors.primary,
                                 indicator: BoxDecoration(
                                   borderRadius: BorderRadius.circular(50),
                                   color: AppColors.primary,

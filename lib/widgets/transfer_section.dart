@@ -30,7 +30,7 @@ class TransferSection extends StatelessWidget {
               children: const [
                 Text(
                   'انتقال وجه',
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.w700),
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.w700,color: AppColors.primary),
                 ),
                 SizedBox(
                   width: 60,
@@ -65,7 +65,7 @@ class TransferSection extends StatelessWidget {
                     CircleAvatar(
                       radius: 22,
                       backgroundColor: Colors.grey.shade200,
-                      child: const Icon(Icons.add, color: Colors.black),
+                      child: const Icon(Icons.add, color: AppColors.primary),
                     ),
                   ],
                 ),
@@ -87,13 +87,13 @@ class TransferSection extends StatelessWidget {
                             backgroundColor: Colors.lightGreen.shade50,
                             child: const Icon(
                               Icons.person_outline,
-                              color: Colors.black,
+                              color: AppColors.primary,
                             ),
                           ),
                           const SizedBox(height: 6),
                           Text(
                             user['name']!,
-                            style: const TextStyle(fontSize: 14),
+                            style: const TextStyle(fontSize: 14,color: AppColors.primary),
                           ),
                         ],
                       ),
@@ -120,6 +120,7 @@ class TransferSection extends StatelessWidget {
                         style: TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.w700,
+                          color: AppColors.primary
                         ),
                       ),
                       SizedBox(
@@ -232,7 +233,7 @@ class TransactionItem extends StatelessWidget {
                   backgroundColor: Color.fromRGBO(241, 241, 241, 1.0),
                   child: Icon(
                     Icons.account_balance_wallet_outlined,
-                    color: Colors.black,
+                    color: AppColors.primary,
                   ),
                 ),
                 const SizedBox(width: 8),
@@ -244,6 +245,7 @@ class TransactionItem extends StatelessWidget {
                       style: const TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.w500,
+                        color: AppColors.primary
                       ),
                     ),
                     Text(
@@ -251,6 +253,7 @@ class TransactionItem extends StatelessWidget {
                       style: const TextStyle(
                         fontSize: 10,
                         fontWeight: FontWeight.w500,
+                        color: AppColors.primary
                       ),
                     ),
                     Text(
@@ -258,6 +261,7 @@ class TransactionItem extends StatelessWidget {
                       style: const TextStyle(
                         fontSize: 10,
                         fontWeight: FontWeight.w500,
+                        color: AppColors.primary
                       ),
                     ),
                   ],

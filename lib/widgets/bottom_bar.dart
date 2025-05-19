@@ -33,13 +33,13 @@ class BottomBar extends StatelessWidget {
           children: [
             Icon(
               icon,
-              color: isSelected ? Colors.deepOrangeAccent : Colors.black,
+              color: isSelected ? Colors.deepOrangeAccent : AppColors.primary,
               size: 28,
             ),
             Text(
               label,
               style: TextStyle(
-                color: isSelected ? Colors.deepOrangeAccent : Colors.black,
+                color: isSelected ? Colors.deepOrangeAccent : AppColors.primary,
                 fontSize: 16,
                 fontWeight: isSelected ? FontWeight.w700 : FontWeight.w400,
               ),

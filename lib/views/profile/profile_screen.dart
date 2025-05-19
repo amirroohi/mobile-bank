@@ -75,7 +75,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             Text(
                               'کاربر تست',
                               style: TextStyle(
-                                fontSize: 35,
+                                fontSize: 30,
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
@@ -98,11 +98,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                             fontWeight: FontWeight.bold,
                                           ),
                                         ),
-                                        SizedBox(width: 10),
                                         Text('m@yahoo.com'),
                                       ],
                                     ),
-                                    SizedBox(height: 15),
                                     Row(
                                       mainAxisAlignment:
                                           MainAxisAlignment.spaceBetween,
@@ -114,7 +112,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                             fontWeight: FontWeight.bold,
                                           ),
                                         ),
-                                        SizedBox(width: 10),
                                         Text('1370/09/27'),
                                       ],
                                     ),
@@ -134,11 +131,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                             fontWeight: FontWeight.bold,
                                           ),
                                         ),
-                                        SizedBox(width: 10),
                                         Text('0480383650'),
                                       ],
                                     ),
-                                    SizedBox(height: 15),
                                     Row(
                                       mainAxisAlignment:
                                           MainAxisAlignment.spaceBetween,
@@ -150,7 +145,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                             fontWeight: FontWeight.bold,
                                           ),
                                         ),
-                                        SizedBox(width: 10),
                                         Text('09121250058'),
                                       ],
                                     ),
@@ -179,7 +173,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       child: const Icon(
                         Icons.person,
                         size: 60,
-                        color: Colors.black,
+                        color: AppColors.primary,
                       ),
                     ),
                   ),
@@ -234,8 +228,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
               borderRadius: BorderRadius.circular(25),
             ),
             tileColor: Color.fromRGBO(241, 241, 241, 1.0),
-            leading: Icon(icon, color: color ?? Colors.black),
-            title: Text(title, style: TextStyle(color: color ?? Colors.black)),
+            leading: Icon(icon, color: color ?? AppColors.primary),
+            title: Text(title, style: TextStyle(color: color ?? AppColors.primary)),
             trailing: const Icon(Icons.arrow_forward),
             onTap: onTap,
             iconColor: iconColor,

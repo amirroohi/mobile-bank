@@ -28,7 +28,7 @@ class CardTypeTabs extends StatelessWidget {
                 type,
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                  color: isSelected ? AppColors.white : Colors.black,
+                  color: isSelected ? AppColors.white : AppColors.primary,
                   fontWeight: FontWeight.bold,
                 ),
               ),

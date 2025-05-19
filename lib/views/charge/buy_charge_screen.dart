@@ -185,7 +185,7 @@ class BuyChargeScreenState extends State<BuyChargeScreen> {
                               child: TabBar(
                                 indicatorPadding: EdgeInsets.only(bottom: 8),
                                 labelColor: Colors.white,
-                                unselectedLabelColor: Colors.black,
+                                unselectedLabelColor: AppColors.primary,
                                 indicator: BoxDecoration(
                                   borderRadius: BorderRadius.circular(50),
                                   color: AppColors.primary,

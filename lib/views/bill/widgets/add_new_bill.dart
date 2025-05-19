@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mobile_bank/views/bill/widgets/bill_input.dart';
 
-import '../../transfer/widgets/transfer_continue_button.dart';
 
 class AddNewBill extends StatefulWidget {
   const AddNewBill({super.key});

@@ -144,7 +144,7 @@ class _AccountsScreenState extends State<AccountsScreen> {
                 borderRadius: BorderRadius.circular(50),
                 selectedColor: AppColors.white,
                 fillColor: AppColors.primary,
-                color: Colors.black,
+                color: AppColors.primary,
                 children: const [
                   Padding(
                     padding: EdgeInsets.symmetric(horizontal: 20),

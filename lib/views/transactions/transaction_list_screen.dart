@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:mobile_bank/widgets/bank_card.dart';
 import '../../core/constants/app_constants.dart';
 import '../../models/bank-account.dart';
-import '../../widgets/account_item.dart';
 import '../home/home_screen.dart';
 
 class TransactionListScreen extends StatefulWidget {

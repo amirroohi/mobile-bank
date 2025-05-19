@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:mobile_bank/views/transfer/transfer_receipt_screen.dart';
-import 'package:pinput/pinput.dart';
 import '../../core/constants/app_constants.dart';
 import '../../models/bank-account.dart';
 import '../home/home_screen.dart';
