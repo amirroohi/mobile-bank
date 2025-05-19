@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 import '../../core/constants/app_constants.dart';
 import '../home/home_screen.dart';
+import '../transfer/widgets/transfer_continue_button.dart';
 
 class AddContactScreen extends StatelessWidget {
   final _formKey = GlobalKey<FormState>();
@@ -195,36 +196,11 @@ class AddContactScreen extends StatelessWidget {
                   ),
                 ),
                 // ✅ Submit button
-                Positioned(
-                  top: 640,
+                const Positioned(
+                  bottom: 30,
                   right: 0,
                   left: 0,
-                  child: Container(
-                    margin: EdgeInsets.symmetric(horizontal: 40),
-                    child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: AppColors.primary,
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 40,
-                          vertical: 15,
-                        ),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(50),
-                        ),
-                      ),
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => HomeScreen()),
-                        );
-                        // TODO: Handle transfer logic or navigation
-                      },
-                      child: const Text(
-                        "ادامه",
-                        style: TextStyle(fontSize: 18, color: Colors.white),
-                      ),
-                    ),
-                  ),
+                  child: TransferContinueButton(),
                 ),
               ],
             ),

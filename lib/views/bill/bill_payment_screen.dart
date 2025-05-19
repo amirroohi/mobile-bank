@@ -9,6 +9,8 @@ import '../../widgets/bank_card.dart';
 import '../home/home_screen.dart';
 import 'package:persian_number_utility/persian_number_utility.dart';
 
+import '../transfer/widgets/transfer_continue_button.dart';
+
 class BillPaymentScreen extends StatefulWidget {
   const BillPaymentScreen({super.key});
 
@@ -137,7 +139,7 @@ class _BillPaymentScreenState extends State<BillPaymentScreen> {
                     child: Container(
                       height: 800,
                       padding: const EdgeInsets.symmetric(
-                        horizontal: 10,
+                        horizontal: 0,
                         vertical: 15,
                       ),
                       decoration: BoxDecoration(
@@ -164,10 +166,11 @@ class _BillPaymentScreenState extends State<BillPaymentScreen> {
                             const SizedBox(height: 20),
 
                             // Tabs
-                            Container(
+                            SizedBox(
                               width: 400,
-                              height: 60, // 👈 Desired tab height
+                              height: 60, //  Desired tab height
                               child: TabBar(
+                                padding: EdgeInsets.symmetric(horizontal: 10),
                                 indicatorPadding: EdgeInsets.only(bottom: 8),
                                 labelColor: Colors.white,
                                 unselectedLabelColor: Colors.black,
@@ -211,15 +214,18 @@ class _BillPaymentScreenState extends State<BillPaymentScreen> {
                                 children: [
                                   // ➤ Tab 1: History
                                   SingleChildScrollView(
-                                    child: BillHistoryList(),
+                                    child: BillHistoryList(context),
                                   ),
                                   // ➤ Tab 2: Bill Payment
                                   SingleChildScrollView(
-                                    child: Column(
-                                      children: [
-                                        const SizedBox(height: 32),
-                                        AddNewBill(),
-                                      ],
+                                    child: Expanded(
+                                      child: Column(
+                                        spacing: 50,
+                                        children: [
+                                          AddNewBill(),
+                                          TransferContinueButton(),
+                                        ],
+                                      ),
                                     ),
                                   ),
                                 ],

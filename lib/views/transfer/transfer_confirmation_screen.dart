@@ -1,6 +1,7 @@
 import 'package:dropdown_search/dropdown_search.dart';
 import 'package:flutter/material.dart';
 import 'package:mobile_bank/views/transfer/transfer_receipt_screen.dart';
+import 'package:mobile_bank/widgets/slide_navigation.dart';
 import 'package:pinput/pinput.dart';
 import '../../core/constants/app_constants.dart';
 import '../../models/bank-account.dart';
@@ -46,7 +47,7 @@ class _TransferConfirmationScreenState
             Padding(
               padding: const EdgeInsets.only(left: 8.0),
               child: IconButton(
-                icon: const Icon(Icons.home,size: 32,),
+                icon: const Icon(Icons.home, size: 32),
                 tooltip: 'خانه',
                 onPressed: () {
                   Navigator.push(
@@ -360,23 +361,27 @@ class _TransferConfirmationScreenState
                             ),
                           ),
                           builder: (BuildContext context) {
-
                             return Padding(
                               padding: EdgeInsets.only(
-                                bottom: MediaQuery.of(context).viewInsets.bottom,
+                                bottom:
+                                    MediaQuery.of(context).viewInsets.bottom,
                               ),
                               child: SingleChildScrollView(
                                 child: Container(
-                                  height: MediaQuery.of(context).size.height * 0.35, // 40% of screen height
+                                  height:
+                                      MediaQuery.of(context).size.height *
+                                      0.35, // 40% of screen height
                                   decoration: BoxDecoration(
-                                  color: Colors.white,
-                                      borderRadius: BorderRadius.vertical(
-                                        top: Radius.circular(20),
-                                      ),
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.vertical(
+                                      top: Radius.circular(20),
+                                    ),
                                   ),
                                   padding: EdgeInsets.only(
                                     bottom:
-                                        MediaQuery.of(context).viewInsets.bottom,
+                                        MediaQuery.of(
+                                          context,
+                                        ).viewInsets.bottom,
                                     left: 20,
                                     right: 20,
                                     top: 20,
@@ -415,9 +420,8 @@ class _TransferConfirmationScreenState
                                                 border: Border.all(
                                                   color: Colors.grey,
                                                 ),
-                                                borderRadius: BorderRadius.circular(
-                                                  12,
-                                                ),
+                                                borderRadius:
+                                                    BorderRadius.circular(12),
                                               ),
                                             ),
                                             focusedPinTheme: PinTheme(
@@ -432,9 +436,8 @@ class _TransferConfirmationScreenState
                                                 border: Border.all(
                                                   color: Colors.blue,
                                                 ),
-                                                borderRadius: BorderRadius.circular(
-                                                  12,
-                                                ),
+                                                borderRadius:
+                                                    BorderRadius.circular(12),
                                               ),
                                             ),
                                             keyboardType: TextInputType.number,
@@ -455,7 +458,8 @@ class _TransferConfirmationScreenState
                                         ),
                                         const SizedBox(height: 16),
                                         Row(
-                                          mainAxisAlignment: MainAxisAlignment.end,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.end,
                                           children: [
                                             TextButton(
                                               child: const Text(
@@ -465,7 +469,10 @@ class _TransferConfirmationScreenState
                                                 ),
                                               ),
                                               onPressed:
-                                                  () => Navigator.of(context).pop(),
+                                                  () =>
+                                                      Navigator.of(
+                                                        context,
+                                                      ).pop(),
                                             ),
                                             ElevatedButton(
                                               style: ElevatedButton.styleFrom(
@@ -480,15 +487,13 @@ class _TransferConfirmationScreenState
                                                 ),
                                               ),
                                               onPressed: () {
-                                                if (cleanOtp(otp)  == '123456') {
+                                                if (cleanOtp(otp) == '123456') {
                                                   Navigator.of(context).pop();
 
                                                   Navigator.push(
                                                     context,
-                                                    MaterialPageRoute(
-                                                      builder:
-                                                          (context) =>
-                                                              TransferReceiptScreen(),
+                                                    slideFromRight(
+                                                      TransferReceiptScreen(),
                                                     ),
                                                   );
 
@@ -496,7 +501,8 @@ class _TransferConfirmationScreenState
                                                     context,
                                                   ).showSnackBar(
                                                     SnackBar(
-                                                      backgroundColor: Colors.green,
+                                                      backgroundColor:
+                                                          Colors.green,
                                                       content: Text(
                                                         "تراکنش با موفقیت انجام شد",
                                                       ),

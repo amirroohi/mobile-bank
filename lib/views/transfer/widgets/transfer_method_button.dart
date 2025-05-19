@@ -21,7 +21,7 @@ class TransferMethodButton extends StatelessWidget {
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
           backgroundColor: AppColors.primary,
-          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 9),
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(50)),
         ),
         onPressed: onTap,
@@ -31,8 +31,8 @@ class TransferMethodButton extends StatelessWidget {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(title, style: TextStyle(fontSize: 18, color: AppColors.white)),
-                Text(subtitle, style: TextStyle(fontSize: 12, color: Color(0xFFDFDFDF))),
+                Text(title, style: TextStyle(fontSize: 14, color: AppColors.white)),
+                Text(subtitle, style: TextStyle(fontSize: 11, color: Color(0xFFDFDFDF))),
               ],
             ),
             Icon(Icons.arrow_forward, color: AppColors.white),

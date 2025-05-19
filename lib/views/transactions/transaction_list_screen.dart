@@ -233,7 +233,7 @@ class _TransactionListScreenState extends State<TransactionListScreen> {
                     child: Container(
                       height: 800,
                       padding: const EdgeInsets.symmetric(
-                        horizontal: 10,
+                        horizontal: 0,
                         vertical: 15,
                       ),
                       decoration: BoxDecoration(
@@ -259,7 +259,7 @@ class _TransactionListScreenState extends State<TransactionListScreen> {
                           // 📥 Destination input
                           Padding(
                             padding: const EdgeInsets.symmetric(
-                              horizontal: 16,
+                              horizontal: 20,
                               vertical: 12,
                             ),
                             child: Align(
@@ -285,7 +285,7 @@ class _TransactionListScreenState extends State<TransactionListScreen> {
                                 350, // or any height that fits well inside your layout
                             child: ListView.separated(
                               itemCount: filteredItems.length,
-                              padding: const EdgeInsets.only(top: 20),
+                              padding: const EdgeInsets.fromLTRB(20,20,20,0),
                               itemBuilder: (context, index) {
                                 final item = filteredItems[index];
                                 return Card(

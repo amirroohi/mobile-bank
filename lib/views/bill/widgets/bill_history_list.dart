@@ -1,45 +1,34 @@
 import 'package:flutter/material.dart';
 
 import '../../../core/constants/app_constants.dart';
+import '../../../widgets/slide_navigation.dart';
+import '../../transfer/transfer_type_screen.dart';
 
-Widget BillHistoryList() {
+Widget BillHistoryList(BuildContext context) {
   return Column(
     children: [
       BillHistoryCard(
+        context: context,
         title: 'تلفن همراه',
         status: 'پرداخت شده',
         amount: '150,000 ریال',
         billId: '123123123',
       ),
       BillHistoryCard(
+        context: context,
         title: 'برق',
         status: 'پرداخت نشده',
         amount: '250,000 ریال',
         billId: '456456456',
       ),
-      BillHistoryCard(
-        title: 'برق',
-        status: 'پرداخت نشده',
-        amount: '250,000 ریال',
-        billId: '78978978',
-      ),
-      BillHistoryCard(
-        title: 'برق',
-        status: 'پرداخت نشده',
-        amount: '250,000 ریال',
-        billId: '78978978',
-      ),
-      BillHistoryCard(
-        title: 'برق',
-        status: 'پرداخت نشده',
-        amount: '250,000 ریال',
-        billId: '78978978',
-      ),
+      // Add more as needed...
     ],
   );
 }
 
+
 Widget BillHistoryCard({
+  required BuildContext context,
   required String title,
   required String status,
   required String amount,
@@ -51,7 +40,7 @@ Widget BillHistoryCard({
     elevation: 10,
     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
     child: Padding(
-      padding: const EdgeInsets.all(12.0),
+      padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 12),
       child: Column(
         spacing: 8,
         children: [
@@ -92,7 +81,12 @@ Widget BillHistoryCard({
                   backgroundColor: AppColors.primary,
                   foregroundColor: Colors.white,
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    slideFromRight(TransferTypeScreen()),
+                  );
+                },
                 child: Text("پرداخت"),
               ),
             ],

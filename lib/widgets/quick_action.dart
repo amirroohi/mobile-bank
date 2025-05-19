@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:mobile_bank/views/charge/buy_charge_screen.dart';
 import 'package:mobile_bank/views/laon/loan_repayment_screen.dart';
 import 'package:mobile_bank/views/transfer/transfer_form_screen.dart';
+import 'package:mobile_bank/widgets/slide_navigation.dart';
 
 import '../core/constants/app_constants.dart';
 import '../views/bill/bill_payment_screen.dart';
@@ -40,12 +41,7 @@ class QuickActions extends StatelessWidget {
         return GestureDetector(
           onTap: () {
             onActionSelected(index);
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => _actions[index]['screen'],
-              ),
-            );
+            Navigator.push(context, slideFromRight(_actions[index]['screen']));
           },
           child: Column(
             children: [

@@ -13,7 +13,7 @@ class TransferContinueButton extends StatelessWidget {
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
           backgroundColor: AppColors.primary,
-          padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 15),
+          padding: const EdgeInsets.symmetric(horizontal: 100, vertical: 15),
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(50)),
         ),
         onPressed: () {

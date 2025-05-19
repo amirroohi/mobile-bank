@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:mobile_bank/views/bill/widgets/bill_input.dart';
 
+import '../../transfer/widgets/transfer_continue_button.dart';
+
 class AddNewBill extends StatefulWidget {
   const AddNewBill({super.key});
 
@@ -22,7 +24,7 @@ class _AddNewBillState extends State<AddNewBill> {
     return Column(
       children: [
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16),
+          padding: const EdgeInsets.symmetric(horizontal: 20),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [

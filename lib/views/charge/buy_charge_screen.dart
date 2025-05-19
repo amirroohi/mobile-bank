@@ -8,6 +8,8 @@ import '../../models/bank-account.dart';
 import '../home/home_screen.dart';
 import 'package:persian_number_utility/persian_number_utility.dart';
 
+import '../transfer/widgets/transfer_continue_button.dart';
+
 class BuyChargeScreen extends StatefulWidget {
   const BuyChargeScreen({super.key});
 
@@ -159,7 +161,8 @@ class BuyChargeScreenState extends State<BuyChargeScreen> {
                             SizedBox(
                               height: 240,
                               child: Swiper(
-                                index: initialBookmarkedIndex, //  start from bookmarked
+                                index:
+                                    initialBookmarkedIndex, //  start from bookmarked
                                 layout: SwiperLayout.TINDER,
                                 itemWidth: 500,
                                 itemHeight: 300,
@@ -456,6 +459,12 @@ class BuyChargeScreenState extends State<BuyChargeScreen> {
                       ),
                     ),
                   ),
+                ),
+                const Positioned(
+                  bottom: 30,
+                  right: 0,
+                  left: 0,
+                  child: TransferContinueButton(),
                 ),
               ],
             ),

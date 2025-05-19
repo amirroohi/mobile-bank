@@ -127,7 +127,7 @@ class _AccountsScreenState extends State<AccountsScreen> {
           leading: SizedBox(width: 0),
         ),
         body: SingleChildScrollView(
-          padding: const EdgeInsets.all(16),
+          padding: const EdgeInsets.symmetric(vertical: 16),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
@@ -189,6 +189,7 @@ class _AccountsScreenState extends State<AccountsScreen> {
 
   Widget buildAccountDetails(BankAccount account) {
     return Container(
+      margin: EdgeInsets.symmetric(horizontal: 20),
       padding: const EdgeInsets.all(26),
       decoration: BoxDecoration(
         color: AppColors.white,

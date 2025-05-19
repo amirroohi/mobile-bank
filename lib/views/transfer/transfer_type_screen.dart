@@ -47,20 +47,19 @@ class TransferTypeScreen extends StatelessWidget {
                     elevation: 3,
                     borderRadius: BorderRadius.circular(25),
                     child: Container(
-                      height: 500,
                       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(25),
                         color: AppColors.white,
                       ),
                       child: const Column(
+                        spacing: 60,
                         children: [
-                          SizedBox(height: 50),
+                          SizedBox(height: 00),
                           Text(
                             "روش انتقال خود را مشخص کنید",
                             style: TextStyle(fontWeight: FontWeight.w700, fontSize: 18),
                           ),
-                          SizedBox(height: 40),
                           TransferMethodList(),
                         ],
                       ),

@@ -4,6 +4,7 @@ import 'package:pinput/pinput.dart';
 import '../../core/constants/app_constants.dart';
 import '../../models/bank-account.dart';
 import '../home/home_screen.dart';
+import '../transfer/widgets/transfer_continue_button.dart';
 
 String otp = '';
 
@@ -248,179 +249,12 @@ class _IbanInquiryScreenState extends State<IbanInquiryScreen> {
                     ),
                   ),
                 ),
-                Positioned(
-                  top: 700,
+                const Positioned(
+                  bottom: 30,
                   right: 0,
                   left: 0,
-                  child: Container(
-                    margin: EdgeInsets.symmetric(horizontal: 40),
-                    child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: AppColors.primary,
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 40,
-                          vertical: 15,
-                        ),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(50),
-                        ),
-                      ),
-                      onPressed: () {
-                        showDialog(
-                          context: context,
-                          builder: (BuildContext context) {
-                            String otp = '';
-
-                            return Directionality(
-                              textDirection: TextDirection.rtl,
-                              child: AlertDialog(
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(20),
-                                ),
-                                title: const Text("تأیید تراکنش"),
-                                content: Column(
-                                  mainAxisSize: MainAxisSize.min,
-                                  children: [
-                                    const Text(
-                                      "کد تایید ارسال شده را وارد کنید.",
-                                    ),
-                                    const SizedBox(height: 12),
-                                    Directionality(
-                                      textDirection: TextDirection.ltr,
-                                      child: Pinput(
-                                        length: 6,
-                                        defaultPinTheme: PinTheme(
-                                          width: 56,
-                                          height: 56,
-                                          textStyle: TextStyle(
-                                            fontSize: 20,
-                                            color: Colors.black,
-                                          ),
-                                          decoration: BoxDecoration(
-                                            color: Colors.white,
-                                            border: Border.all(
-                                              color: Colors.grey,
-                                            ),
-                                            borderRadius: BorderRadius.circular(
-                                              12,
-                                            ),
-                                          ),
-                                        ),
-                                        focusedPinTheme: PinTheme(
-                                          width: 56,
-                                          height: 56,
-                                          textStyle: TextStyle(
-                                            fontSize: 20,
-                                            color: Colors.black,
-                                          ),
-                                          decoration: BoxDecoration(
-                                            color: Colors.white,
-                                            border: Border.all(
-                                              color: Colors.blue,
-                                            ),
-                                            borderRadius: BorderRadius.circular(
-                                              12,
-                                            ),
-                                          ),
-                                        ),
-                                        keyboardType: TextInputType.number,
-                                        onCompleted: (value) {
-                                          setState(() {
-                                            otp = value;
-                                          });
-                                          print('Entered OTP: $otp');
-                                        },
-                                      ),
-                                    ),
-                                    const SizedBox(height: 12),
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        const Text('زمان باقی مانده'),
-                                        const Text("درخواست مجدد"),
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                                actions: [
-                                  TextButton(
-                                    child: const Text(
-                                      "انصراف",
-                                      style: TextStyle(
-                                        color: AppColors.primary,
-                                      ),
-                                    ),
-                                    onPressed:
-                                        () => Navigator.of(context).pop(),
-                                  ),
-                                  ElevatedButton(
-                                    style: ElevatedButton.styleFrom(
-                                      backgroundColor: AppColors.primary,
-                                    ),
-                                    child: const Text(
-                                      "تأیید",
-                                      style: TextStyle(color: AppColors.white),
-                                    ),
-                                    onPressed: () {
-                                      if (otp == '123456') {
-                                        // Replace with actual validation logic
-                                        Navigator.of(
-                                          context,
-                                        ).pop(); // Close dialog
-
-                                        Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                            builder:
-                                                (context) =>
-                                                    TransferReceiptScreen(),
-                                          ),
-                                        );
-                                        ScaffoldMessenger.of(
-                                          context,
-                                        ).showSnackBar(
-                                          SnackBar(
-                                            backgroundColor: Colors.green,
-                                            content: Text(
-                                              "تراکنش با موفقیت انجام شد",
-                                            ),
-                                          ),
-                                        );
-                                      } else {
-                                        // Show error or handle incorrect OTP
-                                        ScaffoldMessenger.of(
-                                          context,
-                                        ).showSnackBar(
-                                          SnackBar(
-                                            backgroundColor:
-                                                Colors.red.shade500,
-                                            content: Text(
-                                              "کد وارد شده صحیح نیست",
-                                              style: TextStyle(
-                                                color: Colors.white,
-                                              ),
-                                            ),
-                                          ),
-                                        );
-                                      }
-                                    },
-                                  ),
-                                ],
-                              ),
-                            );
-                          },
-                        );
-                      },
-
-                      child: const Text(
-                        "استعلام",
-                        style: TextStyle(fontSize: 18, color: Colors.white),
-                      ),
-                    ),
-                  ),
-                ),
-              ],
+                  child: TransferContinueButton(),
+                ),              ],
             ),
           ],
         ),
