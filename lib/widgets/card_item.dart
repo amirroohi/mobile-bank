@@ -27,7 +27,11 @@ class CardItem extends StatelessWidget {
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(16),
             gradient: LinearGradient(
-              colors: [Color(0xFF1D4F7A), Color(0xFFA8A8A8), Color(0xFF2E75B6)],
+              colors:  [
+                Color(0xFF205FA1), // rich deep blue
+                Color(0xFF2E75B6), // your existing nice blue
+                Color(0xFF6FB1FC), // energetic soft blue
+              ],
               begin: Alignment.topRight,
               end: Alignment.bottomLeft,
             ),

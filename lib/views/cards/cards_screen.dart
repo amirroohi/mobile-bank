@@ -74,7 +74,7 @@ class _CardsScreenState extends State<CardsScreen> {
         ),
         body: Container(
           color: AppColors.background,
-          padding: const EdgeInsets.all(AppSizes.spacing),
+          padding: const EdgeInsets.symmetric(vertical:  AppSizes.spacing),
           child: Column(
             children: [
               CardTypeTabs(
@@ -88,7 +88,7 @@ class _CardsScreenState extends State<CardsScreen> {
                 child: Swiper(
                   itemCount: filteredCards.length,
                   layout: SwiperLayout.TINDER,
-                  itemWidth: MediaQuery.of(context).size.width * 0.9,
+                  itemWidth: MediaQuery.of(context).size.width * 1.0,
                   itemHeight: AppSizes.cardHeight,
                   onIndexChanged: (index) {
                     // Optional: do something when card changes
@@ -111,40 +111,15 @@ class _CardsScreenState extends State<CardsScreen> {
                 ),
               ),
 
-              const SizedBox(height: AppSizes.spacing),
+              const SizedBox(height: AppSizes.spacing * 4),
               Column(
+                spacing: 20,
                 children: [
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      OutlinedButton.icon(
+                      ElevatedButton(
                         onPressed: () {},
-                        icon: const Icon(Icons.block, color: AppColors.primary),
-                        label: const Text(
-                          AppStrings.blockCard,
-                          style: AppTextStyles.button,
-                        ),
-                        style: OutlinedButton.styleFrom(
-                          fixedSize: const Size(
-                            AppSizes.buttonWidth,
-                            AppSizes.buttonHeight,
-                          ),
-                          side: const BorderSide(color: AppColors.primary),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(50),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: 12),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      ElevatedButton.icon(
-                        onPressed: () {},
-                        icon: const Icon(Icons.lock),
-                        label: const Text(AppStrings.secondPassword),
                         style: ElevatedButton.styleFrom(
                           fixedSize: const Size(
                             AppSizes.buttonWidth,
@@ -156,7 +131,50 @@ class _CardsScreenState extends State<CardsScreen> {
                             borderRadius: BorderRadius.circular(50),
                           ),
                         ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          spacing: 10,
+                          mainAxisSize: MainAxisSize.max,
+                          children: const [
+                            Icon(Icons.lock),
+                            Text(AppStrings.secondPassword),
+                          ],
+                        ),
                       ),
+
+                    ],
+                  ),
+
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      OutlinedButton(
+                        onPressed: () {},
+                        style: OutlinedButton.styleFrom(
+                          fixedSize: const Size(
+                            AppSizes.buttonWidth,
+                            AppSizes.buttonHeight,
+                          ),
+                          side: const BorderSide(color: AppColors.primary),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(50),
+                          ),
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          spacing: 10,
+                          mainAxisSize: MainAxisSize.max,
+                          children: const [
+                            Icon(Icons.block, color: Colors.red),
+                            Text(
+                              AppStrings.blockCard,
+                              style: AppTextStyles.button,
+                            ),
+                          ],
+                        ),
+                      ),
+
                     ],
                   ),
                 ],

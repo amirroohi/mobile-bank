@@ -236,10 +236,10 @@ class DetailRow extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text(value, style: const TextStyle(fontSize: 16)),
+          Text(value, style: const TextStyle(fontSize: 16 ,color: AppColors.primary)),
           Text(
             label,
-            style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+            style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold,color: AppColors.primary),
           ),
         ],
       ),
