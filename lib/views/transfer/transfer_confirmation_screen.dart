@@ -334,7 +334,7 @@ class _TransferConfirmationScreenState
                   ),
                 ),
                 Positioned(
-                  top: 690,
+                  bottom: 30,
                   right: 0,
                   left: 0,
                   child: Container(

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../core/constants/app_constants.dart';
 import '../../models/bank-account.dart';
+import '../home/home_screen.dart';
 import 'widgets/transfer_card_swiper.dart';
 import 'widgets/transfer_continue_button.dart';
 import 'widgets/transfer_details_form.dart';
@@ -78,7 +79,12 @@ class _TransferFormScreenState extends State<TransferFormScreen> {
           actions: [
             IconButton(
               icon: const Icon(Icons.home, size: 32),
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const HomeScreen()),
+                );
+              },
             ),
           ],
         ),
@@ -96,7 +102,7 @@ class _TransferFormScreenState extends State<TransferFormScreen> {
                     elevation: 3,
                     borderRadius: BorderRadius.circular(25),
                     child: Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                      padding: const EdgeInsets.symmetric(horizontal: 0, vertical: 15),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(25),
                         color: AppColors.white,
@@ -115,7 +121,7 @@ class _TransferFormScreenState extends State<TransferFormScreen> {
                   ),
                 ),
                 const Positioned(
-                  top: 720,
+                  bottom: 30,
                   right: 0,
                   left: 0,
                   child: TransferContinueButton(),
