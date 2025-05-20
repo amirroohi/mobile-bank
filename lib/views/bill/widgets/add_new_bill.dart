@@ -48,7 +48,7 @@ class _AddNewBillState extends State<AddNewBill> {
           ),
         ),
         SizedBox(height: 20),
-        BillInput(),
+        BillInput(context),
       ],
     );
   }

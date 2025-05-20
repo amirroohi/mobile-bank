@@ -22,7 +22,7 @@ class TransferContinueButton extends StatelessWidget {
             slideFromRight(TransferTypeScreen()),
           );
         },
-        child: const Text(
+        child:  Text(
           "ادامه",
           style: TextStyle(fontSize: 18, color: AppColors.white),
         ),

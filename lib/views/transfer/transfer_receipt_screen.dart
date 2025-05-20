@@ -290,7 +290,7 @@ class _TransferReceiptScreenState extends State<TransferReceiptScreen> {
                     child: CircleAvatar(
                       radius: 40,
                       backgroundColor: Colors.green,
-                      child: const Icon(
+                      child:  Icon(
                         Icons.download_done,
                         size: 40,
                         color: AppColors.white,
@@ -411,7 +411,7 @@ class _TransferReceiptScreenState extends State<TransferReceiptScreen> {
                                 ),
                                 actions: [
                                   TextButton(
-                                    child: const Text(
+                                    child:  Text(
                                       "انصراف",
                                       style: TextStyle(
                                         color: AppColors.primary,
@@ -424,7 +424,7 @@ class _TransferReceiptScreenState extends State<TransferReceiptScreen> {
                                     style: ElevatedButton.styleFrom(
                                       backgroundColor: AppColors.primary,
                                     ),
-                                    child: const Text(
+                                    child:  Text(
                                       "تأیید",
                                       style: TextStyle(color: AppColors.white),
                                     ),

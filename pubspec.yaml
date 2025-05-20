@@ -42,6 +42,7 @@ dependencies:
   pinput: ^3.0.1
   persian_number_utility: ^1.1.4
   card_swiper: ^3.0.1
+  shared_preferences: ^2.2.2
 
 dev_dependencies:
   flutter_test:

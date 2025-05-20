@@ -32,7 +32,7 @@ class AccountItem extends StatelessWidget {
                 Center(
                   child: Text(
                     account.iban,
-                    style: const TextStyle(color: AppColors.white),
+                    style:  TextStyle(color: AppColors.white),
                   ),
                 ),
                 Row(
@@ -40,11 +40,11 @@ class AccountItem extends StatelessWidget {
                   children: [
                     Text(
                       account.type,
-                      style: const TextStyle(color: AppColors.white),
+                      style:  TextStyle(color: AppColors.white),
                     ),
                     Text(
                       account.accountNumber,
-                      style: const TextStyle(color: AppColors.white),
+                      style:  TextStyle(color: AppColors.white),
                     ),
                   ],
                 ),
@@ -54,9 +54,9 @@ class AccountItem extends StatelessWidget {
                   children: [
                     Text(
                       account.ownerName,
-                      style: const TextStyle(color: AppColors.white),
+                      style:  TextStyle(color: AppColors.white),
                     ),
-                    const Text(
+                     Text(
                       "6062 5610 1799 4305",
                       style: TextStyle(color: AppColors.white),
                     ),
@@ -70,11 +70,11 @@ class AccountItem extends StatelessWidget {
               children: [
                 Text(
                   "${account.balance.toStringAsFixed(0)} ریال",
-                  style: const TextStyle(color: AppColors.white, fontSize: 18),
+                  style:  TextStyle(color: AppColors.white, fontSize: 18),
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: const [
+                  children:  [
                     Icon(Icons.person, color: AppColors.white),
                     Icon(Icons.link, color: AppColors.white),
                     Icon(Icons.insert_drive_file, color: AppColors.white),

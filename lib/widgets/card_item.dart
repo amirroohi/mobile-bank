@@ -42,7 +42,7 @@ class CardItem extends StatelessWidget {
             children: [
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: const [
+                children:  [
                   CircleAvatar(
                     radius: 25,
                     backgroundColor: Colors.transparent,
@@ -55,7 +55,7 @@ class CardItem extends StatelessWidget {
               Center(
                 child: Text(
                   card.iban,
-                  style: const TextStyle(color: AppColors.white),
+                  style:  TextStyle(color: AppColors.white),
                 ),
               ),
               const SizedBox(height: 8),
@@ -63,7 +63,7 @@ class CardItem extends StatelessWidget {
                 children: [
                   Text(
                     card.ownerName,
-                    style: const TextStyle(
+                    style:  TextStyle(
                       color: AppColors.white,
                       fontWeight: FontWeight.bold,
                     ),
@@ -71,7 +71,7 @@ class CardItem extends StatelessWidget {
                   const Spacer(),
                   Text(
                     card.cardNumber,
-                    style: const TextStyle(color: AppColors.white, fontSize: 18),
+                    style:  TextStyle(color: AppColors.white, fontSize: 18),
                   ),
                 ],
               ),
@@ -80,12 +80,12 @@ class CardItem extends StatelessWidget {
                 children: [
                   Text(
                     "${card.balance.toStringAsFixed(0)} ريال",
-                    style: const TextStyle(color: AppColors.white),
+                    style:  TextStyle(color: AppColors.white),
                   ),
                   const Spacer(),
                   Text(
                     "تاریخ انقضا: ${card.expiry}",
-                    style: const TextStyle(color: AppColors.white),
+                    style:  TextStyle(color: AppColors.white),
                   ),
                 ],
               ),

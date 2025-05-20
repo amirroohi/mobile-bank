@@ -12,7 +12,7 @@ class BottomBar extends StatelessWidget {
     required this.onItemTapped,
   });
 
-  Widget buildNavItem({
+  Widget buildNavItem(BuildContext context,{
     required IconData icon,
     required String label,
     required int index,
@@ -72,22 +72,26 @@ class BottomBar extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               buildNavItem(
+                context,
                 icon: Icons.person_outline_rounded,
                 label: 'پروفایل',
                 index: 0,
               ),
               buildNavItem(
+                context,
                 icon: Icons.account_balance_wallet_outlined,
                 label: 'خدمات',
                 index: 1,
               ),
               const SizedBox(width: 70), // Space for FAB
               buildNavItem(
+                context,
                 icon: Icons.credit_card_outlined,
                 label: 'کارت',
                 index: 2,
               ),
               buildNavItem(
+                context,
                 icon: Icons.account_balance,
                 label: 'سپرده',
                 index: 3,

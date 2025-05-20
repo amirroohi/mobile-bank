@@ -1,7 +1,6 @@
-
-
 import 'package:flutter/material.dart';
 import '../../core/constants/app_constants.dart';
+import '../transfer/widgets/transfer_continue_button.dart';
 
 class ChangePasswordScreen extends StatefulWidget {
   const ChangePasswordScreen({super.key});
@@ -23,9 +22,9 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
   void _handleChangePassword() {
     if (_formKey.currentState!.validate()) {
       // TODO: Call your password change API here
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text("رمز عبور با موفقیت تغییر کرد")),
-      );
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text("رمز عبور با موفقیت تغییر کرد")));
       Navigator.pop(context);
     }
   }
@@ -36,67 +35,131 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
       textDirection: TextDirection.rtl,
       child: Scaffold(
         appBar: AppBar(
-          title: const Text('تغییر رمز عبور'),
+          title: Center(child: const Text('تغییر رمز عبور')),
           backgroundColor: AppColors.primary,
           foregroundColor: Colors.white,
+          actions: [SizedBox(width: 40)],
         ),
-        body: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Form(
-            key: _formKey,
-            child: ListView(
+        body: ListView(
+          children: [
+            Stack(
               children: [
-                _buildPasswordField(
-                  label: "رمز عبور فعلی",
-                  controller: _currentPasswordController,
-                  obscureText: _isObscureCurrent,
-                  toggleObscure: () {
-                    setState(() => _isObscureCurrent = !_isObscureCurrent);
-                  },
-                ),
-                const SizedBox(height: 16),
-                _buildPasswordField(
-                  label: "رمز عبور جدید",
-                  controller: _newPasswordController,
-                  obscureText: _isObscureNew,
-                  toggleObscure: () {
-                    setState(() => _isObscureNew = !_isObscureNew);
-                  },
-                ),
-                const SizedBox(height: 16),
-                _buildPasswordField(
-                  label: "تکرار رمز عبور جدید",
-                  controller: _confirmPasswordController,
-                  obscureText: _isObscureConfirm,
-                  toggleObscure: () {
-                    setState(() => _isObscureConfirm = !_isObscureConfirm);
-                  },
-                  validator: (value) {
-                    if (value != _newPasswordController.text) {
-                      return 'رمزها یکسان نیستند';
-                    }
-                    return null;
-                  },
-                ),
-                const SizedBox(height: 24),
-                ElevatedButton(
-                  onPressed: _handleChangePassword,
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: AppColors.primary,
-                    foregroundColor: Colors.white,
-                    padding: const EdgeInsets.symmetric(vertical: 14),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(50),
+                Container(height: 790, color: AppColors.white),
+                Container(height: 150, color: AppColors.primary),
+                Positioned(
+                  top: 25,
+                  left: 15,
+                  right: 15,
+                  child: Material(
+                    elevation: 3,
+                    borderRadius: BorderRadius.circular(25),
+                    child: Container(
+                      height: 430 ,
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 0,
+                        vertical: 15,
+                      ),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(25),
+                        color: Colors.white,
+                      ),
+                      child: Column(
+                        children: [
+                          // Form Card
+                          Expanded(
+                            child: SingleChildScrollView(
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 16,
+                              ),
+                              child: Form(
+                                key: _formKey,
+                                child: Container(
+                                  padding: const EdgeInsets.all(16),
+                                  decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.circular(12),
+                                  ),
+                                  child: Column(
+                                    spacing: 30,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      _buildPasswordField(
+                                        label: "رمز عبور فعلی",
+                                        controller: _currentPasswordController,
+                                        obscureText: _isObscureCurrent,
+                                        toggleObscure: () {
+                                          setState(
+                                            () =>
+                                                _isObscureCurrent =
+                                                    !_isObscureCurrent,
+                                          );
+                                        },
+                                      ),
+                                      _buildPasswordField(
+                                        label: "رمز عبور جدید",
+                                        controller: _newPasswordController,
+                                        obscureText: _isObscureNew,
+                                        toggleObscure: () {
+                                          setState(
+                                            () =>
+                                                _isObscureNew = !_isObscureNew,
+                                          );
+                                        },
+                                      ),
+                                      _buildPasswordField(
+                                        label: "تکرار رمز عبور جدید",
+                                        controller: _confirmPasswordController,
+                                        obscureText: _isObscureConfirm,
+                                        toggleObscure: () {
+                                          setState(
+                                            () =>
+                                                _isObscureConfirm =
+                                                    !_isObscureConfirm,
+                                          );
+                                        },
+                                        validator: (value) {
+                                          if (value !=
+                                              _newPasswordController.text) {
+                                            return 'رمزها یکسان نیستند';
+                                          }
+                                          return null;
+                                        },
+                                      ),
+                                        ElevatedButton(
+                                          onPressed: _handleChangePassword,
+                                          style: ElevatedButton.styleFrom(
+                                            backgroundColor: AppColors.primary,
+                                            foregroundColor: Colors.white,
+                                            padding: const EdgeInsets.symmetric(
+                                              vertical: 14,
+                                              horizontal: 30,
+                                            ),
+                                            shape: RoundedRectangleBorder(
+                                              borderRadius: BorderRadius.circular(
+                                                50,
+                                              ),
+                                            ),
+                                          ),
+                                          child: const Text(
+                                            "ذخیره تغییرات",
+                                            style: TextStyle(fontSize: 16),
+                                          ),
+                                        ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
-                  ),
-                  child: const Text(
-                    "ذخیره تغییرات",
-                    style: TextStyle(fontSize: 16),
                   ),
                 ),
               ],
             ),
-          ),
+          ],
         ),
       ),
     );
@@ -112,8 +175,9 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
     return TextFormField(
       controller: controller,
       obscureText: obscureText,
-      validator: validator ??
-              (value) {
+      validator:
+          validator ??
+          (value) {
             if (value == null || value.isEmpty) {
               return 'لطفاً $label را وارد کنید';
             }
@@ -121,7 +185,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
           },
       decoration: InputDecoration(
         labelText: label,
-        border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
+        border: OutlineInputBorder(borderRadius: BorderRadius.circular(50)),
         suffixIcon: IconButton(
           icon: Icon(
             obscureText ? Icons.visibility_off : Icons.visibility,
@@ -133,4 +197,3 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
     );
   }
 }
-

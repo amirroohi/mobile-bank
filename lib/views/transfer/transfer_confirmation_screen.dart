@@ -252,7 +252,7 @@ class _TransferConfirmationScreenState
                     child: CircleAvatar(
                       radius: 40,
                       backgroundColor: Colors.deepOrangeAccent,
-                      child: const Icon(
+                      child:  Icon(
                         Icons.credit_card,
                         size: 50,
                         color: AppColors.white,
@@ -462,7 +462,7 @@ class _TransferConfirmationScreenState
                                               MainAxisAlignment.end,
                                           children: [
                                             TextButton(
-                                              child: const Text(
+                                              child:  Text(
                                                 "انصراف",
                                                 style: TextStyle(
                                                   color: AppColors.primary,
@@ -480,7 +480,7 @@ class _TransferConfirmationScreenState
                                                   0xFF1D4B7E,
                                                 ),
                                               ),
-                                              child: const Text(
+                                              child:  Text(
                                                 "تأیید",
                                                 style: TextStyle(
                                                   color: AppColors.white,

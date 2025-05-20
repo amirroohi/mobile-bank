@@ -24,7 +24,7 @@ class CustomHeaderBar extends StatelessWidget implements PreferredSizeWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const Text(
+                 Text(
                   'AppBar Demo',
                   style: TextStyle(
                     color: AppColors.white,
@@ -35,7 +35,7 @@ class CustomHeaderBar extends StatelessWidget implements PreferredSizeWidget {
                 Row(
                   children: [
                     IconButton(
-                      icon: const Icon(Icons.add_alert, color: AppColors.white),
+                      icon:  Icon(Icons.add_alert, color: AppColors.white),
                       onPressed: () {
                         ScaffoldMessenger.of(context).showSnackBar(
                           const SnackBar(content: Text('This is a snackbar')),
@@ -43,7 +43,7 @@ class CustomHeaderBar extends StatelessWidget implements PreferredSizeWidget {
                       },
                     ),
                     IconButton(
-                      icon: const Icon(
+                      icon:  Icon(
                         Icons.navigate_next,
                         color: AppColors.white,
                       ),

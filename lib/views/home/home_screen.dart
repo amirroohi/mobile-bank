@@ -28,41 +28,6 @@ class _HomeScreenState extends State<HomeScreen>
 
   int _selectedIndex = -1; // -1 means home
   late Widget screen;
-  ThemeData _currentTheme = ThemeData(
-    scaffoldBackgroundColor: AppColors.primary,
-    fontFamily: "IRANSans",
-  );
-  Color? _currentAppbar = Color.fromRGBO(29, 75, 126, 1);
-
-  final Map<int, ThemeData> _themesByIndex = {
-    -1: ThemeData(
-      scaffoldBackgroundColor: AppColors.primary,
-      fontFamily: "IRANSans",
-    ), // Home
-    0: ThemeData(
-      scaffoldBackgroundColor: Color.fromRGBO(246, 248, 250, 1),
-      fontFamily: "IRANSans",
-    ), // Profile
-    1: ThemeData(
-      scaffoldBackgroundColor: const Color(0xF5F5F5F5),
-      fontFamily: "IRANSans",
-    ), // Services
-    2: ThemeData(
-      scaffoldBackgroundColor: const Color(0xF5F5F5F5),
-      fontFamily: "IRANSans",
-    ), // Card
-    3: ThemeData(
-      scaffoldBackgroundColor: const Color(0xF5F5F5F5),
-      fontFamily: "IRANSans",
-    ), // Account
-  };
-  final Map<int, Color> _appbarByIndex = {
-    -1: Color.fromRGBO(29, 75, 126, 1), // Home
-    0: Color.fromRGBO(29, 75, 126, 1), // Profile
-    1: Color.fromRGBO(245, 245, 245, 1), // Services
-    2: Color.fromRGBO(245, 245, 245, 1), // Cards
-    3: Color.fromRGBO(245, 245, 245, 1), // Accounts
-  };
 
   @override
   void initState() {
@@ -91,8 +56,6 @@ class _HomeScreenState extends State<HomeScreen>
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
-      _currentTheme = _themesByIndex[index] ?? ThemeData.light();
-      _currentAppbar = _appbarByIndex[index];
       switch (index) {
         case 0:
           screen = const ProfileScreen();
@@ -114,80 +77,87 @@ class _HomeScreenState extends State<HomeScreen>
 
   @override
   Widget build(BuildContext context) {
+    final themeByIndex = {
+      -1: ThemeData(
+        scaffoldBackgroundColor: AppColors.primary,
+        fontFamily: "IRANSans",
+      ),
+      0: ThemeData(
+        scaffoldBackgroundColor: const Color.fromRGBO(246, 248, 250, 1),
+        fontFamily: "IRANSans",
+      ),
+      1: ThemeData(
+        scaffoldBackgroundColor: const Color(0xFFF5F5F5),
+        fontFamily: "IRANSans",
+      ),
+      2: ThemeData(
+        scaffoldBackgroundColor: const Color(0xFFF5F5F5),
+        fontFamily: "IRANSans",
+      ),
+      3: ThemeData(
+        scaffoldBackgroundColor: const Color(0xFFF5F5F5),
+        fontFamily: "IRANSans",
+      ),
+    };
+
+    final appbarByIndex = {
+      -1: const Color.fromRGBO(29, 75, 126, 1),
+      0: const Color.fromRGBO(29, 75, 126, 1),
+      1: const Color(0xFFF5F5F5),
+      2: const Color(0xFFF5F5F5),
+      3: const Color(0xFFF5F5F5),
+    };
+
+    final theme = themeByIndex[_selectedIndex] ?? ThemeData.light();
+    final appBarColor = appbarByIndex[_selectedIndex] ?? Color.fromRGBO(29, 75, 126, 1);
+
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: _currentTheme,
+      theme: theme,
       home: Scaffold(
         extendBody: true,
-        appBar:
-            _selectedIndex == -1
-                ? AppBar(
-                  actionsPadding: EdgeInsets.symmetric(horizontal: 16),
-                  // title: Center(
-                  //   child: Text(_appBarTitle, style: TextStyle(fontSize: 28)),
-                  // ),
-                  backgroundColor: _currentAppbar,
-                  foregroundColor: AppColors.white,
-                  automaticallyImplyLeading: true,
-                  // actions: [
-                  //   IconButton(
-                  //     icon: const Icon(
-                  //       Icons.menu,
-                  //       size: 40,
-                  //       color: AppColors.white,
-                  //     ),
-                  //     onPressed: () {},
-                  //   ),
-                  // ],
-                  leading:
-                      _selectedIndex != -1
-                          ? IconButton(
-                            icon: Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: const Icon(Icons.home, size: 36),
-                            ),
-                            tooltip: 'خانه',
-                            onPressed: () {
-                              setState(() {
-                                _selectedIndex = -1;
-                                screen = const HomeContent();
-                                _currentTheme = _themesByIndex[-1]!;
-                              });
-                            },
-                          )
-                          : SizedBox(width: 50),
-                )
-                : null,
-        body: screen,
-        floatingActionButton: SizedBox(
-          width: 75,
-          height: 75,
-          child: FloatingActionButton(
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(100),
-            ),
+        appBar: _selectedIndex == -1
+            ? AppBar(
+          backgroundColor: appBarColor,
+          foregroundColor: AppColors.white,
+          leading: IconButton(
+            icon: const Icon(Icons.home, size: 36),
+            tooltip: 'خانه',
             onPressed: () {
-              Navigator.push(context, slideFromRight(AnifamScreen()));
+              setState(() {
+                _selectedIndex = -1;
+                screen = const HomeContent();
+              });
             },
-            backgroundColor: Colors.deepOrangeAccent,
-            foregroundColor: AppColors.white,
-            child: ScaleTransition(
-              scale: _scaleAnimation,
-              child: const Icon(Icons.electric_bolt, size: 40),
-            ),
+          ),
+        )
+            : null,
+        body: screen,
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            Navigator.push(context, slideFromRight(const AnifamScreen()));
+          },
+          backgroundColor: Colors.deepOrangeAccent,
+          foregroundColor: AppColors.white,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(100),
+          ),
+          child: ScaleTransition(
+            scale: _scaleAnimation,
+            child: const Icon(Icons.electric_bolt, size: 40),
           ),
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-        bottomNavigationBar:
-        // Padding(
-        // padding: const EdgeInsets.symmetric(horizontal: 10),
-        // child:
-        BottomBar(selectedIndex: _selectedIndex, onItemTapped: _onItemTapped),
+        bottomNavigationBar: BottomBar(
+          selectedIndex: _selectedIndex,
+          onItemTapped: _onItemTapped,
+        ),
       ),
     );
-    // );
   }
 }
+
+// =================== HOME CONTENT ===================
 
 class HomeContent extends StatefulWidget {
   const HomeContent({super.key});
@@ -214,7 +184,6 @@ class _HomeContentState extends State<HomeContent> {
   void initState() {
     super.initState();
 
-    // Define local accounts
     userAccounts = [
       BankAccount(
         ownerName: "مینا علمی",
@@ -232,7 +201,7 @@ class _HomeContentState extends State<HomeContent> {
         type: "سپرده کوتاه مدت",
         balance: 87500000,
         logoAsset: 'assets/images/melal_icon.png',
-        isBookmarked: true, // this one is initially selected
+        isBookmarked: true,
       ),
       BankAccount(
         ownerName: "خودم",
@@ -241,12 +210,10 @@ class _HomeContentState extends State<HomeContent> {
         type: "سپرده بلند مدت",
         balance: 87500000,
         logoAsset: 'assets/images/melal_icon.png',
-        isBookmarked: false, // this one is initially selected
+        isBookmarked: false,
       ),
-      // Add more accounts if needed
     ];
 
-    // Find initial bookmarked account index
     initialBookmarkedIndex = userAccounts.indexWhere((a) => a.isBookmarked);
     if (initialBookmarkedIndex == -1) initialBookmarkedIndex = 0;
   }
@@ -255,29 +222,27 @@ class _HomeContentState extends State<HomeContent> {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        /// ❄️ Fixed Content (background)
+        /// 🧾 Main content
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            /// 📇 Cards
+            /// 💳 Account cards
             SizedBox(
               height: 250,
               child: Swiper(
-                index: initialBookmarkedIndex, //  start from bookmarked
+                index: initialBookmarkedIndex,
                 layout: SwiperLayout.TINDER,
                 itemWidth: 500,
                 itemHeight: 300,
                 itemBuilder: (BuildContext context, int index) {
                   return BankCard(
                     account: userAccounts[index],
-                    onBookmarkPressed: () => _toggleBookmark(index), //  here
+                    onBookmarkPressed: () => _toggleBookmark(index),
                   );
                 },
-
                 itemCount: userAccounts.length,
               ),
             ),
-
             const SizedBox(height: 20),
 
             /// ⚡ Quick Actions
@@ -289,7 +254,6 @@ class _HomeContentState extends State<HomeContent> {
                 });
               },
             ),
-
             const SizedBox(height: 0),
 
             /// 📢 Loan Banner
@@ -297,7 +261,7 @@ class _HomeContentState extends State<HomeContent> {
           ],
         ),
 
-        /// 🧲 Draggable Scrollable Panel (overlay)
+        /// 🧲 Draggable Panel
         DraggableScrollableSheet(
           initialChildSize: 0.40,
           minChildSize: 0.40,
@@ -305,20 +269,20 @@ class _HomeContentState extends State<HomeContent> {
           builder: (context, scrollController) {
             return Container(
               margin: const EdgeInsets.all(16.0),
-              decoration: const BoxDecoration(
+              decoration: BoxDecoration(
                 color: AppColors.white,
-                borderRadius: BorderRadius.vertical(top: Radius.circular(25)),
+                borderRadius: const BorderRadius.vertical(top: Radius.circular(25)),
                 boxShadow: [
                   BoxShadow(
                     color: AppColors.primary,
                     blurRadius: 10,
-                    offset: Offset(0, -2),
+                    offset: const Offset(0, -2),
                   ),
                 ],
               ),
               child: SingleChildScrollView(
                 controller: scrollController,
-                child: TransferSection(),
+                child:  TransferSection(),
               ),
             );
           },
@@ -327,4 +291,3 @@ class _HomeContentState extends State<HomeContent> {
     );
   }
 }
-

@@ -156,7 +156,7 @@ class _CardsScreenState extends State<CardsScreen> {
                             AppSizes.buttonWidth,
                             AppSizes.buttonHeight,
                           ),
-                          side: const BorderSide(color: AppColors.primary),
+                          side:  BorderSide(color: AppColors.primary),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(50),
                           ),
@@ -165,11 +165,11 @@ class _CardsScreenState extends State<CardsScreen> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           spacing: 10,
                           mainAxisSize: MainAxisSize.max,
-                          children: const [
+                          children:  [
                             Icon(Icons.block, color: Colors.red),
                             Text(
                               AppStrings.blockCard,
-                              style: AppTextStyles.button,
+                              style: TextStyle(color: AppColors.primary),
                             ),
                           ],
                         ),

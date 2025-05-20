@@ -28,7 +28,7 @@ class LoanFormFields extends StatelessWidget {
               ),
               suffixIcon: IconButton(
                 onPressed: () {},
-                icon: const Icon(
+                icon:  Icon(
                   Icons.perm_contact_calendar_outlined,
                   color: AppColors.primary,
                 ),

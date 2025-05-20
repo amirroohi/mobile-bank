@@ -17,7 +17,7 @@ class ServiceSection extends StatelessWidget {
         Divider(color: Colors.grey.shade200),
         Text(
           title,
-          style: const TextStyle(
+          style:  TextStyle(
             fontSize: 18,
             fontWeight: FontWeight.bold,
             color: AppColors.primary,

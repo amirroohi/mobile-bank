@@ -256,13 +256,13 @@ class _BankCardState extends State<BankCard> {
               children: [
                 Row(
                   children: [
-                    _buildCircularIcon(Icons.group),
+                    _buildCircularIcon(context,Icons.group),
                     SizedBox(width: 4),
-                    _buildCircularIcon(Icons.account_balance),
+                    _buildCircularIcon(context,Icons.account_balance),
                     SizedBox(width: 4),
-                    _buildCircularIcon(Icons.compare_arrows),
+                    _buildCircularIcon(context,Icons.compare_arrows),
                     SizedBox(width: 4),
-                    _buildCircularIcon(Icons.credit_card),
+                    _buildCircularIcon(context,Icons.credit_card),
                   ],
                 ),
                 Row(
@@ -307,7 +307,7 @@ class _BankCardState extends State<BankCard> {
   }
 }
 
-Widget _buildCircularIcon(IconData iconData) {
+Widget _buildCircularIcon(BuildContext context, IconData iconData) {
   return Container(
     width: 35,
     height: 35,
