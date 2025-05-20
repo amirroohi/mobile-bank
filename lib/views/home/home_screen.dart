@@ -109,31 +109,29 @@ class _HomeScreenState extends State<HomeScreen>
     };
 
     final theme = themeByIndex[_selectedIndex] ?? ThemeData.light();
-    final appBarColor =
-        appbarByIndex[_selectedIndex] ?? Color.fromRGBO(29, 75, 126, 1);
+    final appBarColor = appbarByIndex[_selectedIndex] ?? Color.fromRGBO(29, 75, 126, 1);
 
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: theme,
       home: Scaffold(
         extendBody: true,
-        appBar:
-            _selectedIndex == -1
-                ? AppBar(
-                  backgroundColor: appBarColor,
-                  foregroundColor: AppColors.white,
-                  leading: IconButton(
-                    icon: const Icon(Icons.home, size: 0),
-                    tooltip: 'خانه',
-                    onPressed: () {
-                      setState(() {
-                        _selectedIndex = -1;
-                        screen = const HomeContent();
-                      });
-                    },
-                  ),
-                )
-                : null,
+        appBar: _selectedIndex == -1
+            ? AppBar(
+          backgroundColor: appBarColor,
+          foregroundColor: AppColors.white,
+          leading: IconButton(
+            icon: const Icon(Icons.home, size: 0),
+            tooltip: 'خانه',
+            onPressed: () {
+              setState(() {
+                _selectedIndex = -1;
+                screen = const HomeContent();
+              });
+            },
+          ),
+        )
+            : null,
         body: screen,
         floatingActionButton: SizedBox(
           width: 70,
@@ -141,12 +139,6 @@ class _HomeScreenState extends State<HomeScreen>
           child: FloatingActionButton(
             onPressed: () {
               Navigator.push(context, slideFromRight(const AnifamScreen()));
-              ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(
-                  content: Text("این یک پیام نمونه است"),
-                  behavior: SnackBarBehavior.floating, // 👈 This prevents it from pushing FAB
-                ),
-              );
             },
 
             backgroundColor: Colors.deepOrangeAccent,
@@ -183,12 +175,6 @@ class _HomeContentState extends State<HomeContent> {
   int selectedQuickActionIndex = -1;
   late List<BankAccount> userAccounts;
   late int initialBookmarkedIndex;
-  // late ScrollController _scrollController;
-  bool _isScrollEnabled = false;
-  final DraggableScrollableController _draggableController = DraggableScrollableController();
-  final ScrollController _scrollController = ScrollController();
-
-  // bool _isScrollEnabled = false;
 
   void _toggleBookmark(int index) {
     setState(() {
@@ -202,29 +188,6 @@ class _HomeContentState extends State<HomeContent> {
   @override
   void initState() {
     super.initState();
-
-    _draggableController.addListener(() {
-      final extent = _draggableController.size;
-      final fullyExpanded = extent >= 0.70;
-
-      if (_isScrollEnabled != fullyExpanded) {
-        setState(() {
-          _isScrollEnabled = fullyExpanded;
-        });
-      }
-
-      if (!_isScrollEnabled && _scrollController.hasClients) {
-        _scrollController.jumpTo(0); // Prevents user from scrolling content
-      }
-    });
-
-
-    // _scrollController = ScrollController();
-    // _scrollController.addListener(() {
-    //   if (!_isScrollEnabled) {
-    //     _scrollController.jumpTo(0); // Prevent scrolling when disabled
-    //   }
-    // });
 
     userAccounts = [
       BankAccount(
@@ -258,13 +221,6 @@ class _HomeContentState extends State<HomeContent> {
 
     initialBookmarkedIndex = userAccounts.indexWhere((a) => a.isBookmarked);
     if (initialBookmarkedIndex == -1) initialBookmarkedIndex = 0;
-  }
-
-  @override
-  void dispose() {
-    _draggableController.dispose();
-    _scrollController.dispose();
-    super.dispose();
   }
 
   @override
@@ -312,38 +268,30 @@ class _HomeContentState extends State<HomeContent> {
 
         /// 🧲 Draggable Panel
         DraggableScrollableSheet(
-          controller: _draggableController,
           initialChildSize: 0.40,
           minChildSize: 0.40,
           maxChildSize: 0.70,
-          builder: (context, _) {
+          builder: (context, scrollController) {
             return Container(
               margin: const EdgeInsets.all(16.0),
               decoration: BoxDecoration(
                 color: AppColors.white,
-                borderRadius: const BorderRadius.vertical(
-                  top: Radius.circular(25),
-                ),
+                borderRadius: const BorderRadius.vertical(top: Radius.circular(25)),
                 boxShadow: [
                   BoxShadow(
-                    color: AppColors.primary.withOpacity(0.3),
+                    color: AppColors.primary,
                     blurRadius: 10,
                     offset: const Offset(0, -2),
                   ),
                 ],
               ),
               child: SingleChildScrollView(
-                controller: _scrollController,
-                physics: _isScrollEnabled
-                    ? const BouncingScrollPhysics()
-                    : const NeverScrollableScrollPhysics(),
+                controller: scrollController,
                 child:  TransferSection(),
               ),
             );
           },
         ),
-
-
       ],
     );
   }
