@@ -1,6 +1,5 @@
-
-
 import 'package:flutter/material.dart';
+import 'package:mobile_bank/core/constants/app_constants.dart';
 import '../../widgets/service_item.dart';
 import '../../widgets/service_section.dart';
 import '../services/services_screen.dart';
@@ -9,10 +8,12 @@ class SelectedServicesMngmntScreen extends StatefulWidget {
   const SelectedServicesMngmntScreen({super.key});
 
   @override
-  State<SelectedServicesMngmntScreen> createState() => _SelectedServicesMngmntScreenState();
+  State<SelectedServicesMngmntScreen> createState() =>
+      _SelectedServicesMngmntScreenState();
 }
 
-class _SelectedServicesMngmntScreenState extends State<SelectedServicesMngmntScreen> {
+class _SelectedServicesMngmntScreenState
+    extends State<SelectedServicesMngmntScreen> {
   final Set<String> selectedTitles = {}; // Store titles of selected services
 
   late final List<ServiceGroup> allServiceGroups;
@@ -86,31 +87,47 @@ class _SelectedServicesMngmntScreenState extends State<SelectedServicesMngmntScr
       textDirection: TextDirection.rtl,
       child: Scaffold(
         appBar: AppBar(
+          backgroundColor: Color(0xFFF3F6FA),
           title: const Text("مدیریت خدمات منتخب"),
           actions: [
-            IconButton(
-              icon: const Icon(Icons.save),
-              onPressed: _saveSelection,
-              tooltip: 'ذخیره',
-            )
+            TextButton(
+              onPressed: () {},
+              child: Text(
+                "ذخیره",
+                style: TextStyle(
+                  color: AppColors.primary,
+                  fontSize: 18,
+                  fontWeight: FontWeight.w700,
+                ),
+              ),
+            ),
+            // IconButton(
+            //   icon: const Icon(Icons.save),
+            //   onPressed: _saveSelection,
+            //   tooltip: 'ذخیره',
+            // )
           ],
         ),
         body: Padding(
           padding: const EdgeInsets.all(16.0),
           child: ListView(
             children: [
-              ...allServiceGroups.map((group) => ServiceSection(
-                title: group.title,
-                items: group.items.map((item) {
-                  final isSelected = selectedTitles.contains(item.title);
-                  return ServiceItem(
-                    title: item.title,
-                    icon: item.icon,
-                    onTap: () => _toggleService(item.title),
-                    isSelected: isSelected, // You'll need to modify the widget
-                  );
-                }).toList(),
-              )),
+              ...allServiceGroups.map(
+                (group) => ServiceSection(
+                  title: group.title,
+                  items:
+                      group.items.map((item) {
+                        final isSelected = selectedTitles.contains(item.title);
+                        return ServiceItem(
+                          title: item.title,
+                          icon: item.icon,
+                          onTap: () => _toggleService(item.title),
+                          isSelected:
+                              isSelected, // You'll need to modify the widget
+                        );
+                      }).toList(),
+                ),
+              ),
               const SizedBox(height: 30),
             ],
           ),

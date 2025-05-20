@@ -16,6 +16,7 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
+  bool isDarkMode= false;
   @override
   Widget build(BuildContext context) {
     return Directionality(
@@ -89,92 +90,99 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-
-                                  children: [
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Text(
-                                          'تاریخ تولد:',
-                                          style: TextStyle(
-                                            fontWeight: FontWeight.bold,
-                                            color: AppColors.primary,
+                                IntrinsicWidth(
+                                  child: Column(
+                                    spacing: 16,
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                                    children: [
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Text(
+                                            'تاریخ تولد: ',
+                                            style: TextStyle(
+                                              fontWeight: FontWeight.bold,
+                                              color: AppColors.primary,
+                                            ),
                                           ),
-                                        ),
-                                        Text(
-                                          '1370/09/27',
-                                          style: TextStyle(
-                                            color: AppColors.primary,
+                                          Text(
+                                            '1370/09/27',
+                                            style: TextStyle(
+                                              color: AppColors.primary,
+                                            ),
                                           ),
-                                        ),
-                                      ],
-                                    ),
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Text(
-                                          'ایمیل:',
-                                          style: TextStyle(
-                                            fontWeight: FontWeight.bold,
-                                            color: AppColors.primary,
+                                        ],
+                                      ),
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Text(
+                                            'ایمیل: ',
+                                            style: TextStyle(
+                                              fontWeight: FontWeight.bold,
+                                              color: AppColors.primary,
+                                            ),
                                           ),
-                                        ),
-                                        Text(
-                                          'm@yahoo.com',
-                                          style: TextStyle(
-                                            color: AppColors.primary,
+                                          Text(
+                                            'm@yahoo.com',
+                                            style: TextStyle(
+                                              color: AppColors.primary,
+                                            ),
                                           ),
-                                        ),
-                                      ],
-                                    ),
-                                  ],
+                                        ],
+                                      ),
+                                    ],
+                                  ),
                                 ),
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Text(
-                                          'شماره تماس:',
-                                          style: TextStyle(
-                                            fontWeight: FontWeight.bold,
-                                            color: AppColors.primary,
+                                IntrinsicWidth(
+                                  child: Column(
+                                    spacing: 16,
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                                    children: [
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Text(
+                                            'شماره تماس: ',
+                                            style: TextStyle(
+                                              fontWeight: FontWeight.bold,
+                                              color: AppColors.primary,
+                                            ),
                                           ),
-                                        ),
-                                        Text(
-                                          '09121250058',
-                                          style: TextStyle(
-                                            color: AppColors.primary,
+                                          Text(
+                                            '09121250058',
+                                            style: TextStyle(
+                                              color: AppColors.primary,
+                                            ),
                                           ),
-                                        ),
-                                      ],
-                                    ),
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Text(
-                                          'کد ملی:',
-                                          style: TextStyle(
-                                            fontWeight: FontWeight.bold,
-                                            color: AppColors.primary,
+                                        ],
+                                      ),
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Text(
+                                            'کد ملی: ',
+                                            style: TextStyle(
+                                              fontWeight: FontWeight.bold,
+                                              color: AppColors.primary,
+                                            ),
                                           ),
-                                        ),
-                                        Text(
-                                          '0480383650',
-                                          style: TextStyle(
-                                            color: AppColors.primary,
+                                          Text(
+                                            '0480383650',
+                                            style: TextStyle(
+                                              color: AppColors.primary,
+                                            ),
                                           ),
-                                        ),
-                                      ],
-                                    ),
-                                  ],
+                                        ],
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               ],
                             ),
@@ -225,9 +233,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
       _settingsSwitchTile(
         Icons.dark_mode,
         'تغییر تم',
-        value: true,
+        value: isDarkMode,
         onChanged: (val) {
-          return !val;
+          setState(() {
+            isDarkMode = val;
+          });
         },
       ),
       _settingsTile(Icons.star, 'مدیریت خدمات برگزیده', onTap: () {

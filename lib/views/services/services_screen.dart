@@ -212,7 +212,7 @@ class _ServicesScreenState extends State<ServicesScreen> {
           title: const Center(
             child: Text("خدمات", style: TextStyle(fontSize: 28)),
           ),
-          backgroundColor: const Color.fromRGBO(245, 245, 245, 1),
+          backgroundColor: Color(0xFFF3F6FA),
           foregroundColor: AppColors.primary,
           automaticallyImplyLeading: true,
           actions: [

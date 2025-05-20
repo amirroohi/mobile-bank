@@ -1,23 +1,29 @@
 import 'package:flutter/material.dart';
-
+import 'package:card_swiper/card_swiper.dart';
 import '../core/constants/app_constants.dart';
 
 Widget loanBanner = Container(
   margin: const EdgeInsets.all(16),
-  decoration: BoxDecoration(
-    color: AppColors.transparent,
+  height: 110,
+  child: ClipRRect(
     borderRadius: BorderRadius.circular(25),
-  ),
-  child: SizedBox(
-    height: 110,
-    width: double.infinity,
-    child: ClipRRect(
-      borderRadius: BorderRadius.circular(25),
-      child: Image.asset(
-        'assets/images/banner.png',
-        fit: BoxFit.cover,
-      ),
+    child: Swiper(
+      itemCount: _loanBannerImages.length,
+      autoplay: true,
+      autoplayDelay: 5000,
+      pagination: const SwiperPagination(),
+      itemBuilder: (BuildContext context, int index) {
+        return Image.asset(
+          _loanBannerImages[index],
+          fit: BoxFit.cover,
+        );
+      },
     ),
   ),
 );
 
+final List<String> _loanBannerImages = [
+  'assets/images/banner.png',
+  'assets/images/banner.png',
+  'assets/images/banner.png',
+];

@@ -20,17 +20,22 @@ class ServiceItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
+      borderRadius: BorderRadius.circular(30),
+
       onTap: onTap,
-      child: Column(
-        children: [
-          CircleAvatar(
-            radius: 32,
-            backgroundColor: const Color(0xFFE2E9F3),
-            child: Icon(icon, color: AppColors.primary, size: 28),
-          ),
-          const SizedBox(height: 8),
-          Text(title, style: TextStyle(fontSize: 12, color: AppColors.primary)),
-        ],
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 2.0,vertical: 6),
+        child: Column(
+          children: [
+            CircleAvatar(
+              radius: 32,
+              backgroundColor: const Color(0xFFE2E9F3),
+              child: Icon(icon, color: AppColors.primary, size: 28),
+            ),
+            const SizedBox(height: 4),
+            Text(title, style: TextStyle(fontSize: 12, color: AppColors.primary)),
+          ],
+        ),
       ),
     );
   }

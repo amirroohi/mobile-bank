@@ -126,24 +126,26 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                                           return null;
                                         },
                                       ),
-                                        ElevatedButton(
-                                          onPressed: _handleChangePassword,
-                                          style: ElevatedButton.styleFrom(
-                                            backgroundColor: AppColors.primary,
-                                            foregroundColor: Colors.white,
-                                            padding: const EdgeInsets.symmetric(
-                                              vertical: 14,
-                                              horizontal: 30,
-                                            ),
-                                            shape: RoundedRectangleBorder(
-                                              borderRadius: BorderRadius.circular(
-                                                50,
+                                        Center(
+                                          child: ElevatedButton(
+                                            onPressed: _handleChangePassword,
+                                            style: ElevatedButton.styleFrom(
+                                              backgroundColor: AppColors.primary,
+                                              foregroundColor: Colors.white,
+                                              padding: const EdgeInsets.symmetric(
+                                                vertical: 14,
+                                                horizontal: 30,
+                                              ),
+                                              shape: RoundedRectangleBorder(
+                                                borderRadius: BorderRadius.circular(
+                                                  50,
+                                                ),
                                               ),
                                             ),
-                                          ),
-                                          child: const Text(
-                                            "ذخیره تغییرات",
-                                            style: TextStyle(fontSize: 16),
+                                            child: const Text(
+                                              "ذخیره تغییرات",
+                                              style: TextStyle(fontSize: 16),
+                                            ),
                                           ),
                                         ),
                                     ],
