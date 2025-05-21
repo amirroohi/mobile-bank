@@ -96,7 +96,6 @@ class _AccountsScreenState extends State<AccountsScreen> {
     if (initialBookmarkedIndex == -1) initialBookmarkedIndex = 0;
   }
 
-
   @override
   Widget build(BuildContext context) {
     return Directionality(
@@ -131,30 +130,81 @@ class _AccountsScreenState extends State<AccountsScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              ToggleButtons(
-                isSelected: [
-                  selectedTab == "سپرده منفرد",
-                  selectedTab == "سپرده مشترک",
-                ],
-                onPressed: (index) {
-                  setState(() {
-                    selectedTab = index == 0 ? "سپرده منفرد" : "سپرده مشترک";
-                  });
-                },
-                borderRadius: BorderRadius.circular(50),
-                selectedColor: AppColors.white,
-                fillColor: AppColors.primary,
-                color: AppColors.primary,
-                children: const [
-                  Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 20),
-                    child: Text("سپرده منفرد"),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 20),
-                    child: Text("سپرده مشترک"),
-                  ),
-                ],
+
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: GestureDetector(
+                        onTap: () {
+                          setState(() {
+                            selectedTab = "سپرده منفرد";
+                          });
+                        },
+                        child: Container(
+                          decoration: BoxDecoration(
+                            color:
+                                selectedTab == "سپرده منفرد"
+                                    ? AppColors.primary
+                                    : Colors.transparent,
+                            border: Border.all(color: AppColors.primary),
+                            borderRadius: BorderRadius.only(
+                              topRight: Radius.circular(50),
+                              bottomRight: Radius.circular(50),
+                            ),
+                          ),
+                          padding: EdgeInsets.symmetric(vertical: 12),
+                          alignment: Alignment.center,
+                          child: Text(
+                            "سپرده منفرد",
+                            style: TextStyle(
+                              color:
+                                  selectedTab == "سپرده منفرد"
+                                      ? Colors.white
+                                      : AppColors.primary,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    Expanded(
+                      child: GestureDetector(
+                        onTap: () {
+                          setState(() {
+                            selectedTab = "سپرده مشترک";
+                          });
+                        },
+                        child: Container(
+                          decoration: BoxDecoration(
+                            color:
+                                selectedTab == "سپرده مشترک"
+                                    ? AppColors.primary
+                                    : Colors.transparent,
+                            border: Border.all(color: AppColors.primary),
+                            borderRadius: BorderRadius.only(
+                              topLeft: Radius.circular(50),
+                              bottomLeft: Radius.circular(50),
+                            ),
+                          ),
+                          padding: EdgeInsets.symmetric(vertical: 12),
+                          alignment: Alignment.center,
+                          child: Text(
+                            "سپرده مشترک",
+                            style: TextStyle(
+                              color:
+                                  selectedTab == "سپرده مشترک"
+                                      ? Colors.white
+                                      : AppColors.primary,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
               ),
               const SizedBox(height: 20),
               SizedBox(
@@ -171,9 +221,9 @@ class _AccountsScreenState extends State<AccountsScreen> {
                     });
                   },
                   itemBuilder: (context, index) {
-                    return BankCard(account: userAccounts[index],
+                    return BankCard(
+                      account: userAccounts[index],
                       onBookmarkPressed: () => _toggleBookmark(index), //  here
-
                     );
                   },
                 ),
@@ -213,7 +263,10 @@ class _AccountsScreenState extends State<AccountsScreen> {
             const SizedBox(height: 8),
             DetailRow(label: "نوع سپرده", value: account.type),
             const DetailRow(label: "نوع مسدودی", value: "بخشی"),
-            DetailRow(label: "مبلغ مسدودی", value: formatWithCommas(account.balance.toString())),
+            DetailRow(
+              label: "مبلغ مسدودی",
+              value: formatWithCommas(account.balance.toString()),
+            ),
             const DetailRow(label: "تاریخ افتتاح", value: "1401/08/09"),
             const DetailRow(label: "تاریخ سود", value: "1401/08/09"),
           ],
@@ -236,10 +289,17 @@ class DetailRow extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text(value, style: const TextStyle(fontSize: 16 ,color: AppColors.primary)),
+          Text(
+            value,
+            style: const TextStyle(fontSize: 16, color: AppColors.primary),
+          ),
           Text(
             label,
-            style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold,color: AppColors.primary),
+            style: const TextStyle(
+              fontSize: 16,
+              fontWeight: FontWeight.bold,
+              color: AppColors.primary,
+            ),
           ),
         ],
       ),

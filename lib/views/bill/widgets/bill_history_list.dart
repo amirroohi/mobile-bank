@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mobile_bank/views/transfer/transfer_confirmation_screen.dart';
 
 import '../../../core/constants/app_constants.dart';
 import '../../../widgets/slide_navigation.dart';
@@ -35,64 +36,77 @@ Widget BillHistoryCard({
   required String billId,
 }) {
   return Card(
-    margin: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+    margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
     color: Colors.white,
     elevation: 10,
     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
-    child: Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 12),
-      child: Column(
-        spacing: 8,
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    child: Stack(
+      children: [
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 12),
+          child: Column(
             children: [
-              Text(
-                title,
-                style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700),
-              ),
-              Icon(Icons.receipt_long, size: 28),
-            ],
-          ),
-          Divider(),
-          Column(
-            spacing: 8,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
+              const SizedBox(height: 8), // Space for the bookmark icon
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [Text("شناسه قبض: "), Text(" $billId")],
+                children: [
+                  Text(
+                    title,
+                    style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w700),
+                  ),
+                  const Icon(Icons.receipt_long, size: 28),
+                ],
+              ),
+              const Divider(),
+              Column(
+                spacing: 5,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [const Text("شناسه قبض: "), Text(" $billId")],
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [const Text("مبلغ: "), Text("$amount")],
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [const Text("وضعیت: "), Text("$status")],
+                  ),
+                ],
               ),
               Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [Text("مبلغ: "), Text("$amount")],
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [Text("وضعیت: "), Text("$status")],
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: AppColors.primary,
+                      foregroundColor: Colors.white,
+                      padding: EdgeInsets.symmetric(vertical: 10,horizontal: 30)
+                    ),
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        slideFromRight(TransferConfirmationScreen()),
+                      );
+                    },
+                    child: const Text("پرداخت"),
+                  ),
+                ],
               ),
             ],
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: AppColors.primary,
-                  foregroundColor: Colors.white,
-                ),
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    slideFromRight(TransferTypeScreen()),
-                  );
-                },
-                child: Text("پرداخت"),
-              ),
-            ],
-          ),
-        ],
-      ),
+        ),
+
+        // 🔖 Positioned Bookmark Icon
+        const Positioned(
+          top: 0,
+          right: 8,
+          child: Icon(Icons.bookmark, color: Colors.redAccent),
+        ),
+      ],
     ),
   );
 }
+
