@@ -3,7 +3,6 @@ import 'package:mobile_bank/views/transfer/transfer_confirmation_screen.dart';
 
 import '../../../core/constants/app_constants.dart';
 import '../../../widgets/slide_navigation.dart';
-import '../../transfer/transfer_type_screen.dart';
 
 Widget BillHistoryList(BuildContext context) {
   return Column(
