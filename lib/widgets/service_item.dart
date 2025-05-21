@@ -31,7 +31,7 @@ class ServiceItem extends StatelessWidget {
                 CircleAvatar(
                   radius: 32,
                   backgroundColor:
-                  isSelected ? AppColors.primary : const Color(0xFFE2E9F3),
+                  isSelected ? AppColors.secondary : const Color(0xFFE2E9F3),
                   child: Icon(
                     icon,
                     color: isSelected ? Colors.white : AppColors.primary,
@@ -40,8 +40,8 @@ class ServiceItem extends StatelessWidget {
                 ),
                 if (isSelected)
                   const Positioned(
-                    top: -6,
-                    right: -6,
+                    top: -4,
+                    right: -4,
                     child: Icon(
                       Icons.check,
                       color: Colors.green,

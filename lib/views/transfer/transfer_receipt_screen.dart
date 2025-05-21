@@ -11,7 +11,6 @@ class TransferReceiptScreen extends StatefulWidget {
 }
 
 class _TransferReceiptScreenState extends State<TransferReceiptScreen> {
-
   bool _isContact = false;
 
   bool _hasAniFam = false;
@@ -43,7 +42,7 @@ class _TransferReceiptScreenState extends State<TransferReceiptScreen> {
             Padding(
               padding: const EdgeInsets.only(left: 8.0),
               child: IconButton(
-                icon: const Icon(Icons.home,size: 32,),
+                icon: const Icon(Icons.home, size: 32),
                 tooltip: 'خانه',
                 onPressed: () {
                   Navigator.push(
@@ -218,9 +217,16 @@ class _TransferReceiptScreenState extends State<TransferReceiptScreen> {
                                       color: Color.fromRGBO(140, 140, 140, 1.0),
                                     ),
                                   ),
-                                  Container(padding: EdgeInsets.symmetric(horizontal: 10,vertical: 4),
+                                  Container(
+                                    padding: EdgeInsets.symmetric(
+                                      horizontal: 10,
+                                      vertical: 4,
+                                    ),
 
-                                    decoration: BoxDecoration(borderRadius: BorderRadius.circular(12),color: Colors.green.shade100, ),
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(12),
+                                      color: Colors.green.shade100,
+                                    ),
                                     child: Text(
                                       "موفق",
                                       style: TextStyle(
@@ -290,7 +296,7 @@ class _TransferReceiptScreenState extends State<TransferReceiptScreen> {
                     child: CircleAvatar(
                       radius: 40,
                       backgroundColor: Colors.green,
-                      child:  Icon(
+                      child: Icon(
                         Icons.download_done,
                         size: 40,
                         color: AppColors.white,
@@ -337,7 +343,8 @@ class _TransferReceiptScreenState extends State<TransferReceiptScreen> {
                             ),
                             SwitchListTile(
                               activeTrackColor: Colors.green,
-                              activeColor: Colors.white,                              shape: RoundedRectangleBorder(
+                              activeColor: Colors.white,
+                              shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(25),
                               ),
                               tileColor: Color.fromRGBO(236, 236, 236, 1.0),
@@ -411,7 +418,7 @@ class _TransferReceiptScreenState extends State<TransferReceiptScreen> {
                                 ),
                                 actions: [
                                   TextButton(
-                                    child:  Text(
+                                    child: Text(
                                       "انصراف",
                                       style: TextStyle(
                                         color: AppColors.primary,
@@ -424,12 +431,12 @@ class _TransferReceiptScreenState extends State<TransferReceiptScreen> {
                                     style: ElevatedButton.styleFrom(
                                       backgroundColor: AppColors.primary,
                                     ),
-                                    child:  Text(
+                                    child: Text(
                                       "تأیید",
                                       style: TextStyle(color: AppColors.white),
                                     ),
                                     onPressed: () {
-                                      if (otp == '123456') {
+                                      if (otp == '') {
                                         // Replace with actual validation logic
                                         Navigator.of(
                                           context,

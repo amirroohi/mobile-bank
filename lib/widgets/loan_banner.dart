@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:card_swiper/card_swiper.dart';
-import '../core/constants/app_constants.dart';
 
 Widget loanBanner = Container(
   margin: const EdgeInsets.all(16),
@@ -11,7 +10,6 @@ Widget loanBanner = Container(
       itemCount: _loanBannerImages.length,
       autoplay: true,
       autoplayDelay: 5000,
-      pagination: const SwiperPagination(),
       itemBuilder: (BuildContext context, int index) {
         return Image.asset(
           _loanBannerImages[index],

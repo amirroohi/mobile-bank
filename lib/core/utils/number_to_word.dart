@@ -52,28 +52,25 @@ class NumberToWordsText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (number == null) return const SizedBox.shrink();
-
     return Container(
       width: double.infinity,
       padding: padding ?? const EdgeInsets.symmetric(horizontal: 10),
-      height: 40,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: [
-          Flexible(
+      child: number == null
+          ? const SizedBox(height: 36) // Reserve space to avoid jumpy UI
+          : SizedBox(
+        height: 36,
             child: Text(
-              "${_convertNumberToWords(number!)} ریال ",
-              style: textStyle ??
-                  const TextStyle(
-                    color: Color(0xFF246C1D),
-                    fontSize: 12,
-                    fontWeight: FontWeight.w700,
+                    "${_convertNumberToWords(number!)} ریال ",
+                    style: textStyle ??
+              const TextStyle(
+                color: Color(0xFF246C1D),
+                fontSize: 10,
+                fontWeight: FontWeight.w700,
+              ),
+                    softWrap: true,
                   ),
-            ),
           ),
-        ],
-      ),
     );
   }
+
 }

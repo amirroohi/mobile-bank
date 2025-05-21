@@ -122,7 +122,7 @@ class _TransferFormScreenState extends State<TransferFormScreen> {
                 ),
                 const Positioned(
                   bottom: 30,
-                  right: 0,
+                  right: 0, 
                   left: 0,
                   child: TransferContinueButton(),
                 ),
