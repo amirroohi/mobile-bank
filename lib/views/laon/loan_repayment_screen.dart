@@ -90,7 +90,7 @@ class _LoanRepaymentScreenState extends State<LoanRepaymentScreen> {
           children: [
             Stack(
               children: [
-                Container(height: 790, color: Colors.white),
+                Container(height: 820, color: Colors.white),
                 Container(height: 150, color: AppColors.primary),
                 Positioned(
                   top: 25,

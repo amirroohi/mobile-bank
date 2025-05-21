@@ -92,7 +92,7 @@ class _TransferFormScreenState extends State<TransferFormScreen> {
           children: [
             Stack(
               children: [
-                Container(height: 790, color: AppColors.white),
+                Container(height: 820, color: AppColors.white),
                 Container(height: 150, color: AppColors.primary),
                 Positioned(
                   top: 25,
@@ -122,7 +122,7 @@ class _TransferFormScreenState extends State<TransferFormScreen> {
                 ),
                 const Positioned(
                   bottom: 30,
-                  right: 0, 
+                  right: 0,
                   left: 0,
                   child: TransferContinueButton(),
                 ),

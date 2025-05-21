@@ -43,7 +43,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
           children: [
             Stack(
               children: [
-                Container(height: 790, color: AppColors.white),
+                Container(height: 820, color: AppColors.white),
                 Container(height: 150, color: AppColors.primary),
                 Positioned(
                   top: 25,

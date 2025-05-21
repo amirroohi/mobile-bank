@@ -110,7 +110,7 @@ class _CharityScreenState extends State<CharityScreen> {
                   constraints: const BoxConstraints(
                     minWidth: double.infinity,
                     minHeight: 770,
-                    maxHeight: 790,
+                    maxHeight: 820,
                   ),
                   child: Container(
                     height: double.infinity,
