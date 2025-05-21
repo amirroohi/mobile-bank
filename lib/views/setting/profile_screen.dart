@@ -53,7 +53,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   width: double.infinity,
                   color: AppColors.white,
                 ),
-                Container(height: 250, color: AppColors.primary),
+                Container(height: 150, color: AppColors.primary),
 
                 Positioned(
                   top: 75,

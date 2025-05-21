@@ -18,6 +18,37 @@ class _SelectedServicesMngmntScreenState
 
   late final List<ServiceGroup> allServiceGroups;
 
+  void _toggleService(String title) {
+    setState(() {
+      if (selectedTitles.contains(title)) {
+        selectedTitles.remove(title);
+      } else {
+        if (selectedTitles.length >= 4) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(
+              content: Text('حداکثر ۴ خدمت را می‌توانید انتخاب کنید'),
+              duration: Duration(seconds: 2),
+            ),
+          );
+          return;
+        }
+        selectedTitles.add(title);
+      }
+    });
+  }
+
+  void _saveSelection() {
+    if (selectedTitles.isEmpty) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('لطفاً حداقل یک خدمت را انتخاب کنید'),showCloseIcon: true,),
+      );
+      return;
+    }
+
+    Navigator.pop(context, selectedTitles.toList());
+  }
+
+
   @override
   void initState() {
     super.initState();
@@ -66,20 +97,20 @@ class _SelectedServicesMngmntScreenState
     ];
   }
 
-  void _toggleService(String title) {
-    setState(() {
-      if (selectedTitles.contains(title)) {
-        selectedTitles.remove(title);
-      } else {
-        selectedTitles.add(title);
-      }
-    });
-  }
-
-  void _saveSelection() {
-    // TODO: Save to shared preferences or send to backend
-    Navigator.pop(context, selectedTitles.toList());
-  }
+  // void _toggleService(String title) {
+  //   setState(() {
+  //     if (selectedTitles.contains(title)) {
+  //       selectedTitles.remove(title);
+  //     } else {
+  //       selectedTitles.add(title);
+  //     }
+  //   });
+  // }
+  //
+  // void _saveSelection() {
+  //   // TODO: Save to shared preferences or send to backend
+  //   Navigator.pop(context, selectedTitles.toList());
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -88,24 +119,21 @@ class _SelectedServicesMngmntScreenState
       child: Scaffold(
         appBar: AppBar(
           backgroundColor: Color(0xFFF3F6FA),
-          title: const Text("مدیریت خدمات منتخب"),
-          actions: [
-            TextButton(
-              onPressed: () {},
-              child: Text(
-                "ذخیره",
-                style: TextStyle(
-                  color: AppColors.primary,
-                  fontSize: 18,
-                  fontWeight: FontWeight.w700,
-                ),
-              ),
+          foregroundColor: AppColors.primary,
+          title: Center(
+            child: const Text(
+              "مدیریت خدمات منتخب",
+              style: TextStyle(color: AppColors.primary),
             ),
-            // IconButton(
-            //   icon: const Icon(Icons.save),
-            //   onPressed: _saveSelection,
-            //   tooltip: 'ذخیره',
-            // )
+          ),
+          actions: [
+            IconButton(
+              icon: const Icon(Icons.save_outlined),
+              onPressed: _saveSelection,
+              tooltip: 'ذخیره',
+              iconSize: 32,
+              color: AppColors.primary,
+            ),
           ],
         ),
         body: Padding(

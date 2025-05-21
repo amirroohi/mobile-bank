@@ -8,7 +8,6 @@ class ServiceItem extends StatelessWidget {
   final VoidCallback onTap;
   final bool isSelected;
 
-
   const ServiceItem({
     super.key,
     required this.title,
@@ -20,20 +19,47 @@ class ServiceItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      borderRadius: BorderRadius.circular(30),
-
+      borderRadius: BorderRadius.circular(20),
       onTap: onTap,
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 2.0,vertical: 6),
+        padding: const EdgeInsets.symmetric(horizontal: 2.0, vertical: 6),
         child: Column(
           children: [
-            CircleAvatar(
-              radius: 32,
-              backgroundColor: const Color(0xFFE2E9F3),
-              child: Icon(icon, color: AppColors.primary, size: 28),
+            Stack(
+              alignment: Alignment.topRight,
+              children: [
+                CircleAvatar(
+                  radius: 32,
+                  backgroundColor:
+                  isSelected ? AppColors.primary : const Color(0xFFE2E9F3),
+                  child: Icon(
+                    icon,
+                    color: isSelected ? Colors.white : AppColors.primary,
+                    size: 28,
+                  ),
+                ),
+                if (isSelected)
+                  const Positioned(
+                    top: -6,
+                    right: -6,
+                    child: Icon(
+                      Icons.check,
+                      color: Colors.green,
+                      size: 30,
+                    ),
+                  ),
+              ],
             ),
             const SizedBox(height: 4),
-            Text(title, style: TextStyle(fontSize: 12, color: AppColors.primary)),
+            Text(
+              title,
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontSize: 12,
+                fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
+                color: isSelected ? AppColors.primary : Colors.black87,
+              ),
+            ),
           ],
         ),
       ),

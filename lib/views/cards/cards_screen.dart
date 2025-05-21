@@ -84,7 +84,7 @@ class _CardsScreenState extends State<CardsScreen> {
               ),
               const SizedBox(height: AppSizes.spacing),
               SizedBox(
-                height: AppSizes.cardHeight,
+                height: 250,
                 child: Swiper(
                   itemCount: filteredCards.length,
                   layout: SwiperLayout.TINDER,

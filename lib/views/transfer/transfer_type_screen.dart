@@ -35,10 +35,10 @@ class TransferTypeScreen extends StatelessWidget {
             Stack(
               children: [
                 ConstrainedBox(
-                  constraints: const BoxConstraints(minHeight: 770, maxHeight: 790),
+                  constraints: const BoxConstraints(minHeight: 770, maxHeight: 830),
                   child: Container(color: AppColors.white),
                 ),
-                Container(height: 250, color: AppColors.primary),
+                Container(height: 150, color: AppColors.primary),
                 Positioned(
                   top: 65,
                   left: 15,

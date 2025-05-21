@@ -15,8 +15,8 @@ class TransferSection extends StatelessWidget {
     return Directionality(
       textDirection: TextDirection.rtl,
       child: Container(
-        margin: const EdgeInsets.all(12),
-        padding: const EdgeInsets.all(16),
+        margin: const EdgeInsets.fromLTRB(12,12,12,12),
+        padding: const EdgeInsets.fromLTRB(12,12,12,12),
         decoration: BoxDecoration(
           color: AppColors.white,
           borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
@@ -24,6 +24,7 @@ class TransferSection extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            // Center(child: IconButton(onPressed: (){}, icon: Icon(Icons.keyboard_double_arrow_up_sharp),iconSize: 28,)),
             // Title Row
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
