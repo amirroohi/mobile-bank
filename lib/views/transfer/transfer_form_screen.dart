@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../core/constants/app_constants.dart';
 import '../../models/bank-account.dart';
+import '../../widgets/custom_app_bar.dart';
 import '../home/home_screen.dart';
 import 'widgets/transfer_card_swiper.dart';
 import 'widgets/transfer_continue_button.dart';
@@ -71,20 +72,23 @@ class _TransferFormScreenState extends State<TransferFormScreen> {
     return Directionality(
       textDirection: TextDirection.rtl,
       child: Scaffold(
-        appBar: AppBar(
-          title: const Center(child: Text("انتقال وجه", style: TextStyle(fontSize: 28))),
+        appBar: CustomAppBar(
+          title: "انتقال وجه",
           backgroundColor: AppColors.primary,
           foregroundColor: AppColors.white,
-          automaticallyImplyLeading: true,
           actions: [
-            IconButton(
-              icon: const Icon(Icons.home, size: 32),
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const HomeScreen()),
-                );
-              },
+            Padding(
+              padding: const EdgeInsets.only(left: 8.0),
+              child: IconButton(
+                icon: const Icon(Icons.home, size: 32),
+                tooltip: 'خانه',
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => HomeScreen()),
+                  );
+                },
+              ),
             ),
           ],
         ),

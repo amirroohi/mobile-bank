@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../core/constants/app_constants.dart';
 import '../../models/bank-account.dart';
+import '../../widgets/custom_app_bar.dart';
 import '../home/home_screen.dart';
 import '../transfer/widgets/transfer_continue_button.dart';
 
@@ -27,23 +28,20 @@ class _IbanInquiryScreenState extends State<IbanInquiryScreen> {
     return Directionality(
       textDirection: TextDirection.rtl,
       child: Scaffold(
-        appBar: AppBar(
-          title: Center(
-            child: Text("استعلام شبا", style: TextStyle(fontSize: 28)),
-          ),
+        appBar: CustomAppBar(
+          title: "استعلام شبا",
           backgroundColor: AppColors.primary,
           foregroundColor: AppColors.white,
-          automaticallyImplyLeading: true,
           actions: [
             Padding(
               padding: const EdgeInsets.only(left: 8.0),
               child: IconButton(
-                icon: const Icon(Icons.home,size: 32,),
+                icon: const Icon(Icons.home, size: 32),
                 tooltip: 'خانه',
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => const HomeScreen()),
+                    MaterialPageRoute(builder: (context) => HomeScreen()),
                   );
                 },
               ),

@@ -5,6 +5,7 @@ import 'package:mobile_bank/widgets/bank_card.dart';
 import '../../core/constants/app_constants.dart';
 import '../../models/bank-account.dart';
 // import '../../models/card_model.dart';
+import '../../widgets/custom_app_bar.dart';
 import '../home/home_screen.dart';
 import 'package:persian_number_utility/persian_number_utility.dart';
 
@@ -97,13 +98,10 @@ class BuyChargeScreenState extends State<BuyChargeScreen> {
     return Directionality(
       textDirection: TextDirection.rtl,
       child: Scaffold(
-        appBar: AppBar(
-          title: Center(
-            child: Text("خرید شارژ", style: TextStyle(fontSize: 28)),
-          ),
+        appBar: CustomAppBar(
+          title: "خرید شارژ",
           backgroundColor: AppColors.primary,
-          foregroundColor: Colors.white,
-          automaticallyImplyLeading: true,
+          foregroundColor: AppColors.white,
           actions: [
             Padding(
               padding: const EdgeInsets.only(left: 8.0),
@@ -113,13 +111,14 @@ class BuyChargeScreenState extends State<BuyChargeScreen> {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => const HomeScreen()),
+                    MaterialPageRoute(builder: (context) => HomeScreen()),
                   );
                 },
               ),
             ),
           ],
         ),
+
         body: ListView(
           children: [
             Stack(

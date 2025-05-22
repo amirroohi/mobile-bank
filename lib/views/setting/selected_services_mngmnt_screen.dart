@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mobile_bank/core/constants/app_constants.dart';
+import '../../widgets/custom_app_bar.dart';
 import '../../widgets/service_item.dart';
 import '../../widgets/service_section.dart';
 import '../services/services_screen.dart';
@@ -117,15 +118,10 @@ class _SelectedServicesMngmntScreenState
     return Directionality(
       textDirection: TextDirection.rtl,
       child: Scaffold(
-        appBar: AppBar(
-          backgroundColor: Color(0xFFF3F6FA),
+        appBar: CustomAppBar(
+          title: "مدیریت خدمات منتخب",
+          backgroundColor: const Color(0xFFF3F6FA),
           foregroundColor: AppColors.primary,
-          title: Center(
-            child: const Text(
-              "مدیریت خدمات منتخب",
-              style: TextStyle(color: AppColors.primary),
-            ),
-          ),
           actions: [
             IconButton(
               icon: const Icon(Icons.save_outlined),

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:mobile_bank/widgets/bank_card.dart';
 import '../../core/constants/app_constants.dart';
 import '../../models/bank-account.dart';
+import '../../widgets/custom_app_bar.dart';
 import '../home/home_screen.dart';
 
 class TransactionListScreen extends StatefulWidget {
@@ -182,13 +183,10 @@ class _TransactionListScreenState extends State<TransactionListScreen> {
     return Directionality(
       textDirection: TextDirection.rtl,
       child: Scaffold(
-        appBar: AppBar(
-          title: Center(
-            child: Text("فهرست تراکنش ها", style: TextStyle(fontSize: 28)),
-          ),
+        appBar: CustomAppBar(
+          title: "فهرست تراکنش ها",
           backgroundColor: AppColors.primary,
-          foregroundColor: Colors.white,
-          automaticallyImplyLeading: true,
+          foregroundColor: AppColors.white,
           actions: [
             Padding(
               padding: const EdgeInsets.only(left: 8.0),
@@ -198,7 +196,7 @@ class _TransactionListScreenState extends State<TransactionListScreen> {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => const HomeScreen()),
+                    MaterialPageRoute(builder: (context) => HomeScreen()),
                   );
                 },
               ),

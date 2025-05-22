@@ -2,11 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:mobile_bank/core/constants/app_constants.dart';
 import 'package:mobile_bank/views/laon/widgets/account_swiper.dart';
 import 'package:mobile_bank/views/laon/widgets/installment_section.dart';
-import 'package:mobile_bank/views/laon/widgets/loan_app_bar.dart';
 import 'package:mobile_bank/views/laon/widgets/loan_form_fields.dart';
 import 'package:persian_number_utility/persian_number_utility.dart';
 
 import '../../models/bank-account.dart';
+import '../../widgets/custom_app_bar.dart';
+import '../home/home_screen.dart';
 import '../transfer/widgets/transfer_continue_button.dart';
 
 class LoanRepaymentScreen extends StatefulWidget {
@@ -30,6 +31,7 @@ class _LoanRepaymentScreenState extends State<LoanRepaymentScreen> {
       initialBookmarkedIndex = index;
     });
   }
+
   @override
   void initState() {
     super.initState();
@@ -85,7 +87,26 @@ class _LoanRepaymentScreenState extends State<LoanRepaymentScreen> {
     return Directionality(
       textDirection: TextDirection.rtl,
       child: Scaffold(
-        appBar: const LoanAppBar(),
+        appBar: CustomAppBar(
+          title: "پرداخت قسط",
+          backgroundColor: AppColors.primary,
+          foregroundColor: AppColors.white,
+          actions: [
+            Padding(
+              padding: const EdgeInsets.only(left: 8.0),
+              child: IconButton(
+                icon: const Icon(Icons.home, size: 32),
+                tooltip: 'خانه',
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => HomeScreen()),
+                  );
+                },
+              ),
+            ),
+          ],
+        ),
         body: ListView(
           children: [
             Stack(
@@ -100,8 +121,10 @@ class _LoanRepaymentScreenState extends State<LoanRepaymentScreen> {
                     elevation: 3,
                     borderRadius: BorderRadius.circular(25),
                     child: Container(
-                      padding:
-                      const EdgeInsets.symmetric(horizontal: 0, vertical: 15),
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 0,
+                        vertical: 15,
+                      ),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(25),
                         color: Colors.white,
@@ -124,7 +147,7 @@ class _LoanRepaymentScreenState extends State<LoanRepaymentScreen> {
                   bottom: 30,
                   left: 0,
                   right: 0,
-                  child: TransferContinueButton()
+                  child: TransferContinueButton(),
                 ),
               ],
             ),
@@ -133,5 +156,4 @@ class _LoanRepaymentScreenState extends State<LoanRepaymentScreen> {
       ),
     );
   }
-
 }

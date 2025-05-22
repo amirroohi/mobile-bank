@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:mobile_bank/views/home/home_screen.dart';
 import '../../core/constants/app_constants.dart';
 import '../../models/bank-account.dart';
+import '../../widgets/custom_app_bar.dart';
 
 class TransferReceiptScreen extends StatefulWidget {
   const TransferReceiptScreen({super.key});
@@ -31,13 +32,10 @@ class _TransferReceiptScreenState extends State<TransferReceiptScreen> {
     return Directionality(
       textDirection: TextDirection.rtl,
       child: Scaffold(
-        appBar: AppBar(
-          title: Center(
-            child: Text("جزییات تراکنش", style: TextStyle(fontSize: 28)),
-          ),
+        appBar: CustomAppBar(
+          title: "جزییات تراکنش",
           backgroundColor: AppColors.primary,
           foregroundColor: AppColors.white,
-          automaticallyImplyLeading: true,
           actions: [
             Padding(
               padding: const EdgeInsets.only(left: 8.0),
@@ -47,7 +45,7 @@ class _TransferReceiptScreenState extends State<TransferReceiptScreen> {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => const HomeScreen()),
+                    MaterialPageRoute(builder: (context) => HomeScreen()),
                   );
                 },
               ),

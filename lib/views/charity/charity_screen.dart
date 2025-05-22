@@ -6,6 +6,7 @@ import 'package:mobile_bank/core/constants/app_constants.dart';
 import '../../core/utils/number_to_word.dart';
 import '../../models/bank-account.dart';
 import '../../widgets/bank_card.dart';
+import '../../widgets/custom_app_bar.dart';
 import '../../widgets/price_input_field.dart';
 import '../home/home_screen.dart';
 import '../transfer/widgets/transfer_continue_button.dart';
@@ -79,13 +80,10 @@ class _CharityScreenState extends State<CharityScreen> {
     return Directionality(
       textDirection: TextDirection.rtl,
       child: Scaffold(
-        appBar: AppBar(
-          title: Center(
-            child: Text("نیکوکاری", style: TextStyle(fontSize: 28)),
-          ),
+        appBar: CustomAppBar(
+          title: "نیکوکاری",
           backgroundColor: AppColors.primary,
-          foregroundColor: Colors.white,
-          automaticallyImplyLeading: true,
+          foregroundColor: AppColors.white,
           actions: [
             Padding(
               padding: const EdgeInsets.only(left: 8.0),
@@ -95,7 +93,7 @@ class _CharityScreenState extends State<CharityScreen> {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => const HomeScreen()),
+                    MaterialPageRoute(builder: (context) => HomeScreen()),
                   );
                 },
               ),

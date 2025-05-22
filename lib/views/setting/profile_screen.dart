@@ -6,6 +6,7 @@ import 'package:mobile_bank/views/setting/selected_services_mngmnt_screen.dart';
 import 'package:mobile_bank/widgets/slide_navigation.dart';
 
 import '../../core/constants/app_constants.dart';
+import '../../widgets/custom_app_bar.dart';
 import '../home/home_screen.dart';
 
 class ProfileScreen extends StatefulWidget {
@@ -16,17 +17,16 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
-  bool isDarkMode= false;
+  bool isDarkMode = false;
   @override
   Widget build(BuildContext context) {
     return Directionality(
       textDirection: TextDirection.rtl,
       child: Scaffold(
-        appBar: AppBar(
-          title: Center(child: Text("پروفایل", style: TextStyle(fontSize: 28))),
+        appBar: CustomAppBar(
+          title: "پروفایل",
           backgroundColor: AppColors.primary,
           foregroundColor: AppColors.white,
-          automaticallyImplyLeading: true,
           actions: [
             Padding(
               padding: const EdgeInsets.only(left: 8.0),
@@ -42,7 +42,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
               ),
             ),
           ],
-          leading: SizedBox(width: 0),
         ),
         body: ListView(
           children: [
@@ -94,7 +93,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                   child: Column(
                                     spacing: 16,
                                     mainAxisAlignment: MainAxisAlignment.center,
-                                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.stretch,
                                     children: [
                                       Row(
                                         mainAxisAlignment:
@@ -141,7 +141,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                   child: Column(
                                     spacing: 16,
                                     mainAxisAlignment: MainAxisAlignment.center,
-                                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.stretch,
                                     children: [
                                       Row(
                                         mainAxisAlignment:
@@ -240,12 +241,23 @@ class _ProfileScreenState extends State<ProfileScreen> {
           });
         },
       ),
-      _settingsTile(Icons.star, 'مدیریت خدمات برگزیده', onTap: () {
-        Navigator.push(context, slideFromLeft(SelectedServicesMngmntScreen()));
-      }),
-      _settingsTile(Icons.list, 'فهرست منتخب', onTap: () {
-        Navigator.push(context, slideFromLeft(SelectedListScreen()));
-      }),
+      _settingsTile(
+        Icons.star,
+        'مدیریت خدمات برگزیده',
+        onTap: () {
+          Navigator.push(
+            context,
+            slideFromLeft(SelectedServicesMngmntScreen()),
+          );
+        },
+      ),
+      _settingsTile(
+        Icons.list,
+        'فهرست منتخب',
+        onTap: () {
+          Navigator.push(context, slideFromLeft(SelectedListScreen()));
+        },
+      ),
       _settingsTile(
         Icons.power_settings_new,
         'خروج',

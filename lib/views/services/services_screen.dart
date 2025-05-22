@@ -10,6 +10,7 @@ import 'package:mobile_bank/views/laon/loan_repayment_screen.dart';
 import 'package:mobile_bank/views/transactions/transaction_list_screen.dart';
 
 import '../../core/constants/app_constants.dart';
+import '../../widgets/custom_app_bar.dart';
 import '../../widgets/service_item.dart';
 import '../../widgets/service_section.dart';
 import '../../widgets/slide_navigation.dart';
@@ -208,13 +209,10 @@ class _ServicesScreenState extends State<ServicesScreen> {
     return Directionality(
       textDirection: TextDirection.rtl,
       child: Scaffold(
-        appBar: AppBar(
-          title: const Center(
-            child: Text("خدمات", style: TextStyle(fontSize: 28)),
-          ),
-          backgroundColor: Color(0xFFF3F6FA),
+        appBar: CustomAppBar(
+          title: "خدمات",
+          backgroundColor:const Color(0xFFF5F5F5),
           foregroundColor: AppColors.primary,
-          automaticallyImplyLeading: true,
           actions: [
             Padding(
               padding: const EdgeInsets.only(left: 8.0),
@@ -230,7 +228,6 @@ class _ServicesScreenState extends State<ServicesScreen> {
               ),
             ),
           ],
-          leading: SizedBox(width: 0),
         ),
         body: SafeArea(
           child: Padding(

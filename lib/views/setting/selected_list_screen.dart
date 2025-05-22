@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../core/constants/app_constants.dart';
+import '../../widgets/custom_app_bar.dart';
+import '../home/home_screen.dart';
 
 class SelectedListScreen extends StatefulWidget {
   const SelectedListScreen({super.key});
@@ -62,10 +64,25 @@ class _SelectedListScreenState extends State<SelectedListScreen> {
     return Directionality(
       textDirection: TextDirection.rtl,
       child: Scaffold(
-        appBar: AppBar(
-          title: const Text("فهرست منتخب حساب‌ها"),
+        appBar: CustomAppBar(
+          title: "فهرست منتخب",
           backgroundColor: AppColors.primary,
-          foregroundColor: Colors.white,
+          foregroundColor: AppColors.white,
+          actions: [
+            Padding(
+              padding: const EdgeInsets.only(left: 8.0),
+              child: IconButton(
+                icon: const Icon(Icons.home, size: 32),
+                tooltip: 'خانه',
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => HomeScreen()),
+                  );
+                },
+              ),
+            ),
+          ],
         ),
         body: Container(
           color: AppColors.primary,

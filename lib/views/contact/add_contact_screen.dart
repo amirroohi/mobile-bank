@@ -2,6 +2,7 @@ import 'package:dropdown_search/dropdown_search.dart';
 import 'package:flutter/material.dart';
 
 import '../../core/constants/app_constants.dart';
+import '../../widgets/custom_app_bar.dart';
 import '../home/home_screen.dart';
 import '../transfer/widgets/transfer_continue_button.dart';
 
@@ -14,13 +15,10 @@ class AddContactScreen extends StatelessWidget {
       textDirection: TextDirection.rtl,
       child: Scaffold(
         backgroundColor: Colors.grey.shade100,
-        appBar: AppBar(
-          title: Center(
-            child: Text("افزودن منتخب", style: TextStyle(fontSize: 28)),
-          ),
+        appBar: CustomAppBar(
+          title: "افزودن منتخب",
           backgroundColor: AppColors.primary,
-          foregroundColor: Colors.white,
-          automaticallyImplyLeading: true,
+          foregroundColor: AppColors.white,
           actions: [
             Padding(
               padding: const EdgeInsets.only(left: 8.0),
@@ -30,7 +28,7 @@ class AddContactScreen extends StatelessWidget {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => const HomeScreen()),
+                    MaterialPageRoute(builder: (context) => HomeScreen()),
                   );
                 },
               ),

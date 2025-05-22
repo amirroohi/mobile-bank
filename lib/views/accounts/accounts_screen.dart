@@ -4,6 +4,7 @@ import '../../core/constants/app_constants.dart';
 import '../../core/utils/text_mask.dart';
 import '../../models/bank-account.dart';
 import '../../widgets/bank_card.dart';
+import '../../widgets/custom_app_bar.dart';
 import '../home/home_screen.dart';
 
 class AccountsScreen extends StatefulWidget {
@@ -101,13 +102,10 @@ class _AccountsScreenState extends State<AccountsScreen> {
     return Directionality(
       textDirection: TextDirection.rtl,
       child: Scaffold(
-        appBar: AppBar(
-          title: const Center(
-            child: Text("فهرست سپرده", style: TextStyle(fontSize: 28)),
-          ),
-          backgroundColor: const Color.fromRGBO(245, 245, 245, 1),
+        appBar: CustomAppBar(
+          title: "فهرست سپرده",
+          backgroundColor:const Color(0xFFF5F5F5),
           foregroundColor: AppColors.primary,
-          elevation: 0,
           actions: [
             Padding(
               padding: const EdgeInsets.only(left: 8.0),
@@ -123,7 +121,6 @@ class _AccountsScreenState extends State<AccountsScreen> {
               ),
             ),
           ],
-          leading: SizedBox(width: 0),
         ),
         body: SingleChildScrollView(
           padding: const EdgeInsets.symmetric(vertical: 16),

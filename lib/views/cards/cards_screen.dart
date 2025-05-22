@@ -4,6 +4,7 @@ import '../../core/constants/app_constants.dart';
 import '../../models/card_model.dart';
 import '../../widgets/card_filter_tabs.dart';
 import '../../widgets/card_item.dart';
+import '../../widgets/custom_app_bar.dart';
 import '../home/home_screen.dart';
 
 class CardsScreen extends StatefulWidget {
@@ -45,21 +46,15 @@ class _CardsScreenState extends State<CardsScreen> {
     return Directionality(
       textDirection: TextDirection.rtl,
       child: Scaffold(
-        appBar: AppBar(
-          title: Center(
-            child: Text(
-              AppStrings.cardScreenTitle,
-              style: AppTextStyles.headline,
-            ),
-          ),
-          backgroundColor: AppColors.background,
+        appBar: CustomAppBar(
+          title: "فهرست کارت ها",
+          backgroundColor:const Color(0xFFF5F5F5),
           foregroundColor: AppColors.primary,
-          automaticallyImplyLeading: true,
           actions: [
             Padding(
               padding: const EdgeInsets.only(left: 8.0),
               child: IconButton(
-                icon: const Icon(Icons.home,size: 32,),
+                icon: const Icon(Icons.home, size: 32),
                 tooltip: 'خانه',
                 onPressed: () {
                   Navigator.push(
@@ -70,7 +65,6 @@ class _CardsScreenState extends State<CardsScreen> {
               ),
             ),
           ],
-          leading: SizedBox(width: 0),
         ),
         body: Container(
           color: AppColors.background,

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../core/constants/app_constants.dart';
+import '../../widgets/custom_app_bar.dart';
 import '../home/home_screen.dart';
 import 'widgets/transfer_header_icon.dart';
 import 'widgets/transfer_method_list.dart';
@@ -12,11 +13,10 @@ class TransferTypeScreen extends StatelessWidget {
     return Directionality(
       textDirection: TextDirection.rtl,
       child: Scaffold(
-        appBar: AppBar(
-          title: const Center(child: Text("روش انتقال", style: TextStyle(fontSize: 28))),
+        appBar: CustomAppBar(
+          title: "نوع انتقال",
           backgroundColor: AppColors.primary,
           foregroundColor: AppColors.white,
-          automaticallyImplyLeading: true,
           actions: [
             Padding(
               padding: const EdgeInsets.only(left: 8.0),
@@ -24,7 +24,10 @@ class TransferTypeScreen extends StatelessWidget {
                 icon: const Icon(Icons.home, size: 32),
                 tooltip: 'خانه',
                 onPressed: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (_) => const HomeScreen()));
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => HomeScreen()),
+                  );
                 },
               ),
             ),

@@ -4,6 +4,7 @@ import 'package:mobile_bank/views/anifam/anifam_screen.dart';
 import 'package:mobile_bank/views/services/services_screen.dart';
 import 'package:mobile_bank/widgets/bottom_bar.dart';
 import '../../core/constants/app_constants.dart';
+import '../../widgets/custom_app_bar.dart';
 import '../../widgets/home/home_content.dart';
 import '../../widgets/slide_navigation.dart';
 import '../cards/cards_screen.dart';
@@ -104,29 +105,33 @@ class _HomeScreenState extends State<HomeScreen>
     };
 
     final theme = themeByIndex[_selectedIndex] ?? ThemeData.light();
-    final appBarColor = appbarByIndex[_selectedIndex] ?? Color.fromRGBO(29, 75, 126, 1);
+    final appBarColor =
+        appbarByIndex[_selectedIndex] ?? Color.fromRGBO(29, 75, 126, 1);
 
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: theme,
       home: Scaffold(
         extendBody: true,
-        appBar: _selectedIndex == -1
-            ? AppBar(
-          backgroundColor: appBarColor,
-          foregroundColor: AppColors.white,
-          leading: IconButton(
-            icon: const Icon(Icons.home, size: 0),
-            tooltip: 'خانه',
-            onPressed: () {
-              setState(() {
-                _selectedIndex = -1;
-                screen = const HomeContent();
-              });
-            },
-          ),
-        )
-            : null,
+        appBar:
+            _selectedIndex == -1
+                ? CustomAppBar(
+                  title: 'خانه',
+                  backgroundColor: appBarColor,
+                  foregroundColor: AppColors.white,
+                  leading: IconButton(
+                    icon: const Icon(Icons.home, size: 0),
+                    tooltip: 'خانه',
+                    onPressed: () {
+                      setState(() {
+                        _selectedIndex = -1;
+                        screen = const HomeContent();
+                      });
+                    },
+                  ),
+                )
+                : null,
+
         body: screen,
         floatingActionButton: SizedBox(
           width: 70,
@@ -156,4 +161,3 @@ class _HomeScreenState extends State<HomeScreen>
     );
   }
 }
-

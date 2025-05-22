@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:mobile_bank/core/constants/app_constants.dart';
 import 'package:mobile_bank/views/transfer/transfer_form_screen.dart';
 import '../../widgets/card_filter_tabs.dart';
+import '../../widgets/custom_app_bar.dart';
 import '../../widgets/slide_navigation.dart';
 import '../home/home_screen.dart';
 
@@ -109,13 +110,10 @@ class _AnifamScreenState extends State<AnifamScreen>
             child: Icon(Icons.add),
           ),
         ),
-        appBar: AppBar(
-          title: const Center(
-            child: Text("آنی فام", style: TextStyle(fontSize: 28)),
-          ),
+        appBar: CustomAppBar(
+          title: "آنی فام",
           backgroundColor: const Color.fromRGBO(245, 245, 245, 1),
           foregroundColor: AppColors.primary,
-          automaticallyImplyLeading: true,
           actions: [
             Padding(
               padding: const EdgeInsets.only(left: 8.0),
@@ -125,7 +123,7 @@ class _AnifamScreenState extends State<AnifamScreen>
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => const HomeScreen()),
+                    MaterialPageRoute(builder: (context) => HomeScreen()),
                   );
                 },
               ),
